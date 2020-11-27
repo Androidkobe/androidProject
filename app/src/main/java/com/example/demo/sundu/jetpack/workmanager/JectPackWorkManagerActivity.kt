@@ -7,6 +7,6 @@ import com.example.demo.R
 class JectPackWorkManagerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_ject_pack_work_manager)
+        setContentView(R.layout.jectpack_work_manager_activity_layout)
     }
 }

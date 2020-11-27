@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".sundu.jetpack.workmanager.JectPackWorkManagerActivity">
-
+    tools:context="com.example.demo.sundu.kotlin.KotlinActivity">
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/mRecycleView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

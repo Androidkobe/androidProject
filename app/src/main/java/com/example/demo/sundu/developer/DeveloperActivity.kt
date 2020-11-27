@@ -1,24 +1,23 @@
-package com.example.demo
+package com.example.demo.sundu.developer
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.demo.sundu.developer.DeveloperActivity
-import com.example.demo.sundu.jetpack.JetpackActivity
-import com.example.demo.sundu.kotlin.KotlinActivity
+import com.example.demo.R
+import com.example.demo.sundu.developer.viewpager.ViewPager2Activity
+import com.example.demo.sundu.developer.viewpager.ViewPagerActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class DeveloperActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.developer_main_activity_layout)
         mRecycleView.setHasFixedSize(true)
         mRecycleView.layoutManager = GridLayoutManager(this,3)
-        mRecycleView.adapter =
-            MainAdapter(createData(), itemViewClick)
+        mRecycleView.adapter = DeveloperAdapter(createData(), itemViewClick)
     }
 
     private val itemViewClick: ItemViewClick = object :
@@ -27,20 +26,14 @@ class MainActivity : AppCompatActivity() {
             when (position) {
                 0 -> startActivity(
                     Intent(
-                        this@MainActivity,
-                        KotlinActivity::class.java
+                        this@DeveloperActivity,
+                        ViewPagerActivity::class.java
                     )
                 )
                 1 -> startActivity(
                     Intent(
-                        this@MainActivity,
-                        JetpackActivity::class.java
-                    )
-                )
-                2 -> startActivity(
-                    Intent(
-                        this@MainActivity,
-                        DeveloperActivity::class.java
+                        this@DeveloperActivity,
+                        ViewPager2Activity::class.java
                     )
                 )
             }
@@ -49,9 +42,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun createData() : List<String>{
         val stringArray : MutableList<String> = mutableListOf()
-        stringArray.add("kotlin")
-        stringArray.add("jetPack")
-        stringArray.add("Developer")
+        stringArray.add("viewpage")
+        stringArray.add("viewpage2")
         return stringArray
     }
 }

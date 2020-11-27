@@ -3,21 +3,27 @@
     package="com.example.demo">
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="android"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.demo.sundu.jetpack.workmanager.JectPackWorkManagerActivity"></activity>
-        <activity android:name="com.example.demo.sundu.jetpack.JetpackActivity" />
-        <activity android:name="com.example.demo.MainActivity">
+        <activity android:name=".sundu.developer.viewpager.ViewPager2Activity"></activity>
+        <activity android:name=".sundu.developer.DeveloperActivity"/>
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".sundu.kotlin.KotlinActivity"
+            android:theme="@style/KotlinTheme" />
+        <activity android:name=".sundu.jetpack.workmanager.JectPackWorkManagerActivity" />
+        <activity android:name=".sundu.jetpack.JetpackActivity" />
+        <activity android:name=".sundu.kotlin.coroutine.KotlinCoroutineActivity" />
     </application>
 
 </manifest>
