@@ -9,8 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".sundu.developer.viewpager.ViewPager2Activity"></activity>
-        <activity android:name=".sundu.developer.DeveloperActivity"/>
+        <activity android:name=".sundu.jetpack.datastore.JetPackDataStoreActivity"/>
+        <activity android:name=".sundu.jetpack.livedata.JetPackLiveDataActivity" />
+        <activity android:name=".sundu.developer.viewpager.ViewPager2Activity" />
+        <activity android:name=".sundu.developer.DeveloperActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,7 +23,7 @@
         <activity
             android:name=".sundu.kotlin.KotlinActivity"
             android:theme="@style/KotlinTheme" />
-        <activity android:name=".sundu.jetpack.workmanager.JectPackWorkManagerActivity" />
+        <activity android:name=".sundu.jetpack.workmanager.JetPackWorkManagerActivity" />
         <activity android:name=".sundu.jetpack.JetpackActivity" />
         <activity android:name=".sundu.kotlin.coroutine.KotlinCoroutineActivity" />
     </application>

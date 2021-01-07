@@ -4,9 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.demo.R
 
-class JectPackWorkManagerActivity : AppCompatActivity() {
+class JetPackWorkManagerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.jectpack_work_manager_activity_layout)
+        setContentView(R.layout.jetpack_activity_workmanager)
     }
 }

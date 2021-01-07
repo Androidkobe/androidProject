@@ -4,13 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.demo.sundu.jetpack.JetpackActivity">
-
-    <Button
-        android:id="@+id/mJectpack_WorkManager"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:text="workManager"
-        app:layout_constraintDimensionRatio="16:9" />
+    tools:context=".sundu.jetpack.livedata.JetPackLiveDataActivity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

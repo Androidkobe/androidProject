@@ -8,7 +8,6 @@ import javax.xml.crypto.Data
  */
 
 fun main() {
-    print(foo)
 }
 
 inline fun <reified T> jisuan(){
@@ -19,13 +18,3 @@ inline fun <reified T> jisuan(){
         println("p is the type = "+p)
     }
 }
-val foo: Foo
-    inline get() = Foo()
-
-var bar: Bar
-    get() = ……
-inline set(v) { …… }
-
-inline var bar: Bar
-    get() = ……
-set(v) { …… }
