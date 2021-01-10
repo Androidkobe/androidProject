@@ -19,7 +19,7 @@ class JetpackActivity : AppCompatActivity() {
         mJectpack_LiveData.setOnClickListener{
             startActivity(Intent(this,JetPackLiveDataActivity::class.java))
         }
-        mJectpack_LiveData.setOnClickListener{
+        mJectpack_DataStore.setOnClickListener{
             startActivity(Intent(this,JetPackDataStoreActivity::class.java))
         }
     }
