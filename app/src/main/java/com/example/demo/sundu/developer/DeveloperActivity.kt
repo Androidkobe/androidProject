@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.demo.R
+import com.example.demo.sundu.developer.nineimageload.NineImgLoadActivity
 import com.example.demo.sundu.developer.viewpager.ViewPager2Activity
 import com.example.demo.sundu.developer.viewpager.ViewPagerActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -36,6 +37,12 @@ class DeveloperActivity : AppCompatActivity() {
                         ViewPager2Activity::class.java
                     )
                 )
+                2 -> startActivity(
+                    Intent(
+                        this@DeveloperActivity,
+                        NineImgLoadActivity::class.java
+                    )
+                )
             }
         }
     }
@@ -44,6 +51,7 @@ class DeveloperActivity : AppCompatActivity() {
         val stringArray : MutableList<String> = mutableListOf()
         stringArray.add("viewpage")
         stringArray.add("viewpage2")
+        stringArray.add(".9imageLoad")
         return stringArray
     }
 }

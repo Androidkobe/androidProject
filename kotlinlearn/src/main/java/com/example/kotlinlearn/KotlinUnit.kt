@@ -7,9 +7,45 @@ fun main(args: Array<String>) {
 //    println(KotlinUnit().unitExample())
 //    KotlinUnit().methodAction()
 //    KotlinUnit().methodAction1()
-    var test : String? = null
-    test?.let{
-        print(it)
+//    HelloWorld().test()
+      AdClient().show()
+}
+
+
+fun say(){
+    print("hello world")
+}
+
+fun helloWorld(hello:()->Unit){
+    hello()
+}
+
+class HelloWorld{
+    fun test(){
+        helloWorld {
+            say()
+        }
+    }
+}
+
+
+
+data class AdInfo(val id : Long)
+
+fun showAd(adInfo: AdInfo){
+    print("adinfo = "+adInfo.id)
+}
+
+fun getAdInfo(showAdInfo:(AdInfo)->Unit){
+    //get ....
+    showAdInfo(AdInfo(1000))
+}
+
+class AdClient{
+    fun  show(){
+        getAdInfo {
+            showAd(it)
+        }
     }
 }
 
