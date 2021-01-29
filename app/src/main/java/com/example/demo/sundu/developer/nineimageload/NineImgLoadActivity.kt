@@ -59,7 +59,7 @@ class NineImgLoadActivity : AppCompatActivity() {
         Log.i(TAG, "ydpi = $ydpi")
 
 //        image.setImageDrawable(BitmapDrawable.createFromPath(sdkPath+"/"+"b.png"))
-
+        handles.sendEmptyMessage(1)
        handles.postDelayed({
 
            setPlaceHolderImage(sdkPath+"/"+"b.png")
