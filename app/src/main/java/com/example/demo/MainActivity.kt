@@ -11,8 +11,10 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.demo.sundu.developer.DeveloperActivity
-import com.example.demo.sundu.jetpack.JetpackActivity
+import com.example.demo.sundu.jetpack.JetPackActivity
 import com.example.demo.sundu.kotlin.KotlinActivity
+import com.example.demo.sundu.parcelable.ParcelableActivity
+import com.example.demo.sundu.touchevent.TouchEventActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -39,13 +41,25 @@ class MainActivity : AppCompatActivity() {
                 1 -> startActivity(
                     Intent(
                         this@MainActivity,
-                        JetpackActivity::class.java
+                        JetPackActivity::class.java
                     )
                 )
                 2 -> startActivity(
                     Intent(
                         this@MainActivity,
                         DeveloperActivity::class.java
+                    )
+                )
+                3 -> startActivity(
+                    Intent(
+                        this@MainActivity,
+                        ParcelableActivity::class.java
+                    )
+                )
+                4 -> startActivity(
+                    Intent(
+                        this@MainActivity,
+                        TouchEventActivity::class.java
                     )
                 )
             }
@@ -57,6 +71,9 @@ class MainActivity : AppCompatActivity() {
         stringArray.add("kotlin")
         stringArray.add("jetPack")
         stringArray.add("Developer")
+        stringArray.add("WebView")
+        stringArray.add("Parcelabel")
+        stringArray.add("TouchEvent")
         return stringArray
     }
 

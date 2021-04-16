@@ -29,4 +29,12 @@
         android:text="DataStore"
         app:layout_constraintDimensionRatio="16:9" />
 
+    <Button
+        android:id="@+id/mJectpack_Navigation"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        app:layout_constraintLeft_toRightOf="@+id/mJectpack_DataStore"
+        android:text="Navigation"
+        app:layout_constraintDimensionRatio="16:9" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
