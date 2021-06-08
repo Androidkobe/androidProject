@@ -10,11 +10,13 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.demo.sundu.custview.downloadview.DownLoadViewActivity
 import com.example.demo.sundu.developer.DeveloperActivity
 import com.example.demo.sundu.jetpack.JetPackActivity
 import com.example.demo.sundu.kotlin.KotlinActivity
 import com.example.demo.sundu.parcelable.ParcelableActivity
 import com.example.demo.sundu.touchevent.TouchEventActivity
+import com.example.demo.sundu.webview.MyWebViewActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -50,16 +52,28 @@ class MainActivity : AppCompatActivity() {
                         DeveloperActivity::class.java
                     )
                 )
-                3 -> startActivity(
+               3 -> startActivity(
                     Intent(
                         this@MainActivity,
-                        ParcelableActivity::class.java
+                        MyWebViewActivity::class.java
                     )
                 )
                 4 -> startActivity(
                     Intent(
                         this@MainActivity,
+                        ParcelableActivity::class.java
+                    )
+                )
+                5 -> startActivity(
+                    Intent(
+                        this@MainActivity,
                         TouchEventActivity::class.java
+                    )
+                )
+                6 -> startActivity(
+                    Intent(
+                        this@MainActivity,
+                        DownLoadViewActivity::class.java
                     )
                 )
             }
@@ -74,6 +88,7 @@ class MainActivity : AppCompatActivity() {
         stringArray.add("WebView")
         stringArray.add("Parcelabel")
         stringArray.add("TouchEvent")
+        stringArray.add("DownLoadView")
         return stringArray
     }
 

@@ -48,7 +48,10 @@ class AdClient{
         }
     }
 }
-
+// 第一种
+val sum1 = {x: Int, j: Int ->  x + j}
+// 第二种
+val sum2: (x: Int, j: Int) ->  Int = {a, b ->  a + b }
 
 class KotlinUnit {
 //    fun unitExample(){
@@ -118,4 +121,6 @@ class KotlinUnit {
     private fun action1(first: Int, second: Int, callBack: (first: Int, second: Int) -> Int) {
         println("first + second = "+callBack(first, second))
     }
+
+
 }
