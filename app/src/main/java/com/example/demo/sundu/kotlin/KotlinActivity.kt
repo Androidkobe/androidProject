@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.demo.ItemViewClick
+import com.example.demo.common.ItemViewClick
 import com.example.demo.R
 import com.example.demo.sundu.kotlin.coroutine.KotlinCoroutineActivity
 import kotlinx.android.synthetic.main.kotlin_main_activity_layout.*

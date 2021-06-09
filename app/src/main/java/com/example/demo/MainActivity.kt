@@ -10,6 +10,8 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.demo.common.ItemViewClick
+import com.example.demo.sundu.custview.CustomViewActivity
 import com.example.demo.sundu.custview.downloadview.DownLoadViewActivity
 import com.example.demo.sundu.developer.DeveloperActivity
 import com.example.demo.sundu.jetpack.JetPackActivity
@@ -73,7 +75,7 @@ class MainActivity : AppCompatActivity() {
                 6 -> startActivity(
                     Intent(
                         this@MainActivity,
-                        DownLoadViewActivity::class.java
+                        CustomViewActivity::class.java
                     )
                 )
             }
@@ -88,7 +90,7 @@ class MainActivity : AppCompatActivity() {
         stringArray.add("WebView")
         stringArray.add("Parcelabel")
         stringArray.add("TouchEvent")
-        stringArray.add("DownLoadView")
+        stringArray.add("CustomView")
         return stringArray
     }
 

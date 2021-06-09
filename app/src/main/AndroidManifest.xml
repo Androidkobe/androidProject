@@ -14,7 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".sundu.custview.downloadview.DownLoadViewActivity"></activity>
+        <activity android:name=".sundu.webview.MyWebViewActivity"/>
+        <activity android:name=".sundu.custview.beziercurve.dragpop.BezierCurverDragPopActivity"/>
+        <activity android:name=".sundu.custview.CustomViewActivity" />
+        <activity android:name=".sundu.custview.downloadview.DownLoadViewActivity" />
         <activity android:name=".sundu.touchevent.TouchEventActivity" />
         <activity
             android:name=".sundu.developer.nineimageload.NineImgLoadActivity"
