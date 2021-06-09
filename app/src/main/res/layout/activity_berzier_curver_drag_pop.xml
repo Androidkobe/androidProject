@@ -6,4 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".sundu.custview.beziercurve.dragpop.BezierCurverDragPopActivity">
 
+    <com.example.demo.sundu.custview.beziercurve.dragpop.DragBubbleView
+        android:id="@+id/dragBubbleView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        app:bubbleColor="#ff0000"
+        app:bubbleRadius="16dp"
+        app:dvtextColor="#ffffff"
+        app:dvtextSize="16sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <Button
+        android:id="@+id/reCreateBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="reCreate" />
 </androidx.constraintlayout.widget.ConstraintLayout>

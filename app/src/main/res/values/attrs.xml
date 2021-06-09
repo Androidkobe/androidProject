@@ -6,14 +6,18 @@
 
     <declare-styleable name="FlikerProgressBar">
         <attr name="textSize" format="dimension"/>
-
         <attr name="loadingColor" format="color"/>
-
         <attr name="stopColor" format="color"/>
-
         <attr name="radius" format="dimension"/>
-
         <attr name="borderWidth" format="dimension"/>
+    </declare-styleable>
 
+
+    <declare-styleable name="DragBubbleView">
+        <attr name="dvtextSize" format="dimension"/>
+        <attr name="bubbleRadius" format="dimension" />
+        <attr name="bubbleColor" format="color" />
+        <attr name="dvtext" format="string" />
+        <attr name="dvtextColor" format="color" />
     </declare-styleable>
 </resources>
