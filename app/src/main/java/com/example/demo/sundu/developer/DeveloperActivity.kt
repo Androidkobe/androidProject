@@ -1,11 +1,12 @@
 package com.example.demo.sundu.developer
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.demo.R
+import com.example.demo.sundu.developer.immersive.ImmerSiveActivity
 import com.example.demo.sundu.developer.nineimageload.NineImgLoadActivity
 import com.example.demo.sundu.developer.viewpager.ViewPager2Activity
 import com.example.demo.sundu.developer.viewpager.ViewPagerActivity
@@ -43,6 +44,12 @@ class DeveloperActivity : AppCompatActivity() {
                         NineImgLoadActivity::class.java
                     )
                 )
+                3 -> startActivity(
+                    Intent(
+                        this@DeveloperActivity,
+                        ImmerSiveActivity::class.java
+                    )
+                )
             }
         }
     }
@@ -52,6 +59,7 @@ class DeveloperActivity : AppCompatActivity() {
         stringArray.add("viewpage")
         stringArray.add("viewpage2")
         stringArray.add(".9imageLoad")
+        stringArray.add("immersive")
         return stringArray
     }
 }

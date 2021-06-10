@@ -14,11 +14,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".sundu.webview.MyWebViewActivity"/>
-        <activity android:name=".sundu.custview.beziercurve.dragpop.BezierCurverDragPopActivity"/>
+        <activity android:name=".sundu.webview.MyWebViewActivity" />
+        <activity android:name=".sundu.custview.beziercurve.dragpop.BezierCurverDragPopActivity" />
         <activity android:name=".sundu.custview.CustomViewActivity" />
-        <activity android:name=".sundu.custview.downloadview.DownLoadViewActivity" />
-        <activity android:name=".sundu.touchevent.TouchEventActivity" />
+        <activity android:name=".sundu.developer.immersive.ImmerSiveActivity"></activity>
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".sundu.kotlin.KotlinActivity"
+            android:theme="@style/FullScreenTheme" />
         <activity
             android:name=".sundu.developer.nineimageload.NineImgLoadActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -32,16 +41,9 @@
         <activity android:name=".sundu.kotlin.coroutine.KotlinCoroutineActivity" />
         <activity android:name=".sundu.developer.viewpager.ViewPager2Activity" />
         <activity android:name=".sundu.developer.DeveloperActivity" />
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".sundu.kotlin.KotlinActivity"
-            android:theme="@style/FullScreenTheme" />
+        <activity android:name=".sundu.recycleview.RecycleViewActivity" />
+        <activity android:name=".sundu.custview.downloadview.DownLoadViewActivity" />
+        <activity android:name=".sundu.touchevent.TouchEventActivity" />
 
         <service
             android:name="com.tencent.smtt.export.external.DexClassLoaderProviderService"

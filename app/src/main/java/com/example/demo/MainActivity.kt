@@ -3,96 +3,64 @@ package com.example.demo
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.demo.common.ItemViewClick
 import com.example.demo.sundu.custview.CustomViewActivity
-import com.example.demo.sundu.custview.downloadview.DownLoadViewActivity
 import com.example.demo.sundu.developer.DeveloperActivity
 import com.example.demo.sundu.jetpack.JetPackActivity
 import com.example.demo.sundu.kotlin.KotlinActivity
 import com.example.demo.sundu.parcelable.ParcelableActivity
+import com.example.demo.sundu.recycleview.RecycleViewActivity
 import com.example.demo.sundu.touchevent.TouchEventActivity
 import com.example.demo.sundu.webview.MyWebViewActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    val dataMap = HashMap<String, Class<*>>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        createData()
         mRecycleView.setHasFixedSize(true)
-        mRecycleView.layoutManager = GridLayoutManager(this,3)
-        mRecycleView.adapter = MainAdapter(createData(), itemViewClick)
+        mRecycleView.layoutManager = GridLayoutManager(this, 3)
+        mRecycleView.adapter = MainAdapter(getData(), itemViewClick)
         myRequetPermission()
     }
 
     private val itemViewClick: ItemViewClick = object :
         ItemViewClick {
         override fun onItemViewClick(position: Int, view: View) {
-            when (position) {
-                0 -> startActivity(
-                    Intent(
-                        this@MainActivity,
-                        KotlinActivity::class.java
-                    )
-                )
-                1 -> startActivity(
-                    Intent(
-                        this@MainActivity,
-                        JetPackActivity::class.java
-                    )
-                )
-                2 -> startActivity(
-                    Intent(
-                        this@MainActivity,
-                        DeveloperActivity::class.java
-                    )
-                )
-               3 -> startActivity(
-                    Intent(
-                        this@MainActivity,
-                        MyWebViewActivity::class.java
-                    )
-                )
-                4 -> startActivity(
-                    Intent(
-                        this@MainActivity,
-                        ParcelableActivity::class.java
-                    )
-                )
-                5 -> startActivity(
-                    Intent(
-                        this@MainActivity,
-                        TouchEventActivity::class.java
-                    )
-                )
-                6 -> startActivity(
-                    Intent(
-                        this@MainActivity,
-                        CustomViewActivity::class.java
-                    )
-                )
-            }
+            startActivity(Intent(this@MainActivity, dataMap[getData()[position]]))
         }
     }
 
-    private fun createData() : List<String>{
-        val stringArray : MutableList<String> = mutableListOf()
-        stringArray.add("kotlin")
-        stringArray.add("jetPack")
-        stringArray.add("Developer")
-        stringArray.add("WebView")
-        stringArray.add("Parcelabel")
-        stringArray.add("TouchEvent")
-        stringArray.add("CustomView")
+    private fun getData(): List<String> {
+        val stringArray: MutableList<String> = mutableListOf()
+        dataMap.forEach {
+            stringArray.add(it.key)
+        }
         return stringArray
     }
+
+    private fun createData() {
+        dataMap["kotlin"] = KotlinActivity::class.java
+        dataMap["JetPack"] = JetPackActivity::class.java
+        dataMap["Developer"] = DeveloperActivity::class.java
+        dataMap["WebView"] = MyWebViewActivity::class.java
+        dataMap["Parcelable"] = ParcelableActivity::class.java
+        dataMap["TouchEvent"] = TouchEventActivity::class.java
+        dataMap["CustomView"] = CustomViewActivity::class.java
+        dataMap["RecycleView"] = RecycleViewActivity::class.java
+    }
+
 
     private fun myRequetPermission() {
         if (ContextCompat.checkSelfPermission(

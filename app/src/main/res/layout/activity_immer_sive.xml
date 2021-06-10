@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".sundu.developer.immersive.ImmerSiveActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/checkbox_constrain_layout"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <CheckBox
+            android:id="@+id/checkbox_select_full_screen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="全屏标识"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <CheckBox
+            android:id="@+id/checkbox_select_hide_navigation_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="隐藏虚拟导航"
+            app:layout_constraintBottom_toTopOf="@+id/checkbox_select_hide_status_bar"
+            app:layout_constraintTop_toBottomOf="@+id/checkbox_select_full_screen" />
+
+        <CheckBox
+            android:id="@+id/checkbox_select_hide_status_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="隐藏状态栏"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkbox_select_hide_navigation_bar" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/button_set_immersive_clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:text="清除"
+        app:layout_constraintBottom_toTopOf="@+id/set_guide_line_hor"
+        app:layout_constraintRight_toLeftOf="@+id/set_guide_line_ver" />
+
+    <Button
+        android:id="@+id/button_set_immersive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:text="设置"
+        app:layout_constraintBottom_toTopOf="@+id/set_guide_line_hor"
+        app:layout_constraintLeft_toRightOf="@+id/set_guide_line_ver" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/set_guide_line_ver"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/set_guide_line_hor"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="400dp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/set_guide_line_hor">
+
+        <EditText
+            android:id="@+id/system_bar_color"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="#ff00ff" />
+
+        <Button
+            android:id="@+id/set_system_bar_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="设置状态栏颜色" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
