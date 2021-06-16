@@ -8,8 +8,11 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Shader;
+import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+
+import androidx.annotation.Nullable;
 
 import com.example.demo.R;
 
@@ -25,6 +28,21 @@ public class TelescopeView extends View {
 
     public TelescopeView(Context context) {
         super(context);
+        init();
+    }
+
+    public TelescopeView(Context context, @Nullable AttributeSet attrs) {
+        super(context, attrs);
+        init();
+    }
+
+    public TelescopeView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        init();
+    }
+
+    public TelescopeView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
         init();
     }
 
@@ -68,6 +86,7 @@ public class TelescopeView extends View {
         }
 
         if (mDx != -1 && mDy != -1) {
+
             mPaint.setShader(new BitmapShader(mBitmapBG, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT));
             canvas.drawCircle(mDx, mDy, 150, mPaint);
         }
