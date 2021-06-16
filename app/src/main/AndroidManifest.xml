@@ -14,11 +14,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".sundu.custview.bitmapshader.BitmapShader_TelescopeViewActivity"></activity>
         <activity android:name=".sundu.webview.MyWebViewActivity" />
         <activity android:name=".sundu.custview.beziercurve.dragpop.BezierCurverDragPopActivity" />
         <activity android:name=".sundu.custview.CustomViewActivity" />
-        <activity android:name=".sundu.developer.immersive.ImmerSiveActivity"
-            />
+        <activity android:name=".sundu.developer.immersive.ImmerSiveActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,8 +26,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".sundu.kotlin.KotlinActivity" />
+        <activity android:name=".sundu.kotlin.KotlinActivity" />
         <activity
             android:name=".sundu.developer.nineimageload.NineImgLoadActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" />

@@ -9,6 +9,7 @@ import com.example.demo.R
 import com.example.demo.common.CommonSelectRecycleViewAdapter
 import com.example.demo.common.ItemViewClick
 import com.example.demo.sundu.custview.beziercurve.dragpop.BezierCurverDragPopActivity
+import com.example.demo.sundu.custview.bitmapshader.BitmapShader_TelescopeViewActivity
 import com.example.demo.sundu.custview.downloadview.DownLoadViewActivity
 import kotlinx.android.synthetic.main.activity_custom_view.*
 import java.util.*
@@ -37,6 +38,7 @@ class CustomViewActivity : AppCompatActivity() {
     private fun createData(){
         dataSource["downloadView"] = DownLoadViewActivity::class.java
         dataSource["bezier-dragpop"] = BezierCurverDragPopActivity::class.java
+        dataSource["bitmapShader-Telescope"] = BitmapShader_TelescopeViewActivity::class.java
     }
 
     private fun getData(): List<String> {

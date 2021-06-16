@@ -313,6 +313,8 @@ public class DragBubbleView extends View {
                 PointF curPoint = (PointF) animation.getAnimatedValue();
                 mBubbleCenterX = curPoint.x;
                 mBubbleCenterY = curPoint.y;
+                d = (float) Math.hypot(mBubbleCenterX - mCircleCenterX, mBubbleCenterY - mCircleCenterY);
+//                mCircleRadius = mBubbleRadius - d / 8;
                 invalidate();
             }
         });
