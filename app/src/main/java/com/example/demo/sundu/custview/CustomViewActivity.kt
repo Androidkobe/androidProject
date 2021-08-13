@@ -11,7 +11,9 @@ import com.example.demo.common.ItemViewClick
 import com.example.demo.sundu.custview.beziercurve.dragpop.BezierCurverDragPopActivity
 import com.example.demo.sundu.custview.bitmapshader.BitmapShaderTelescopeViewActivity
 import com.example.demo.sundu.custview.downloadview.DownLoadViewActivity
+import com.example.demo.sundu.custview.shimmer.ShimmerActivity
 import kotlinx.android.synthetic.main.activity_custom_view.*
+import kotlinx.android.synthetic.main.activity_shimmer.*
 import java.util.*
 
 class CustomViewActivity : AppCompatActivity() {
@@ -39,6 +41,7 @@ class CustomViewActivity : AppCompatActivity() {
         dataSource["downloadView"] = DownLoadViewActivity::class.java
         dataSource["bezier-dragpop"] = BezierCurverDragPopActivity::class.java
         dataSource["bitmapShader-Telescope"] = BitmapShaderTelescopeViewActivity::class.java
+        dataSource["shimmer"] = ShimmerActivity::class.java
     }
 
     private fun getData(): List<String> {
