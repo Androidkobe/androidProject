@@ -11,7 +11,7 @@ import com.example.demo.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TouchEventActivity extends AppCompatActivity {
+public class MovieLineActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

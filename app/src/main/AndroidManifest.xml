@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".sundu.custview.shimmer.ShimmerActivity"></activity>
+        <activity android:name=".sundu.ontouch.TouchActivity"></activity>
+        <activity android:name=".sundu.custview.shimmer.ShimmerActivity" />
         <activity android:name=".sundu.custview.bitmapshader.BitmapShaderTelescopeViewActivity" />
         <activity android:name=".sundu.webview.MyWebViewActivity" />
         <activity android:name=".sundu.custview.beziercurve.dragpop.BezierCurverDragPopActivity" />
@@ -42,7 +43,7 @@
         <activity android:name=".sundu.developer.DeveloperActivity" />
         <activity android:name=".sundu.recycleview.RecycleViewActivity" />
         <activity android:name=".sundu.custview.downloadview.DownLoadViewActivity" />
-        <activity android:name=".sundu.touchevent.TouchEventActivity" />
+        <activity android:name=".sundu.touchevent.MovieLineActivity" />
 
         <service
             android:name="com.tencent.smtt.export.external.DexClassLoaderProviderService"

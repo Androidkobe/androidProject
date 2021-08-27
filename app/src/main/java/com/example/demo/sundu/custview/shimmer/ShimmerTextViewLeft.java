@@ -89,4 +89,5 @@ class ShimmerTextViewLeft extends TextView {
         }
         mCurConfiguration.setTo(newConfig);
     }
+
 }

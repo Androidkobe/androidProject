@@ -15,9 +15,10 @@ import com.example.demo.sundu.custview.CustomViewActivity
 import com.example.demo.sundu.developer.DeveloperActivity
 import com.example.demo.sundu.jetpack.JetPackActivity
 import com.example.demo.sundu.kotlin.KotlinActivity
+import com.example.demo.sundu.ontouch.TouchActivity
 import com.example.demo.sundu.parcelable.ParcelableActivity
 import com.example.demo.sundu.recycleview.RecycleViewActivity
-import com.example.demo.sundu.touchevent.TouchEventActivity
+import com.example.demo.sundu.touchevent.MovieLineActivity
 import com.example.demo.sundu.webview.MyWebViewActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -56,9 +57,10 @@ class MainActivity : AppCompatActivity() {
         dataMap["Developer"] = DeveloperActivity::class.java
         dataMap["WebView"] = MyWebViewActivity::class.java
         dataMap["Parcelable"] = ParcelableActivity::class.java
-        dataMap["TouchEvent"] = TouchEventActivity::class.java
+        dataMap["MovieLine"] = MovieLineActivity::class.java
         dataMap["CustomView"] = CustomViewActivity::class.java
         dataMap["RecycleView"] = RecycleViewActivity::class.java
+        dataMap["Touch"] = TouchActivity::class.java
     }
 
 

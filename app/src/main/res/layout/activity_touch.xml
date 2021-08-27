@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".sundu.ontouch.TouchActivity">
+
+    <com.example.demo.sundu.ontouch.MyViewGroup
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00ff99">
+
+        <com.example.demo.sundu.ontouch.MyButtonView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="100dp"
+            android:background="#ff9900" />
+    </com.example.demo.sundu.ontouch.MyViewGroup>
+</androidx.constraintlayout.widget.ConstraintLayout>
