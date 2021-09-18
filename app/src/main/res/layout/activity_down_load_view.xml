@@ -31,6 +31,12 @@
         app:textSize="12sp"
         app:loadingColor="#40c4ff"
         app:stopColor="#ff9800"
-        app:radius="20dp"
-        />
+        app:radius="20dp" />
+
+    <com.example.demo.sundu.custview.downloadview.ProgressBar
+        android:id="@+id/progressbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" />
 </LinearLayout>

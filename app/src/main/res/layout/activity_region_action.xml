@@ -3,11 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".sundu.jetpack.workmanager.JetPackWorkManagerActivity">
+    tools:context=".sundu.custview.region.RegionActivity">
 
-    <Button
-        android:id="@+id/start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="开始" />
+    <com.example.demo.sundu.custview.region.RegionView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </androidx.constraintlayout.widget.ConstraintLayout>

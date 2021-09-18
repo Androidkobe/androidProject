@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".sundu.ontouch.TouchActivity"></activity>
+        <activity android:name=".sundu.custview.region.RegionActivity"></activity>
+        <activity android:name=".sundu.ontouch.TouchActivity" />
         <activity android:name=".sundu.custview.shimmer.ShimmerActivity" />
         <activity android:name=".sundu.custview.bitmapshader.BitmapShaderTelescopeViewActivity" />
         <activity android:name=".sundu.webview.MyWebViewActivity" />
@@ -49,6 +50,10 @@
             android:name="com.tencent.smtt.export.external.DexClassLoaderProviderService"
             android:label="dexopt"
             android:process=":dexopt" />
+        <service
+            android:name=".sundu.jetpack.workmanager.WakeupService"
+            android:enabled="true"
+            android:exported="true" />
     </application>
 
 </manifest>

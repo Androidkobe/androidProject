@@ -6,6 +6,7 @@ import android.os.Message
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.demo.R
+import kotlinx.android.synthetic.main.activity_down_load_view.*
 
 class DownLoadViewActivity : AppCompatActivity() ,View.OnClickListener,Runnable{
     var flikerProgressBar: FlikerProgressBar? = null
@@ -18,6 +19,7 @@ class DownLoadViewActivity : AppCompatActivity() ,View.OnClickListener,Runnable{
             super.handleMessage(msg)
             flikerProgressBar!!.progress = msg.arg1.toFloat()
             roundProgressbar!!.progress = msg.arg1.toFloat()
+            progressbar.setCurrentProgress(msg.arg1)
             if (msg.arg1 == 100) {
                 flikerProgressBar!!.finishLoad()
                 roundProgressbar!!.finishLoad()
