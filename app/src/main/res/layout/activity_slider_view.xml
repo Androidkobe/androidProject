@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#770000ff"
+    tools:context=".sundu.custview.SliderView.SliderViewActivity">
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="切换" />
+
+    <RelativeLayout
+        android:id="@+id/par"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="120dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <RelativeLayout
+            android:id="@+id/relative"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="#00ff00" />
+
+        <com.example.demo.sundu.custview.SliderView.SliderLockView
+            android:id="@+id/sliderlockview"
+            android:layout_width="match_parent"
+            android:layout_height="57dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            app:sliderSpace="5dp"
+            app:text="点击下载"
+            app:textcolor="#ff0000"
+            app:textsize="18sp" />
+    </RelativeLayout>
+
+    <com.example.demo.sundu.custview.SliderView.SplashGesturesViewSwipeUp
+        android:id="@+id/swipeup"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

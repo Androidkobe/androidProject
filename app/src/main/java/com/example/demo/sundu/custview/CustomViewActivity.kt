@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.demo.R
 import com.example.demo.common.CommonSelectRecycleViewAdapter
 import com.example.demo.common.ItemViewClick
+import com.example.demo.sundu.custview.SliderView.SliderViewActivity
 import com.example.demo.sundu.custview.beziercurve.dragpop.BezierCurverDragPopActivity
 import com.example.demo.sundu.custview.bitmapshader.BitmapShaderTelescopeViewActivity
 import com.example.demo.sundu.custview.downloadview.DownLoadViewActivity
@@ -44,6 +45,7 @@ class CustomViewActivity : AppCompatActivity() {
         dataSource["bitmapShader-Telescope"] = BitmapShaderTelescopeViewActivity::class.java
         dataSource["shimmer"] = ShimmerActivity::class.java
         dataSource["region"] = RegionActivity::class.java
+        dataSource["SlideLockView"] = SliderViewActivity::class.java
     }
 
     private fun getData(): List<String> {

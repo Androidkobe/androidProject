@@ -14,10 +14,17 @@
 
 
     <declare-styleable name="DragBubbleView">
-        <attr name="dvtextSize" format="dimension"/>
+        <attr name="dvtextSize" format="dimension" />
         <attr name="bubbleRadius" format="dimension" />
         <attr name="bubbleColor" format="color" />
         <attr name="dvtext" format="string" />
         <attr name="dvtextColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="SliderLockView">
+        <attr name="sliderSpace" format="dimension" />
+        <attr name="textsize" format="dimension" />
+        <attr name="textcolor" format="color" />
+        <attr name="text" format="string" />
     </declare-styleable>
 </resources>
