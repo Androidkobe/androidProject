@@ -2,15 +2,12 @@ package com.example.demo.sundu.custview.SliderView
 
 import android.content.Context
 import android.util.AttributeSet
-import android.view.LayoutInflater
-import android.view.MotionEvent
-import android.view.ViewConfiguration
+import android.util.Log
+import android.view.*
 import android.widget.FrameLayout
 import com.example.demo.R
-import java.lang.Math.abs
 
-
-class SplashGesturesViewSwipeUp @JvmOverloads constructor(
+class GestureViewTest @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
@@ -38,6 +35,8 @@ class SplashGesturesViewSwipeUp @JvmOverloads constructor(
 
     init {
         LayoutInflater.from(context).inflate(R.layout.activity_swipe_up_view, this, true)
+
+        addView(TestView(context),ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT))
     }
 
 
@@ -50,24 +49,21 @@ class SplashGesturesViewSwipeUp @JvmOverloads constructor(
     }
 
     override fun dispatchTouchEvent(event: MotionEvent?): Boolean {
+        Log.e("sundu","text ----------- = "+event?.action)
         event?.let {
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
                     mDownX = event.x
                     mDownY = event.y
                     mGesturesAdapter?.disPatchEvent(event)
-                    return true
                 }
                 MotionEvent.ACTION_MOVE -> {
                     if (!(mGesturesAdapter?.disPatchEvent(event) ?: false)) {
-                        if(abs(event.y - mDownY)>TOUCH_SLOP){
+                        if(Math.abs(event.y - mDownY) >TOUCH_SLOP){
                             isMove = true
                             notifyMoveIng()
-                            return true
-                        }else{
-                            return false
-                        }
-                    }
+                        }else{}
+                    }else{}
                 }
 
                 MotionEvent.ACTION_CANCEL,
@@ -75,18 +71,16 @@ class SplashGesturesViewSwipeUp @JvmOverloads constructor(
                     if (!(mGesturesAdapter?.disPatchEvent(event) ?: false)) {
                         if (isMove && (mDownY - event.y > mTouchSlop * 2340)) {
                             notifySuccess()
-                            return true
                         } else if (isMove){
                             notifyFailed()
-                            return true
                         }
                     }
                     isMove = false
                 }
+                else->{}
             }
-            return false
         }
-        return false
+        return super.dispatchTouchEvent(event)
     }
 
     fun notifyMoveIng() {
@@ -115,10 +109,18 @@ class SplashGesturesViewSwipeUp @JvmOverloads constructor(
         super.onDetachedFromWindow()
         mSwipeUpListener = null
     }
-}
 
-interface SwipeUpListener {
-    fun success()
-    fun moveing()
-    fun failed()
+    class TestView : View{
+        constructor(context: Context?) : super(context)
+        constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
+        constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
+            context,
+            attrs,
+            defStyleAttr
+        )
+
+        override fun onTouchEvent(event: MotionEvent?): Boolean {
+            return true
+        }
+    }
 }

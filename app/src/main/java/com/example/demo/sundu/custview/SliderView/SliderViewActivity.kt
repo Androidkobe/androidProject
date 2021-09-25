@@ -17,9 +17,17 @@ class SliderViewActivity : AppCompatActivity() {
             sliderlockview.setTextColor("#ffffffff")
             sliderlockview.setUnLokSpace(0.4f)
         }
-        par.setOnClickListener({
-            Log.e("sundu", "点击啦")
-        })
+        par.setOnClickListener {
+            Log.e("sundu", "解锁控件点击啦")
+        }
+
+        text_relative.setOnClickListener{
+            Log.e("sundu", "text rel 测试文案点击啦")
+        }
+
+        text.setOnClickListener{
+            Log.e("sundu", "text 测试文案点击啦")
+        }
 
         sliderlockview.setLockListener(object : SliderLockListener {
             override fun success() {
@@ -40,9 +48,9 @@ class SliderViewActivity : AppCompatActivity() {
 
         })
 
-        swipeup.setGesturesAdapter(object : GesturesDispatchAdapter() {
-            override fun getViews(): Array<View>? {
-                return arrayOf(par)
+        swipeup.setGesturesAdapter(object : GesturesDispatchAdapter(this) {
+            override fun getViews(): Array<View?>? {
+                return arrayOf(null,null,text,sliderlockview,btn,text_relative)
             }
         })
         swipeup.setSwipeUpListener(object : SwipeUpListener {

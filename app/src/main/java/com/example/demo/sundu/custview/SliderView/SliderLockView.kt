@@ -3,10 +3,12 @@ package com.example.demo.sundu.custview.SliderView
 import android.animation.Animator
 import android.animation.ValueAnimator
 import android.content.Context
+import android.gesture.Gesture
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
+import android.view.ViewConfiguration
 import android.view.ViewGroup
 import android.view.animation.LinearInterpolator
 import android.widget.ImageView
@@ -52,8 +54,8 @@ class SliderLockView @JvmOverloads constructor(
     var mSliderView = ImageView(context)
     var mSliderViewLayoutParams = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
     var mActionDownX = 0f
+    var mActionDownY = 0f
     var mDistance = 0
-    var mIsTouchSliderView = false
     var mUnLockToClick = 0.7f
     var parLocation = IntArray(2)
     var mViewWidth = defaultWidth
@@ -61,8 +63,18 @@ class SliderLockView @JvmOverloads constructor(
 
     var mlockListener: SliderLockListener? = null
 
-    var isTouch = false
-    var isAnimation = false
+    val TOUCH_SLOP = ViewConfiguration.get(context).scaledTouchSlop
+
+    //滑块是否选中移动
+    var isSliderTouchMove = false
+    //滑块是否在归位动画
+    var isSliderAnimationing = false
+    //滑块是否倍选择中
+    var isSliderSelectTouch = false
+    //view区域中是否滑动
+    var isTouchMoveViewRectX = false
+    //view区域中是否滑动
+    var isTouchMoveViewRectY = false
 
     init {
         val typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.SliderLockView)
@@ -173,7 +185,7 @@ class SliderLockView @JvmOverloads constructor(
 
 
     override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
-        if (!isAnimation && !isTouch) {
+        if (!isSliderAnimationing && !isSliderTouchMove) {
             for (i in 0..childCount) {
                 var child: View? = getChildAt(i)
                 child?.let { child ->
@@ -204,17 +216,24 @@ class SliderLockView @JvmOverloads constructor(
 
     override fun onTouchEvent(ev: MotionEvent?): Boolean {
         ev?.let { ev ->
-            if (!isAnimation) {
+            if (!isSliderAnimationing) {
                 when (ev.action) {
                     MotionEvent.ACTION_DOWN -> {
                         mActionDownX = ev.rawX
-                        mIsTouchSliderView = isTouchSliderView(ev.rawX.toInt())
+                        mActionDownY = ev.rawY
+                        isSliderSelectTouch = isTouchSliderView(ev.rawX.toInt())
                         return true
                     }
                     MotionEvent.ACTION_MOVE -> {
-                        if (mIsTouchSliderView) {
+                        if(abs(ev.rawX - mActionDownX) > TOUCH_SLOP){
+                            isTouchMoveViewRectX = true
+                        }
+                        if(abs(ev.rawY - mActionDownY) > TOUCH_SLOP){
+                            isTouchMoveViewRectY = true
+                        }
+                        if (isSliderSelectTouch && isTouchMoveViewRectX) {
+                            isSliderTouchMove = true
                             notifyMoveIng()
-                            isTouch = true
                             mDistance += (ev.rawX - mActionDownX).toInt()
                             mActionDownX = ev.rawX
                             layoutSlider(
@@ -228,14 +247,13 @@ class SliderLockView @JvmOverloads constructor(
                         }
                     }
                     MotionEvent.ACTION_UP -> {
-                        if (mIsTouchSliderView) {
+                        var handler = false
+                        if (isSliderSelectTouch && isSliderTouchMove) {
                             dispatchSliderView(false)
+                            handler = true
                         }
-                        reset()
-                        if (mIsTouchSliderView) {
-                            mIsTouchSliderView = false
-                            return true
-                        } else {
+                        if (!isTouchMoveViewRectX && !isTouchMoveViewRectY) {
+                            handler = true
                             var par = parent
                             while (par != null) {
                                 if (par is ViewGroup) {
@@ -247,20 +265,22 @@ class SliderLockView @JvmOverloads constructor(
                                 }
                             }
                         }
-                        return true
+                        reset()
+                        return handler
                     }
 
                     MotionEvent.ACTION_CANCEL -> {
-                        if (mIsTouchSliderView) {
+                        if (isSliderSelectTouch && isSliderTouchMove) {
                             dispatchSliderView(true)
                         }
                         notifyCancel()
                         reset()
+                        return false
                     }
                 }
             }
         }
-        return super.onTouchEvent(ev)
+        return false
     }
 
     private fun reset() {
@@ -270,7 +290,11 @@ class SliderLockView @JvmOverloads constructor(
         mSliderLocation[1] = 0
         parLocation[0] = 0
         parLocation[1] = 0
-        isTouch = false
+        isSliderTouchMove = false
+        isSliderSelectTouch = false
+        isSliderAnimationing = false
+        isTouchMoveViewRectX = false
+        isTouchMoveViewRectY = false
     }
 
     private fun dispatchSliderView(cancle: Boolean) {
@@ -298,7 +322,7 @@ class SliderLockView @JvmOverloads constructor(
             }
 
             override fun onAnimationEnd(animation: Animator?) {
-                isAnimation = false
+                isSliderAnimationing = false
                 if (!canel) {
                     if (unlockStatus) {
                         notifySuccess()
@@ -318,7 +342,7 @@ class SliderLockView @JvmOverloads constructor(
         animation.interpolator = LinearInterpolator()
         animation.duration = animatioDuration
         animation.start()
-        isAnimation = true
+        isSliderAnimationing = true
     }
 
 
