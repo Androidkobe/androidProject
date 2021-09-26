@@ -1,9 +1,8 @@
-package com.example.demo.sundu.custview.SliderView
+package com.miui.zeus.msa.app.splashad.view.commonview
 
 import android.animation.Animator
 import android.animation.ValueAnimator
 import android.content.Context
-import android.gesture.Gesture
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.MotionEvent
@@ -19,6 +18,7 @@ import kotlin.math.abs
 class SliderLockView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : ViewGroup(context, attrs, defStyleAttr) {
+    val TAG = "sundu"
 
     private var status = 0
 
@@ -214,6 +214,7 @@ class SliderLockView @JvmOverloads constructor(
     }
 
 
+
     override fun onTouchEvent(ev: MotionEvent?): Boolean {
         ev?.let { ev ->
             if (!isSliderAnimationing) {
@@ -297,6 +298,7 @@ class SliderLockView @JvmOverloads constructor(
         isTouchMoveViewRectY = false
     }
 
+
     private fun dispatchSliderView(cancle: Boolean) {
         val sliderRight =
             mSliderLocation[0] - parLocation[0] + mDistance + (mSliderView.measuredWidth * 0.4f).toInt()
@@ -350,7 +352,16 @@ class SliderLockView @JvmOverloads constructor(
         getLocationOnScreen(parLocation)
         mSliderView?.let {
             it.getLocationOnScreen(mSliderLocation)
-            return mSliderLocation[0] <= downX && downX <= mSliderLocation[0] + mSliderView.measuredWidth
+            return mSliderLocation[0] - mSliderSpace <= downX && downX <= mSliderLocation[0] + mSliderView.measuredWidth
+        }
+        return false
+    }
+
+    private fun isTouchView(downX: Int, downY: Int): Boolean {
+        if (parLocation[0] <= downX && downX <= parLocation[0] + measuredWidth
+            && parLocation[1] <= downY && downY <= parLocation[1] + measuredHeight
+        ) {
+            return true
         }
         return false
     }
