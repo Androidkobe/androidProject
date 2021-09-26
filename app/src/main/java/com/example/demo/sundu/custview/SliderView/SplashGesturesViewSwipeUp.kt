@@ -1,13 +1,14 @@
 package com.example.demo.sundu.custview.SliderView
 
 import android.content.Context
+import android.graphics.Color
 import android.util.AttributeSet
-import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.ViewConfiguration
 import android.widget.FrameLayout
-import com.example.demo.R
-import java.lang.Math.abs
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 
 
 class SplashGesturesViewSwipeUp @JvmOverloads constructor(
@@ -18,17 +19,15 @@ class SplashGesturesViewSwipeUp @JvmOverloads constructor(
 
     private var mDownY = 0f;
 
-    private val mTouchSlop = 0.12f
+    private var mTouchSlop = 0.12f
 
     private var mGesturesAdapter: GesturesDispatchAdapter? = null
-
-    var isMove = false
-
-    val TOUCH_SLOP = ViewConfiguration.get(context).scaledTouchSlop
 
     private var mSwipeUpListener: SwipeUpListener? = null
 
     private var status = 0
+
+    var isMove = false
 
     private val SWIPUP_MOVEING = 1
 
@@ -36,8 +35,22 @@ class SplashGesturesViewSwipeUp @JvmOverloads constructor(
 
     private val SWIPEUP_FAILED = 3
 
+    private val mScreenHeight = 1080
+
+    private var mTipGesturesControllerViewGroup: LinearLayout? = null
+    private var mTipGesturesControllerImg: ImageView? = null
+    private var mTipGesturesControllerDex: TextView? = null
+
+    val TOUCH_SLOP = ViewConfiguration.get(context).scaledTouchSlop
+
     init {
-        LayoutInflater.from(context).inflate(R.layout.activity_swipe_up_view, this, true)
+//        LayoutInflater.from(context).inflate(R.layout.splash_ad_gesture_swipe_up, this, true)
+//        mTipGesturesControllerViewGroup = findViewById(R.id.splash_gesture_swipe_up_view_group)
+//        mTipGesturesControllerImg = findViewById(R.id.splash_gesture_swipe_up_tip_image)
+//        mTipGesturesControllerDex = findViewById(R.id.splash_gesture_swipe_up_des)
+//        mTipGesturesControllerImg?.let {
+//            Glide.with(context).load(R.drawable.splash_gesture_swipe_up_tip_img).into(it)
+//        }
     }
 
 
@@ -49,7 +62,39 @@ class SplashGesturesViewSwipeUp @JvmOverloads constructor(
         mSwipeUpListener = swipeUpListener
     }
 
-    override fun dispatchTouchEvent(event: MotionEvent?): Boolean {
+    open fun setDes(str: String?) {
+        str?.let {
+            mTipGesturesControllerDex?.setText(str)
+        }
+    }
+
+    open fun setDesColor(color: String?) {
+        color?.let {
+            try {
+                mTipGesturesControllerDex?.setTextColor(Color.parseColor(color))
+            } catch (e: Exception) {
+
+            }
+        }
+    }
+
+    open fun setGesturesSlop(slop: Float?) {
+        slop?.let {
+            mTouchSlop = slop
+        }
+    }
+
+    open fun setGestureMarginBottom(bottom: Int) {
+        var layoutParams = mTipGesturesControllerViewGroup?.layoutParams
+        layoutParams?.let {
+            if (layoutParams is MarginLayoutParams) {
+                (layoutParams as MarginLayoutParams).bottomMargin = bottom
+            }
+        }
+    }
+
+
+    override fun onTouchEvent(event: MotionEvent): Boolean {
         event?.let {
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
@@ -60,23 +105,21 @@ class SplashGesturesViewSwipeUp @JvmOverloads constructor(
                 }
                 MotionEvent.ACTION_MOVE -> {
                     if (!(mGesturesAdapter?.disPatchEvent(event) ?: false)) {
-                        if(abs(event.y - mDownY)>TOUCH_SLOP){
-                            isMove = true
-                            notifyMoveIng()
-                            return true
-                        }else{
-                            return false
-                        }
+                        isMove = true
+                        notifyMoveIng()
+                        return true
+                    } else {
+
                     }
                 }
 
                 MotionEvent.ACTION_CANCEL,
                 MotionEvent.ACTION_UP -> {
                     if (!(mGesturesAdapter?.disPatchEvent(event) ?: false)) {
-                        if (isMove && (mDownY - event.y > mTouchSlop * 2340)) {
+                        if (isMove && (mDownY - event.y > mTouchSlop * mScreenHeight)) {
                             notifySuccess()
                             return true
-                        } else if (isMove){
+                        } else if (isMove) {
                             notifyFailed()
                             return true
                         }
