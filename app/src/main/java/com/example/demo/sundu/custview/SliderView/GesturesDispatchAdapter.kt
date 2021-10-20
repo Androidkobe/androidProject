@@ -1,4 +1,4 @@
-package com.example.demo.sundu.custview.SliderView
+package com.miui.zeus.msa.app.splashad.view.commonview
 
 import android.graphics.Rect
 import android.os.SystemClock
