@@ -18,6 +18,7 @@ import com.example.demo.sundu.kotlin.KotlinActivity
 import com.example.demo.sundu.ontouch.TouchActivity
 import com.example.demo.sundu.parcelable.ParcelableActivity
 import com.example.demo.sundu.recycleview.RecycleViewActivity
+import com.example.demo.sundu.thirdparty.ThirdPartyFrameWorkActivity
 import com.example.demo.sundu.touchevent.MovieLineActivity
 import com.example.demo.sundu.webview.MyWebViewActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -61,6 +62,7 @@ class MainActivity : AppCompatActivity() {
         dataMap["CustomView"] = CustomViewActivity::class.java
         dataMap["RecycleView"] = RecycleViewActivity::class.java
         dataMap["Touch"] = TouchActivity::class.java
+        dataMap["ThirdParty"] = ThirdPartyFrameWorkActivity::class.java
     }
 
 

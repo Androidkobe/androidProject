@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.demo.R
-import com.miui.zeus.msa.app.splashad.view.commonview.GesturesDispatchAdapter
 import kotlinx.android.synthetic.main.activity_slider_view.*
 
 class SliderViewActivity : AppCompatActivity() {

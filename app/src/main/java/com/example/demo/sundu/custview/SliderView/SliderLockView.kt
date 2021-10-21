@@ -1,4 +1,4 @@
-package com.miui.zeus.msa.app.splashad.view.commonview
+package com.example.demo.sundu.custview.SliderView
 
 import android.animation.Animator
 import android.animation.ValueAnimator

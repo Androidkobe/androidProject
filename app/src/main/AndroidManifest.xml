@@ -7,15 +7,17 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="android"
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".MyApplication"
         android:theme="@style/AppTheme">
-        <activity android:name=".sundu.custview.SliderView.SliderViewActivity"></activity>
+        <activity android:name=".sundu.thirdparty.ThirdPartyFrameWorkActivity"></activity>
+        <activity android:name=".sundu.thirdparty.rxjava.Rxjava_Activity" />
+        <activity android:name=".sundu.custview.SliderView.SliderViewActivity" />
         <activity android:name=".sundu.custview.region.RegionActivity" />
         <activity android:name=".sundu.ontouch.TouchActivity" />
         <activity android:name=".sundu.custview.shimmer.ShimmerActivity" />

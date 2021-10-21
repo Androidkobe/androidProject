@@ -6,7 +6,6 @@ import android.util.Log
 import android.view.*
 import android.widget.FrameLayout
 import com.example.demo.R
-import com.miui.zeus.msa.app.splashad.view.commonview.GesturesDispatchAdapter
 
 class GestureViewTest @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
