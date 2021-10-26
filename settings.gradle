@@ -1,3 +1,4 @@
 include ':kotlinlearn'
 include ':app'
 rootProject.name = "androidProject"
+include ':javalearn'

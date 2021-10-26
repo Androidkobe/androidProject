@@ -7,5 +7,10 @@ import java.util.HashMap;
  */
 
 class Test {
-    HashMap<String,Class> datat = new HashMap<>();
+    volatile HashMap<String, Class> datat = new HashMap<>();
+    StringBuffer sb = new StringBuffer();
+
+    public void add(String str1, String str2) {
+        sb.append(str1).append(str2);
+    }
 }
