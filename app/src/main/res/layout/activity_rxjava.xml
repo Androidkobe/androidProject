@@ -5,4 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".sundu.thirdparty.rxjava.Rxjava_Activity">
 
+    <Button
+        android:id="@+id/RxJavaButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="开始" />
 </androidx.constraintlayout.widget.ConstraintLayout>
