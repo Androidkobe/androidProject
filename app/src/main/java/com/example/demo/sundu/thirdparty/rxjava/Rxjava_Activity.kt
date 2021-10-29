@@ -11,6 +11,9 @@ import io.reactivex.functions.Function
 import io.reactivex.internal.operators.observable.ObservableMap
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_rxjava.*
+import org.reactivestreams.Subscriber
+import org.reactivestreams.Subscription
+
 
 class Rxjava_Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +25,7 @@ class Rxjava_Activity : AppCompatActivity() {
     }
 
     private fun action() {
-        just()
+        map2()
     }
 
     private fun normal() {
@@ -153,16 +156,32 @@ class Rxjava_Activity : AppCompatActivity() {
     }
 
     private fun map2() {
-//        Observable.create(object : ObservableOnSubscribe<Int> {
-//            override fun subscribe(emitter: ObservableEmitter<Int>) {
-//                emitter.onNext(1)
-//                emitter.onNext(2)
-//                emitter.onComplete()
-//                emitter.onNext(3)
-//            }
-//        }).flatMap {
-//            return
-//        }
+        Flowable.create<Int>({ emitter ->
+            for (i in 0..129) {
+                Log.d("sundu", "emit $i")
+                emitter.onNext(i)
+            }
+        }, BackpressureStrategy.ERROR).subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : Subscriber<Int> {
+                override fun onSubscribe(s: Subscription) {
+                    s.request(130)
+                    Log.d("sundu", "onSubscribe")
+                }
+
+                override fun onNext(integer: Int) {
+                    Log.d("sundu", "onNext: $integer")
+                }
+
+                override fun onError(t: Throwable) {
+                    Log.w("sundu", "onError: ", t)
+                }
+
+                override fun onComplete() {
+                    Log.d("sundu", "onComplete")
+                }
+            })
+
     }
 
 }
