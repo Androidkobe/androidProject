@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data class="ObservableDataBindController">
+
+        <import type="com.example.demo.sundu.jetpack.databinding.unidirectional.ObserableUser" />
+
+        <import type="com.example.demo.sundu.jetpack.databinding.unidirectional.ClickHelper" />
+
+        <variable
+            name="obserableUser"
+            type="ObserableUser" />
+
+        <variable
+            name="clickHelper"
+            type="ClickHelper" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_obserable_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{obserableUser.name}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_obserable_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(obserableUser.age)+'岁'}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_obserable_name" />
+
+        <TextView
+            android:id="@+id/tv_obserable_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(obserableUser.price)+'元'}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_obserable_age" />
+
+        <Button
+            android:id="@+id/btn_change_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->clickHelper.onChangeName(obserableUser)}"
+            android:text="改变名字"
+            app:layout_constraintEnd_toStartOf="@+id/btn_change_user_age"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_obserable_price" />
+
+        <Button
+            android:id="@+id/btn_change_user_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->clickHelper.onChangeAge(obserableUser)}"
+            android:text="改变年龄"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btn_change_user_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_obserable_price" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

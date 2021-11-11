@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <data>
+
+        <import type="com.example.demo.sundu.jetpack.databinding.bidirectional.TimeModel" />
+
+        <variable
+            name="timeModel"
+            type="TimeModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/show_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@={timeModel.timeObservable}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnChangeTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="改变时间"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/show_time" />
+
+        <com.example.demo.sundu.jetpack.databinding.bidirectional.CustomTimeView
+            android:id="@+id/customTimeView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:time="@={timeModel.timeObservable}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

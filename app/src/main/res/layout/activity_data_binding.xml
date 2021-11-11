@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data class="JetPackDataBindingTypeController">
+
+        <import type="androidx.databinding.ObservableMap" />
+
+        <import type="com.example.demo.sundu.jetpack.databinding.TypeInfo" />
+
+        <import type="com.example.demo.sundu.jetpack.databinding.TypeClickHelp" />
+
+        <variable
+            name="types"
+            type="TypeInfo" />
+
+        <variable
+            name="clickHelp"
+            type="TypeClickHelp" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/observeFile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{(theView)->clickHelp.clickTypeToGo(theView,0)}"
+            android:text="@{types.typeMap[0]}"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/observeViewMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{(theView)->clickHelp.clickTypeToGo(theView,1)}"
+            android:text="@{types.typeMap[1]}"
+            android:textAllCaps="false"
+            app:layout_constraintTop_toBottomOf="@+id/observeFile" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

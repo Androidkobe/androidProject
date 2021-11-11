@@ -15,6 +15,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".sundu.jetpack.databinding.bidirectional.BidirectionalActivity" />
+        <activity android:name=".sundu.jetpack.databinding.unidirectional.ObservableActivity"></activity>
+        <activity android:name=".sundu.jetpack.databinding.DataBindingTypeControllerActivity"></activity>
         <activity android:name=".sundu.thirdparty.ThirdPartyFrameWorkActivity"></activity>
         <activity android:name=".sundu.thirdparty.rxjava.Rxjava_Activity" />
         <activity android:name=".sundu.custview.SliderView.SliderViewActivity" />

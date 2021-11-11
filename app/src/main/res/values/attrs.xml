@@ -27,4 +27,9 @@
         <attr name="textcolor" format="color" />
         <attr name="text" format="string" />
     </declare-styleable>
+
+
+    <declare-styleable name="CustomTimeView">
+        <attr name="time" format="string" />
+    </declare-styleable>
 </resources>

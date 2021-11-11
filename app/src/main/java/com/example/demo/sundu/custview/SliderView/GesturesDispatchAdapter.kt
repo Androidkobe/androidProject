@@ -78,11 +78,13 @@ abstract class GesturesDispatchAdapter() {
         while (iterorMap1.hasNext()) {
             var entry = iterorMap1.next()
             var rect = entry.key
-            Log.d(
-                TAG,
-                "Gestures down handler to " + " view = " + viewGlobalRectMap[rect]?.javaClass?.toString()
-                    ?: null
-            )
+            "Gestures down handler to " + " view = " + viewGlobalRectMap[rect]?.javaClass?.toString()
+                ?: null?.let {
+                    Log.d(
+                        TAG,
+                        it
+                    )
+                }
 
         }
 //        Log.d(TAG,"Gestures adapter data : viewMap :"+viewMap.toString()+"\n"+
