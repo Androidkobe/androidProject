@@ -5,7 +5,7 @@ import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
-import kotlin.math.abs
+import android.util.Log
 
 /**
  * Copyright (C) 2013, Xiaomi Inc. All rights reserved.
@@ -49,9 +49,10 @@ class SenSorHelper(var data: SenSorData, var resultData: SenSorData) : SensorEve
                     || Math.abs(y) > data.y?.toInt() ?: 17
                     || Math.abs(z) > data.z?.toInt() ?: 17
                 ) {
-                    resultData.x = abs(x).toString()
-                    resultData.y = abs(y).toString()
-                    resultData.z = abs(z).toString()
+                    Log.e("sundu", "x = $x  y = $y  z= $z")
+                    resultData.x = x.toString()
+                    resultData.y = y.toString()
+                    resultData.z = z.toString()
 
                     if (mOnShakeListener != null) {
                         mOnShakeListener!!.onShake()

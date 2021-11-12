@@ -135,7 +135,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
-            android:text="@{resultData.x}"
+            android:text="@{resultData.z}"
             app:layout_constraintLeft_toRightOf="@+id/resultTextZtip"
             app:layout_constraintTop_toBottomOf="@+id/resultTextY" />
 
