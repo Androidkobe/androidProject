@@ -12,26 +12,33 @@ import androidx.databinding.InverseBindingMethods
 @InverseBindingMethods(
     value = [
         InverseBindingMethod(
-            type = com.example.demo.sundu.jetpack.databinding.bidirectional.CustomTimeView::class,
-            attribute = "android:time",
-            event = "android:timeAttrChanged",
-            method = "getCustomTime()"
+            type = CustomTimeView::class,
+            attribute = "time",
+            event = "timeAttrChanged",
+            method = "getCustomTime"
         )
     ]
 )
-class CustomTimeView @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : View(context, attrs, defStyleAttr) {
+class CustomTimeView : View {
 
     var time = "2020-01-30"
-        set(value) {
-            field = value
+        set(time) {
+            field = time
             timeChangeList?.onTimeChange(time)
             invalidate()
         }
+    var timeChangeList: ITimeChangeListener? = null
+
     var paint = Paint()
     var textPaint = TextPaint()
-    var timeChangeList: ITimeChangeListener? = null
+
+    constructor(context: Context) : this(context, null, 0)
+    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int = 0) : super(
+        context,
+        attrs,
+        0
+    )
 
     init {
         paint.textSize = 100f
@@ -39,6 +46,7 @@ class CustomTimeView @JvmOverloads constructor(
         textPaint.textSize = 100f
         textPaint.measureText(time)
     }
+
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
@@ -49,5 +57,5 @@ class CustomTimeView @JvmOverloads constructor(
     fun getCustomTime(): String {
         return time
     }
-
 }
+

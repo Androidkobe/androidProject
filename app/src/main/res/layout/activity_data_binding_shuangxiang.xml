@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
+        <EditText
             android:id="@+id/show_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
             android:id="@+id/btnChangeTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="改变时间"
+            android:text="设置自定义View的时间 同步 TextVIew"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/show_time" />
@@ -38,7 +38,10 @@
             android:id="@+id/customTimeView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:time="@={timeModel.timeObservable}" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnChangeTime"
+            app:time="@={timeModel.timeObservable}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
