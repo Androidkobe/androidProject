@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.demo.R
 import com.example.demo.sundu.developer.immersive.ImmerSiveActivity
 import com.example.demo.sundu.developer.nineimageload.NineImgLoadActivity
+import com.example.demo.sundu.developer.sensor.SenSorActivity
 import com.example.demo.sundu.developer.viewpager.ViewPager2Activity
 import com.example.demo.sundu.developer.viewpager.ViewPagerActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -50,6 +51,12 @@ class DeveloperActivity : AppCompatActivity() {
                         ImmerSiveActivity::class.java
                     )
                 )
+                4 -> startActivity(
+                    Intent(
+                        this@DeveloperActivity,
+                        SenSorActivity::class.java
+                    )
+                )
             }
         }
     }
@@ -60,6 +67,7 @@ class DeveloperActivity : AppCompatActivity() {
         stringArray.add("viewpage2")
         stringArray.add(".9imageLoad")
         stringArray.add("immersive")
+        stringArray.add("SenSor")
         return stringArray
     }
 }

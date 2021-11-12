@@ -13,13 +13,16 @@ class BidirectionalActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         val binding = DataBindingUtil.setContentView<ActivityDataBindingShuangxiangBinding>(
             this,
             R.layout.activity_data_binding_shuangxiang
         )
+
         binding.timeModel = TimeModel().apply {
             timeObservable.set(format.format(Date()))
         }
+
         binding.btnChangeTime.setOnClickListener {
             binding.customTimeView.time = format.format(Date())
         }

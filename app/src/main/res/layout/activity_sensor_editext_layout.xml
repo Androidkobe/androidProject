@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data class="SenSorDataBindingController">
+
+        <import type="com.example.demo.sundu.developer.sensor.SenSorData" />
+
+        <import type="com.example.demo.sundu.developer.sensor.SenSorClickHelper" />
+
+        <variable
+            name="senSorData"
+            type="SenSorData" />
+
+        <variable
+            name="clickHelper"
+            type="SenSorClickHelper" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="40dp">
+
+        <TextView
+            android:id="@+id/xText"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="x轴 : "
+            app:layout_constraintBaseline_toBaselineOf="@+id/xEdiText" />
+
+        <EditText
+            android:id="@+id/xEdiText"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="@={senSorData.x}"
+            app:layout_constraintStart_toEndOf="@+id/xText" />
+
+        <TextView
+            android:id="@+id/yText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="y轴 : "
+            app:layout_constraintBaseline_toBaselineOf="@+id/yEdiText" />
+
+        <EditText
+            android:id="@+id/yEdiText"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@={senSorData.y}"
+            app:layout_constraintStart_toEndOf="@+id/yText"
+            app:layout_constraintTop_toBottomOf="@+id/xEdiText" />
+
+        <TextView
+            android:id="@+id/zText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="z轴 : "
+            app:layout_constraintBaseline_toBaselineOf="@+id/zEdiText" />
+
+        <EditText
+            android:id="@+id/zEdiText"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@={senSorData.z}"
+            app:layout_constraintLeft_toRightOf="@+id/zText"
+            app:layout_constraintTop_toBottomOf="@+id/yEdiText" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
