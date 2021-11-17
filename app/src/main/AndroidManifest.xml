@@ -16,6 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".sundu.developer.recycleview.RecyclerViewActivity" />
         <activity android:name=".sundu.developer.sensor.SenSorActivity" />
         <activity android:name=".sundu.jetpack.databinding.bidirectional.BidirectionalActivity" />
         <activity android:name=".sundu.jetpack.databinding.unidirectional.ObservableActivity"></activity>

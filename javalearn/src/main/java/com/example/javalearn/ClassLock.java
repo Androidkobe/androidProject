@@ -1,5 +1,7 @@
 package com.example.javalearn;
 
+import java.util.HashMap;
+
 public class ClassLock {
 
     private static Object lock = new Object();
@@ -12,6 +14,21 @@ public class ClassLock {
     public static synchronized void methodLock() throws InterruptedException {
         System.out.println(Thread.currentThread().getName());
         Thread.sleep(10 * 1000);
+    }
+
+    public int[] twoSum(int[] nums, int target) {
+        int[] result = new int[2];
+        HashMap<Integer,Integer> cache = new HashMap<>();
+        for(int i = 0;i < nums.length;i++){
+            int temp = target - nums[i];
+            if(cache.containsKey(temp)){
+                result[0] = i;
+                result[1] = cache.get(temp);
+                return result;
+            }
+            cache.put(temp,i);
+        }
+        return result;
     }
 
     public static void main(String[] args) {

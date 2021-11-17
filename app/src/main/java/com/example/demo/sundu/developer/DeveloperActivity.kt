@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.demo.R
 import com.example.demo.sundu.developer.immersive.ImmerSiveActivity
 import com.example.demo.sundu.developer.nineimageload.NineImgLoadActivity
+import com.example.demo.sundu.developer.recycleview.RecyclerViewActivity
 import com.example.demo.sundu.developer.sensor.SenSorActivity
 import com.example.demo.sundu.developer.viewpager.ViewPager2Activity
 import com.example.demo.sundu.developer.viewpager.ViewPagerActivity
@@ -57,6 +58,12 @@ class DeveloperActivity : AppCompatActivity() {
                         SenSorActivity::class.java
                     )
                 )
+                5 -> startActivity(
+                    Intent(
+                        this@DeveloperActivity,
+                        RecyclerViewActivity::class.java
+                    )
+                )
             }
         }
     }
@@ -68,6 +75,7 @@ class DeveloperActivity : AppCompatActivity() {
         stringArray.add(".9imageLoad")
         stringArray.add("immersive")
         stringArray.add("SenSor")
+        stringArray.add("RecyclerView")
         return stringArray
     }
 }

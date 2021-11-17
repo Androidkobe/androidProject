@@ -1,0 +1,36 @@
+package com.example.demo.sundu
+
+object ImgUrls{
+
+    val urls = mutableListOf<String>()
+
+
+    init {
+        urls.add("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwww.kuoo8.com%2Fwall_up%2Fhsf2288%2F201007%2F2010072610393383296.jpg&refer=http%3A%2F%2Fwww.kuoo8.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639751695&t=e42d3a3e7d4da4a200cc0cdb01e41b01")
+        urls.add("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fdik.img.kttpdq.com%2Fpic%2F3%2F2039%2F1e816aca8edb5f92.jpg&refer=http%3A%2F%2Fdik.img.kttpdq.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639751695&t=5cc9658fc697d9d588f75ddcce4c0f9f")
+        urls.add("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fdik.img.kttpdq.com%2Fpic%2F13%2F9065%2F3c553fd99f7c82ec_1366x768.jpg&refer=http%3A%2F%2Fdik.img.kttpdq.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639751695&t=9b3002879d4de7f9d2f17d496140516b")
+        urls.add("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fdik.img.kttpdq.com%2Fpic%2F33%2F22562%2Fc52fa7ba71d19c1d_1366x768.jpg&refer=http%3A%2F%2Fdik.img.kttpdq.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639751695&t=39684cf0c7e9b855fc44341819a9998b")
+        urls.add("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwww.kuoo8.com%2Fwall_up%2Fhsf2288%2F201007%2F2010072610471334817.jpg&refer=http%3A%2F%2Fwww.kuoo8.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639751695&t=5ab5f55d24396d3cda6024cb43a82f83")
+        urls.add("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fdik.img.kttpdq.com%2Fpic%2F5%2F2907%2F2edbfc11c61b7523_1366x768.jpg&refer=http%3A%2F%2Fdik.img.kttpdq.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639751695&t=c1a15003f3b1019b93717b8779d4ef33")
+        urls.add("https://gimg2.baidu.com/image_search/src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20180520%2Fe88716934a454c5cb340e12e694dc201.jpeg&refer=http%3A%2F%2F5b0988e595225.cdn.sohucs.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639751059&t=7744e9c1c69e3a8290e6f528566ce856")
+        urls.add("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwww.lvliansoft.com%2F_i-4_%2F2018%2F8%2F18%2F375f51c3-6455-4af9-9d65-0759b7cb8f98.jpg&refer=http%3A%2F%2Fwww.lvliansoft.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639751113&t=20dbd90744cd000ecc398f299167f89a")
+        urls.add("https://gimg2.baidu.com/image_search/src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20180916%2Fca41ff34d4de452797f6fbb505912560.jpeg&refer=http%3A%2F%2F5b0988e595225.cdn.sohucs.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639751113&t=bcd3e32bfbdef22d3e61aee410960db3")
+        urls.add("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fmaterials.cdn.bcebos.com%2Fimages%2F91f63a827025d075f153813fb3f669d8.jpeg&refer=http%3A%2F%2Fmaterials.cdn.bcebos.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639751113&t=6302f6f89db296906ed2f71e4d996e41")
+        urls.add("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fdik.img.kttpdq.com%2Fpic%2F124%2F86558%2F22c09580430d3b1f.jpg&refer=http%3A%2F%2Fdik.img.kttpdq.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639751113&t=9b39ea3b522f0157f2ceae016069038c")
+        urls.add("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg38.51tietu.net%2Fpic%2F2017-010521%2F20170105211429gyco1axgasg60665.jpg&refer=http%3A%2F%2Fimg38.51tietu.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639751113&t=847cd7d3547ae9a9454f461a8582e928")
+        urls.add("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fclubimg.club.vmall.com%2Fdata%2Fattachment%2Fforum%2F201909%2F18%2F175106budgrk1n7yvjjkam.jpg&refer=http%3A%2F%2Fclubimg.club.vmall.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639751113&t=497a1528a6c3490bf48dad017b6c47b9")
+        urls.add("https://gss0.baidu.com/70cFfyinKgQFm2e88IuM_a/baike/pic/item/a1ec08fa513d26971fecdeb75cfbb2fb4316d819.jpg")
+        urls.add("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fhiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F2cf5e0fe9925bc31b6af96fe50df8db1ca1370e2.jpg&refer=http%3A%2F%2Fhiphotos.baidu.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639751113&t=895a815ca3c70fe43fa50b5505d032f0")
+        urls.add("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg38.51tietu.net%2Fpic%2F2017-010521%2F20170105211405ihjn3p1qssi60553.jpg&refer=http%3A%2F%2Fimg38.51tietu.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639751113&t=fa14a3edfd564bb898dbea248f95c7b9")
+        urls.add("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fn.sinaimg.cn%2Fspider2020226%2F606%2Fw900h506%2F20200226%2F90a6-ipzreiw2763249.jpg&refer=http%3A%2F%2Fn.sinaimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639751113&t=a7edcb3f0195f3ffd09b213df19a5b4e")
+        urls.add("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fclubimg.club.vmall.com%2Fdata%2Fattachment%2Fforum%2F202002%2F18%2F121957eyapwy3frpwebcdn.png&refer=http%3A%2F%2Fclubimg.club.vmall.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639751113&t=006c8647202f364ee652688cbccdd898")
+        urls.add("https://vdposter.bdstatic.com/a69c4a6ce7bc72df936542163e2cacd9.jpeg")
+        urls.add("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fcs.vmovier.com%2FUploads%2Fpost%2F2016-12-07%2F58477608cce7d.jpg&refer=http%3A%2F%2Fcs.vmovier.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639751113&t=9392b353606b11830e52ad7bea7d021e")
+        urls.add("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi.shedejie.com%2Fmmbiz_gif%2FAZqHHZcqy1eQHibaArVk48ML1kLjsicqG9INR6Hpdf9B2Abog2NsBlpiaiaibNtGgwwL7LpoOnoW10FvyyDjEH8rS8Q%2F640%3Fwx_fmt%3Dgif&refer=http%3A%2F%2Fi.shedejie.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639751113&t=2d619210ced5a268639fd07d648a39c0")
+        urls.add("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fvsd-picture.cdn.bcebos.com%2F58671472015eafa5cbaebfc46ef8ffb02cc2e821.jpg&refer=http%3A%2F%2Fvsd-picture.cdn.bcebos.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639751114&t=6f64fb75a86982a7296f7e108e3988af")
+        urls.add("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fm.huanghelou.cc%2Fzb_users%2Fupload%2F2020%2F10%2F20201012113645_37160.jpg&refer=http%3A%2F%2Fm.huanghelou.cc&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639751114&t=54fe6b4e31f1f9bfcdd33a409a32a6fc")
+        urls.add("https://gimg2.baidu.com/image_search/src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20190830%2F66235da21f8d418d96b3f7bde0d2310a.jpeg&refer=http%3A%2F%2F5b0988e595225.cdn.sohucs.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639751114&t=5953bacf2222d76c91e957d436958088")
+        urls.add("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20170718%2F25f19cc037674477910366b445b33a1f_th.jpg&refer=http%3A%2F%2Fimg.mp.itc.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639751114&t=9cfc6f0975107566801a1a3106344aad")
+    }
+
+}

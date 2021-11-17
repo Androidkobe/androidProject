@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/mRecycleView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <Button
+            android:id="@+id/change_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="allChange"
+            android:text="allChange"
+            />
+
+        <Button
+            android:id="@+id/change_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="itemChange"
+            android:text="itemChange"/>
+
+        <Button
+            android:id="@+id/change_item_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="itemAdd"
+            android:text="itemAdd"/>
+
+        <Button
+            android:id="@+id/change_item_remove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="itemRemove"
+            android:text="itemRemove"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
