@@ -10,6 +10,7 @@ import com.example.demo.sundu.developer.immersive.ImmerSiveActivity
 import com.example.demo.sundu.developer.nineimageload.NineImgLoadActivity
 import com.example.demo.sundu.developer.recycleview.RecyclerViewActivity
 import com.example.demo.sundu.developer.sensor.SenSorActivity
+import com.example.demo.sundu.developer.stickyheadrecyclerview.StickyHeadRecyclerViewActivity
 import com.example.demo.sundu.developer.viewpager.ViewPager2Activity
 import com.example.demo.sundu.developer.viewpager.ViewPagerActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -64,6 +65,12 @@ class DeveloperActivity : AppCompatActivity() {
                         RecyclerViewActivity::class.java
                     )
                 )
+                6 -> startActivity(
+                    Intent(
+                        this@DeveloperActivity,
+                        StickyHeadRecyclerViewActivity::class.java
+                    )
+                )
             }
         }
     }
@@ -76,6 +83,7 @@ class DeveloperActivity : AppCompatActivity() {
         stringArray.add("immersive")
         stringArray.add("SenSor")
         stringArray.add("RecyclerView")
+        stringArray.add("StickyRecyclerView")
         return stringArray
     }
 }

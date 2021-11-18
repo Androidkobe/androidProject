@@ -12,6 +12,8 @@
         <entry key="app/src/main/res/layout/activity_develop_recycleview_item_holder.xml" value="0.2644927536231884" />
         <entry key="app/src/main/res/layout/activity_sensor.xml" value="0.28396739130434784" />
         <entry key="app/src/main/res/layout/activity_slider_view.xml" value="0.2953125" />
+        <entry key="app/src/main/res/layout/activity_sticky_recyclerview.xml" value="0.1875" />
+        <entry key="app/src/main/res/layout/activity_sticky_recyclerview_item_holder.xml" value="0.17604166666666668" />
       </map>
     </option>
   </component>
