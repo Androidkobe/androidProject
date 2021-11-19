@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:titleTextColor="#ffffff" />
+
+    <com.example.demo.sundu.developer.netingscrollview.one.EventDispatchPlanLayout
+        android:id="@+id/scrollLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        app:header_init_offset="30dp"
+        app:header_view="@+id/book_header"
+        app:target_init_offset="70dp"
+        app:target_view="@+id/scroll_view">
+
+        <View
+            android:id="@id/book_header"
+            android:layout_width="120dp"
+            android:layout_height="150dp"
+            android:background="#00ff00" />
+
+        <com.example.demo.sundu.developer.netingscrollview.one.EventDispatchTargetLayout
+            android:id="@id/scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:orientation="vertical">
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@drawable/list_item_bg_with_border_top_bottom"
+                android:fillViewport="true" />
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+        </com.example.demo.sundu.developer.netingscrollview.one.EventDispatchTargetLayout>
+
+    </com.example.demo.sundu.developer.netingscrollview.one.EventDispatchPlanLayout>
+</FrameLayout>

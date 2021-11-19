@@ -61,6 +61,10 @@ dependencies {
     implementation 'com.google.android.material:material:1.2.1'
     testImplementation 'junit:junit:4.12'
 
+
+    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'
+    implementation 'com.google.android.material:material:1.4.0'
+
     //work manager
     def work_version = "2.5.0"
 
@@ -92,4 +96,5 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxjava:2.2.21"
     //Rxjava android
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+
 }

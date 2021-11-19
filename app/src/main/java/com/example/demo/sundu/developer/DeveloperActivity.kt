@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.demo.R
 import com.example.demo.sundu.developer.immersive.ImmerSiveActivity
+import com.example.demo.sundu.developer.netingscrollview.NestingScrollActivity
 import com.example.demo.sundu.developer.nineimageload.NineImgLoadActivity
 import com.example.demo.sundu.developer.recycleview.RecyclerViewActivity
 import com.example.demo.sundu.developer.sensor.SenSorActivity
@@ -71,6 +72,12 @@ class DeveloperActivity : AppCompatActivity() {
                         StickyHeadRecyclerViewActivity::class.java
                     )
                 )
+                7 -> startActivity(
+                    Intent(
+                        this@DeveloperActivity,
+                        NestingScrollActivity::class.java
+                    )
+                )
             }
         }
     }
@@ -84,6 +91,7 @@ class DeveloperActivity : AppCompatActivity() {
         stringArray.add("SenSor")
         stringArray.add("RecyclerView")
         stringArray.add("StickyRecyclerView")
+        stringArray.add("NestingScrollActivity")
         return stringArray
     }
 }

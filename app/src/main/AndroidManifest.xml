@@ -16,6 +16,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <activity android:name="com.example.demo.sundu.developer.netingscrollview.NestingScrollActivity" />
+        <activity android:name=".sundu.developer.netingscrollview.three.CoordinatorLayoutActivity" />
+        <activity android:name=".sundu.developer.netingscrollview.one.EventDispatchPlanActivity" />
+        <activity android:name=".sundu.developer.netingscrollview.two.NestingScrollActivity" />
         <activity android:name=".sundu.developer.stickyheadrecyclerview.StickyHeadRecyclerViewActivity" />
         <activity android:name=".sundu.developer.recycleview.RecyclerViewActivity" />
         <activity android:name=".sundu.developer.sensor.SenSorActivity" />
