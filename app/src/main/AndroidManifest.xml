@@ -20,6 +20,7 @@
             android:name=".sundu.custview.scaleimage.ScaleImageActivity"
             android:exported="false" />
         <activity android:name=".sundu.developer.netingscrollview.NestingScrollActivity" />
+        <activity android:name="com.example.demo.sundu.developer.viewapi.ViewScrollToApiActivity" />
         <activity android:name=".sundu.developer.netingscrollview.three.CoordinatorLayoutActivity" />
         <activity android:name=".sundu.developer.netingscrollview.one.EventDispatchPlanActivity" />
         <activity android:name=".sundu.developer.netingscrollview.two.NestingScrollActivity" />

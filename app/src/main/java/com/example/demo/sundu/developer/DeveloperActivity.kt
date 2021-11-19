@@ -12,6 +12,7 @@ import com.example.demo.sundu.developer.nineimageload.NineImgLoadActivity
 import com.example.demo.sundu.developer.recycleview.RecyclerViewActivity
 import com.example.demo.sundu.developer.sensor.SenSorActivity
 import com.example.demo.sundu.developer.stickyheadrecyclerview.StickyHeadRecyclerViewActivity
+import com.example.demo.sundu.developer.viewapi.ViewScrollToApiActivity
 import com.example.demo.sundu.developer.viewpager.ViewPager2Activity
 import com.example.demo.sundu.developer.viewpager.ViewPagerActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -78,6 +79,12 @@ class DeveloperActivity : AppCompatActivity() {
                         NestingScrollActivity::class.java
                     )
                 )
+                8 -> startActivity(
+                    Intent(
+                        this@DeveloperActivity,
+                        ViewScrollToApiActivity::class.java
+                    )
+                )
             }
         }
     }
@@ -92,6 +99,7 @@ class DeveloperActivity : AppCompatActivity() {
         stringArray.add("RecyclerView")
         stringArray.add("StickyRecyclerView")
         stringArray.add("NestingScrollActivity")
+        stringArray.add("ViewScrollApi")
         return stringArray
     }
 }
