@@ -6,39 +6,103 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import java.lang.Thread.sleep
+import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
-//fun main() {
-//    GlobalScopeTest().runTest()
-//    RunBlockingTest().runTest()
-//    RunBlockingTest().runTest2()
-//    GlobalScopeAsync().runTest()
-//    println("主线程 开始  ${getThreadInfo()}")
-//
-//    runBlocking{
-//        println("launch 开始  ${getThreadInfo()}")
-//        GlobalScope.launch {
-//            println("launch 1 开始  ${getThreadInfo()}")
-//            getToken()
-//        }
-//        GlobalScope.launch {
-//            println("launch 2 开始  ${getThreadInfo()}")
-//            getResponse("")
-//        }
-//        GlobalScope.launch {
-//            println("launch 3 开始  ${getThreadInfo()}")
-//            setText("---")
-//        }
-//        println("launch 结束  ${getThreadInfo()}")
-//        delay(10000L)
-//        println("主线程 等待了10 秒 开始执行我了  ${getThreadInfo()}")
-//    }
+fun main() {
+    //阻塞线程
+    RunBlocking()
+    //非阻塞线程
+    GlobalScope_Launch() //
+    CoroutineScope_Launch()//
+    CoroutineScopeLaunchTest()//
+    sleep(100000L)
+}
 
-//    println("主线程 结束  ${getThreadInfo()}")
-//    sleep(1000000L)
-//}
+
+private fun RunBlocking() {
+    runBlocking {
+        launch {
+            repeat(5) {
+                delay(1000L)
+                println("协程 name = " + Thread.currentThread().name + " id = " + Thread.currentThread().id)
+            }
+        }
+    }
+}
+
+/**
+ * 非阻塞线程
+ * 全局作用域
+ */
+private fun GlobalScope_Launch() {
+    println("start")
+    //创建一个全局作用域协程，不会阻塞当前线程，生命周期与应用程序一致
+    GlobalScope.launch {
+        //在这1000毫秒内该协程所处的线程不会阻塞
+        //协程将线程的执行权交出去，该线程继续干它要干的事情，到时间后会恢复至此继续向下执行
+        delay(1000)//1秒无阻塞延迟（默认单位为毫秒）
+        println("GlobalScope.launch")
+    }
+    println("end")//主线程继续，而协程被延迟
+}
+
+/**
+ * 非阻塞线程
+ * 局部i作用域
+ * 需要传入上下文 CoroutineContext
+ * Dispatchers.IO 底层实现了CoroutineContext
+ * 生命周期由Dispatchers.IO 控制
+ */
+private fun CoroutineScope_Launch() {
+    println("start")
+    //开启一个IO模式的协程，通过协程上下文创建一个CoroutineScope对象,需要一个类型为CoroutineContext的参数
+    val job = CoroutineScope(Dispatchers.IO).launch {
+        delay(1000)//1秒无阻塞延迟（默认单位为毫秒）
+        println("CoroutineScope.launch")
+    }
+    println("end")//主线程继续，而协程被延迟
+}
+
+
+/**
+ *  非阻塞线程
+ */
+private  fun CoroutineScopeLaunchTest() {
+    println("主线程 开始 id = " + Thread.currentThread().id)
+    // 创建协程作用域 与当前线程 生命周期绑定  线程结束 协程包含子协程 一起结束
+    var job = CoroutineScope(Dispatchers.IO).launch {
+        delay(1000)
+        println("Coroutine . launch ")
+
+        var job2 =  launch {
+            repeat(10){
+                delay(100)
+                println("job2 ${getThreadInfo()} -- $it")
+            }
+        }
+
+        withContext(Dispatchers.Default){
+            repeat(10){
+                delay(100)
+                println("job3 ${getThreadInfo()} -- $it")
+            }
+        }
+        var job1 =  launch(Dispatchers.IO) {
+            repeat(10){
+                delay(1000)
+                println("job1 ${getThreadInfo()} -- $it")
+            }
+        }
+        //协程阻塞 等待执行完成
+        job1.join()
+    }
+    println("主线程 结束 id = " + Thread.currentThread().id)
+//    sleep(5700)
+    println("end")
+}
 
 suspend fun getToken(): String {
     delay(3000)
@@ -61,40 +125,6 @@ fun getThreadInfo(): String {
     return "thread name = " + Thread.currentThread().name + " thread id = " + Thread.currentThread().id
 }
 
-
-//suspend fun performRequest(request: Int): String {
-//    delay(1000) // imitate long-running asynchronous work
-//    return "response $request"
-//}
-//
-//fun main() = runBlocking<Unit> {
-//    (1..3).asFlow() // a flow of requests
-//        .transform { request ->
-//            emit(performRequest(request))
-//        }
-//        .collect { respone->
-//            println(respone)
-//        }
-//}
-
-fun simple(): Flow<Int> = flow {
-    // The WRONG way to change context for CPU-consuming code in flow builder
-
-    for (i in 1..3) {
-        Thread.sleep(100)
-        println("atcion   ${getThreadInfo()}")// pretend we are computing it in CPU-consuming way
-        emit(i) // emit next value
-    }
-
-}.flowOn(Dispatchers.Default)
-
-fun main() = runBlocking<Unit> {
-    println("开始  ${getThreadInfo()}")
-    simple().collect { value ->
-        println("接收  ${getThreadInfo()}")
-        println(value)
-    }
-}
 
 class GlobalScopeAsync {
 
