@@ -16,8 +16,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name="com.example.demo.sundu.developer.netingscrollview.NestingScrollActivity" />
+        <activity
+            android:name=".sundu.custview.scaleimage.ScaleImageActivity"
+            android:exported="false" />
+        <activity android:name=".sundu.developer.netingscrollview.NestingScrollActivity" />
         <activity android:name=".sundu.developer.netingscrollview.three.CoordinatorLayoutActivity" />
         <activity android:name=".sundu.developer.netingscrollview.one.EventDispatchPlanActivity" />
         <activity android:name=".sundu.developer.netingscrollview.two.NestingScrollActivity" />
@@ -25,9 +27,9 @@
         <activity android:name=".sundu.developer.recycleview.RecyclerViewActivity" />
         <activity android:name=".sundu.developer.sensor.SenSorActivity" />
         <activity android:name=".sundu.jetpack.databinding.bidirectional.BidirectionalActivity" />
-        <activity android:name=".sundu.jetpack.databinding.unidirectional.ObservableActivity"></activity>
-        <activity android:name=".sundu.jetpack.databinding.DataBindingTypeControllerActivity"></activity>
-        <activity android:name=".sundu.thirdparty.ThirdPartyFrameWorkActivity"></activity>
+        <activity android:name=".sundu.jetpack.databinding.unidirectional.ObservableActivity" />
+        <activity android:name=".sundu.jetpack.databinding.DataBindingTypeControllerActivity" />
+        <activity android:name=".sundu.thirdparty.ThirdPartyFrameWorkActivity" />
         <activity android:name=".sundu.thirdparty.rxjava.Rxjava_Activity" />
         <activity android:name=".sundu.custview.SliderView.SliderViewActivity" />
         <activity android:name=".sundu.custview.region.RegionActivity" />
@@ -38,7 +40,8 @@
         <activity android:name=".sundu.custview.beziercurve.dragpop.BezierCurverDragPopActivity" />
         <activity android:name=".sundu.custview.CustomViewActivity" />
         <activity android:name=".sundu.developer.immersive.ImmerSiveActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

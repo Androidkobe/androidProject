@@ -13,8 +13,10 @@ import com.example.demo.sundu.custview.beziercurve.dragpop.BezierCurverDragPopAc
 import com.example.demo.sundu.custview.bitmapshader.BitmapShaderTelescopeViewActivity
 import com.example.demo.sundu.custview.downloadview.DownLoadViewActivity
 import com.example.demo.sundu.custview.region.RegionActivity
+import com.example.demo.sundu.custview.scaleimage.ScaleImageActivity
 import com.example.demo.sundu.custview.shimmer.ShimmerActivity
 import kotlinx.android.synthetic.main.activity_custom_view.*
+import kotlinx.android.synthetic.main.activity_develop_recycleview.*
 import kotlinx.android.synthetic.main.activity_shimmer.*
 import java.util.*
 
@@ -46,6 +48,7 @@ class CustomViewActivity : AppCompatActivity() {
         dataSource["shimmer"] = ShimmerActivity::class.java
         dataSource["region"] = RegionActivity::class.java
         dataSource["SlideLockView"] = SliderViewActivity::class.java
+        dataSource["ScaleImageView"] = ScaleImageActivity::class.java
     }
 
     private fun getData(): List<String> {
