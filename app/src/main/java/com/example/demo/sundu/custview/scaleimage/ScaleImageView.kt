@@ -28,12 +28,7 @@ class ScaleImageView @JvmOverloads constructor(context: Context, attrs: Attribut
         Log.d(TAG, "onTouch isCanTouch= $isCanTouch")
         val pointerCount = event.pointerCount
         when (event.action and MotionEvent.ACTION_MASK) {
-            MotionEvent.ACTION_UP -> if (pointerCount == 2) {
-                downX1 = 0f
-                downY1 = 0f
-                downX2 = 0f
-                downY2 = 0f
-            }
+
             MotionEvent.ACTION_MOVE -> if (pointerCount == 2) {
                 val x1 = event.getX(0)
                 val x2 = event.getX(1)
@@ -72,6 +67,14 @@ class ScaleImageView @JvmOverloads constructor(context: Context, attrs: Attribut
                 )
                 oldDist = spacing(event) //两点按下时的距离
             }
+
+            MotionEvent.ACTION_UP -> if (pointerCount == 2) {
+                downX1 = 0f
+                downY1 = 0f
+                downX2 = 0f
+                downY2 = 0f
+            }
+
             MotionEvent.ACTION_POINTER_UP -> Log.d(TAG, "ACTION_POINTER_UP")
             else -> {}
         }

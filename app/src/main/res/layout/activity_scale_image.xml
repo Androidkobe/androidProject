@@ -9,7 +9,7 @@
     <com.example.demo.sundu.custview.scaleimage.ScaleImageView
         android:id="@+id/custom_scale_image"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="100dp"
         android:scaleType="centerInside"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>
