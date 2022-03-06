@@ -11,6 +11,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.demo.common.ItemViewClick
+import com.example.demo.other.yuntask.YunTaskActivity
 import com.example.demo.sundu.custview.CustomViewActivity
 import com.example.demo.sundu.developer.DeveloperActivity
 import com.example.demo.sundu.jetpack.JetPackActivity
@@ -63,6 +64,7 @@ class MainActivity : AppCompatActivity() {
         dataMap["RecycleView"] = RecycleViewActivity::class.java
         dataMap["Touch"] = TouchActivity::class.java
         dataMap["ThirdParty"] = ThirdPartyFrameWorkActivity::class.java
+        dataMap["党建云"] = YunTaskActivity::class.java
     }
 
 

@@ -17,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".other.yuntask.YunTaskActivity"
+            android:exported="true" />
+        <activity
             android:name=".sundu.custview.scaleimage.ScaleImageActivity"
             android:exported="false" />
         <activity android:name=".sundu.developer.netingscrollview.NestingScrollActivity" />
@@ -40,7 +43,8 @@
         <activity android:name=".sundu.custview.beziercurve.dragpop.BezierCurverDragPopActivity" />
         <activity android:name=".sundu.custview.CustomViewActivity" />
         <activity android:name=".sundu.developer.immersive.ImmerSiveActivity" />
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
