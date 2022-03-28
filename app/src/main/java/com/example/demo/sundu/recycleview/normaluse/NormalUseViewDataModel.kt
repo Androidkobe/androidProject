@@ -1,4 +1,4 @@
-package com.example.demo.sundu.recycleview
+package com.example.demo.sundu.recycleview.normaluse
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.demo.sundu.recycleview.citylist.CityHeadRecycleView
 import com.example.demo.sundu.recycleview.imtalk.ImTalkRecycleView
-import com.example.demo.sundu.recycleview.normaluse.NormalUseRecycleViewActivity
+import com.example.demo.sundu.recycleview.normaluse.itemdecoration.DecorationRecycleView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.collect
@@ -14,14 +14,12 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
-class RecycleViewDataModel : ViewModel() {
+class NormalUseViewDataModel : ViewModel() {
 
     var sourceMap = mutableMapOf<String, Class<*>>()
 
     init {
-       sourceMap["基本使用"] = NormalUseRecycleViewActivity::class.java
-        sourceMap["城市列表"] = CityHeadRecycleView::class.java
-        sourceMap["对话"] = ImTalkRecycleView::class.java
+        sourceMap["分割线-ItemDecoration"] = DecorationRecycleView::class.java
     }
 
     var datalist = mutableListOf<RecyclerViewItem>()

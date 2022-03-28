@@ -23,6 +23,8 @@
         <activity
             android:name=".sundu.custview.scaleimage.ScaleImageActivity"
             android:exported="false" />
+        <activity android:name=".sundu.recycleview.normaluse.itemdecoration.DecorationRecycleView"/>
+        <activity android:name=".sundu.recycleview.normaluse.NormalUseRecycleViewActivity"/>
         <activity android:name=".sundu.developer.netingscrollview.NestingScrollActivity" />
         <activity android:name="com.example.demo.sundu.developer.viewapi.ViewScrollToApiActivity" />
         <activity android:name=".sundu.developer.netingscrollview.three.CoordinatorLayoutActivity" />

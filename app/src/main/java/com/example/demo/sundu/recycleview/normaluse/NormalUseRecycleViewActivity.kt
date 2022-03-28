@@ -1,4 +1,4 @@
-package com.example.demo.sundu.recycleview
+package com.example.demo.sundu.recycleview.normaluse
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,14 +8,14 @@ import cc.xiaobaicz.recyclerview.extend.config
 import com.example.demo.R
 import com.example.demo.databinding.CommonRecycleViewBinding
 
-class RecycleViewActivity : AppCompatActivity() {
+class NormalUseRecycleViewActivity : AppCompatActivity() {
 
     val binView by lazy {
         CommonRecycleViewBinding.inflate(layoutInflater)
     }
 
     val viewDataModel by lazy {
-        ViewModelProvider(this)[RecycleViewDataModel::class.java]
+        ViewModelProvider(this)[NormalUseViewDataModel::class.java]
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,7 +29,7 @@ class RecycleViewActivity : AppCompatActivity() {
                 with(holderView.bind) {
                     textView.setText(itemData.name)
                     holderView.bind.root.setOnClickListener{
-                        startActivity(Intent(this@RecycleViewActivity,itemData.classname))
+                        startActivity(Intent(this@NormalUseRecycleViewActivity,itemData.classname))
                     }
                 }
             }
