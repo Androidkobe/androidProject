@@ -17,9 +17,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize"
-        app:header_init_offset="30dp"
+        app:header_init_offset="0dp"
         app:header_view="@+id/book_header"
-        app:target_init_offset="70dp"
+        app:target_init_offset="150dp"
         app:target_view="@+id/scroll_view">
 
         <View
