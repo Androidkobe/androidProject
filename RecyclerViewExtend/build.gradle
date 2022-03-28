@@ -5,12 +5,10 @@ apply plugin: 'maven-publish'
 group='com.github.XiaoBaiCZ'
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.0"
-
+    compileSdk rootProject.ext.compileSdkVersion
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 30
+        minSdk rootProject.ext.minSdkVersion
+        targetSdk rootProject.ext.targetSdkVersion
         versionCode 2110300
         versionName "0.6.1"
     }
