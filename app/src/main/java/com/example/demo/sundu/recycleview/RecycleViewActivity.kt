@@ -1,5 +1,6 @@
 package com.example.demo.sundu.recycleview
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -27,6 +28,9 @@ class RecycleViewActivity : AppCompatActivity() {
             ) { itemData, holderView, position, payloads ->
                 with(holderView.bind) {
                     textView.setText(itemData.name)
+                    holderView.bind.root.setOnClickListener{
+                        startActivity(Intent(this@RecycleViewActivity,itemData.classname))
+                    }
                 }
             }
         }

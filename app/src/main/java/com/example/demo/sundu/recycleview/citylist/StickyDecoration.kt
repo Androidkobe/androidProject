@@ -1,4 +1,4 @@
-package com.example.demo.sundu.developer.stickyheadrecyclerview
+package com.example.demo.sundu.recycleview.citylist
 
 import android.content.Context
 import android.view.View

@@ -1,4 +1,4 @@
-package com.example.demo.sundu.developer.recycleview
+package com.example.demo.sundu.recycleview.imtalk
 
 import android.util.Log
 import android.view.LayoutInflater

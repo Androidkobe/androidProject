@@ -1,20 +1,15 @@
-package com.example.demo.sundu.developer.recycleview
+package com.example.demo.sundu.recycleview.imtalk
 
 import android.app.Activity
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
-import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.demo.R
 import com.example.demo.sundu.ImgUrls
 import kotlinx.android.synthetic.main.activity_develop_recycleview.*
 
-class RecyclerViewActivity : Activity() {
+class ImTalkRecycleView : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

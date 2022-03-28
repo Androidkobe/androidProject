@@ -1,4 +1,4 @@
-package com.example.demo.sundu.developer.stickyheadrecyclerview
+package com.example.demo.sundu.recycleview.citylist
 
 import android.app.Activity
 import android.os.Bundle
@@ -6,14 +6,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.demo.R
 import kotlinx.android.synthetic.main.activity_develop_recycleview.*
 
-class StickyHeadRecyclerViewActivity : Activity() {
+class CityHeadRecycleView : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sticky_recyclerview)
         mRecycleView.layoutManager = LinearLayoutManager(baseContext)
         var data = createData()
         mRecycleView.adapter = StickyRecyclerViewAdapter(data)
-        var decoration = StickyDecoration(baseContext,object :DecorationCallback{
+        var decoration = StickyDecoration(baseContext,object : DecorationCallback {
             override fun getGroupString(position: Int): String {
                 return data.get(position).tite;
             }

@@ -1,4 +1,4 @@
-package com.example.demo.sundu.developer.recycleview
+package com.example.demo.sundu.recycleview.imtalk
 
 data class DevelopItemData(var title: String, var url: String) {
 
