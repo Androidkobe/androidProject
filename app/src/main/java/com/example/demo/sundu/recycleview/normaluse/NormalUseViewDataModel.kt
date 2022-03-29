@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.demo.sundu.recycleview.citylist.CityHeadRecycleView
 import com.example.demo.sundu.recycleview.imtalk.ImTalkRecycleView
+import com.example.demo.sundu.recycleview.normaluse.animation.AnimationRecycleView
 import com.example.demo.sundu.recycleview.normaluse.itemdecoration.DecorationRecycleView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.asFlow
@@ -20,6 +21,7 @@ class NormalUseViewDataModel : ViewModel() {
 
     init {
         sourceMap["分割线-ItemDecoration"] = DecorationRecycleView::class.java
+        sourceMap["item动画"] = AnimationRecycleView::class.java
     }
 
     var datalist = mutableListOf<RecyclerViewItem>()
