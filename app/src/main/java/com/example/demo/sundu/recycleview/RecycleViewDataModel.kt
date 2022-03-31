@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.demo.sundu.recycleview.citylist.CityHeadRecycleView
+import com.example.demo.sundu.recycleview.customlayoutone.CustomLayoutOneRecycleView
 import com.example.demo.sundu.recycleview.imtalk.ImTalkRecycleView
 import com.example.demo.sundu.recycleview.normaluse.NormalUseRecycleViewActivity
 import kotlinx.coroutines.Dispatchers
@@ -19,9 +20,10 @@ class RecycleViewDataModel : ViewModel() {
     var sourceMap = mutableMapOf<String, Class<*>>()
 
     init {
-       sourceMap["基本使用"] = NormalUseRecycleViewActivity::class.java
+        sourceMap["基本使用"] = NormalUseRecycleViewActivity::class.java
         sourceMap["城市列表"] = CityHeadRecycleView::class.java
         sourceMap["对话"] = ImTalkRecycleView::class.java
+        sourceMap["自定义layout(一)"] = CustomLayoutOneRecycleView::class.java
     }
 
     var datalist = mutableListOf<RecyclerViewItem>()

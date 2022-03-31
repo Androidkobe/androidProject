@@ -1,15 +1,15 @@
 package com.example.demo.sundu.recycleview.citylist
 
 import android.content.Context
+import android.graphics.*
+import android.text.TextPaint
+import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import android.text.TextPaint
-import android.graphics.*
-import android.util.Log
-import android.text.TextUtils
 
 
-class StickyDecoration:RecyclerView.ItemDecoration {
+class StickyDecoration : RecyclerView.ItemDecoration {
 
     private var callback: DecorationCallback? = null
     private var textPaint: TextPaint? = null
@@ -17,7 +17,7 @@ class StickyDecoration:RecyclerView.ItemDecoration {
     private var topGap = 0
     private var fontMetrics: Paint.FontMetrics? = null
 
-    constructor(context:Context,callback: DecorationCallback){
+    constructor(context: Context, callback: DecorationCallback) {
         this.callback = callback
         paint = Paint()
         paint?.color = Color.RED
@@ -41,24 +41,24 @@ class StickyDecoration:RecyclerView.ItemDecoration {
     var i = 0
     override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
         super.onDrawOver(c, parent, state)
-        Log.e("sundu","sticky onDrawOver = ${i++}")
         val itemCount = state.itemCount
-        val childCount: Int = parent.getChildCount()
-        val left: Int = parent.getPaddingLeft()
-        val right: Int = parent.getWidth() - parent.getPaddingRight()
-        val lineHeight = textPaint!!.textSize + fontMetrics!!.descent
-
+        val childCount: Int = parent.childCount
+        val left: Int = parent.paddingLeft
+        val right: Int = parent.width - parent.paddingRight
+        Log.e("sundu", "item cont = $itemCount + childCount = $childCount")
         var preGroupId: String = ""
-        var groupId: String  = ""
+        var groupId: String = ""
         for (i in 0 until childCount) {
             val view: View = parent.getChildAt(i)
             val position: Int = parent.getChildAdapterPosition(view)
             preGroupId = groupId
+            //上一个的组名
             groupId = callback!!.getGroupString(position)
             if (groupId == preGroupId) continue
-
+            //组名不能为空
             val textLine: String = callback!!.getGroupString(position)
             if (TextUtils.isEmpty(textLine)) continue
+            //当前View 新组员的头结点
             val viewBottom = view.bottom
             var textY = Math.max(topGap, view.top).toFloat()
             if (position + 1 < itemCount) {
@@ -68,7 +68,6 @@ class StickyDecoration:RecyclerView.ItemDecoration {
                     textY = viewBottom.toFloat()
                 }
             }
-//            Log.e("sundud","sticky onDrawOver $textY")
             c.drawRect(left.toFloat(), textY - topGap, right.toFloat(), textY, paint!!)
             c.drawText(textLine, left.toFloat(), textY, textPaint!!)
         }

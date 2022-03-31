@@ -22,17 +22,17 @@ class CityHeadRecycleView : Activity() {
         mRecycleView.adapter?.notifyDataSetChanged()
     }
 
-    fun createData() : MutableList<StickInfo>{
+    private fun createData(): MutableList<StickInfo> {
         var list = mutableListOf<StickInfo>()
-        list.add(StickInfo("a","a1"))
-        list.add(StickInfo("a","a2"))
-        list.add(StickInfo("a","a3"))
-        list.add(StickInfo("a","a4"))
-        list.add(StickInfo("b","b1"))
-        list.add(StickInfo("b","b1"))
-        list.add(StickInfo("b","b2"))
-        list.add(StickInfo("b","b3"))
-        list.add(StickInfo("b","b4"))
+        list.add(StickInfo("a", "a1"))
+        list.add(StickInfo("a", "a2"))
+        list.add(StickInfo("a", "a3"))
+        list.add(StickInfo("a", "a4"))
+        list.add(StickInfo("b", "b1"))
+        list.add(StickInfo("b", "b1"))
+        list.add(StickInfo("b", "b2"))
+        list.add(StickInfo("b", "b3"))
+        list.add(StickInfo("b", "b4"))
         list.add(StickInfo("c","c1"))
         list.add(StickInfo("c","c2"))
         list.add(StickInfo("c","c3"))
