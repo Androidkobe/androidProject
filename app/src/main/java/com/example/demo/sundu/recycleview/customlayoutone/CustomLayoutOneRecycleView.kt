@@ -20,7 +20,7 @@ class CustomLayoutOneRecycleView : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(viewBind.root)
-        viewBind.recyclerview.config(viewModel.listData, lm = CustomLayoutManagerOne()) {
+        viewBind.recyclerview.config(viewModel.listData, lm = CustomLayoutManagerTest()) {
             addType<CustomLayoutOneData, CustomLayoutOneDataViewHolder>(R.layout.common_recycle_text_item_layout) { itemdata, holdview, postion, proload ->
 
                 with(holdview.bind) {
