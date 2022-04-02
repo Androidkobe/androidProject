@@ -16,10 +16,12 @@ import com.example.demo.sundu.custview.CustomViewActivity
 import com.example.demo.sundu.developer.DeveloperActivity
 import com.example.demo.sundu.jetpack.JetPackActivity
 import com.example.demo.sundu.kotlin.KotlinActivity
+import com.example.demo.sundu.lifecycle.LifecycleActivity
 import com.example.demo.sundu.ontouch.TouchActivity
 import com.example.demo.sundu.parcelable.ParcelableActivity
 import com.example.demo.sundu.recycleview.RecycleViewActivity
 import com.example.demo.sundu.thirdparty.ThirdPartyFrameWorkActivity
+import com.example.demo.sundu.threadpoll.ThreadPollTest
 import com.example.demo.sundu.touchevent.MovieLineActivity
 import com.example.demo.sundu.webview.MyWebViewActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -65,6 +67,8 @@ class MainActivity : AppCompatActivity() {
         dataMap["Touch"] = TouchActivity::class.java
         dataMap["ThirdParty"] = ThirdPartyFrameWorkActivity::class.java
         dataMap["党建云"] = YunTaskActivity::class.java
+        dataMap["ThreadPoll"] = ThreadPollTest::class.java
+        dataMap["lifecycle"] = LifecycleActivity::class.java
     }
 
 
