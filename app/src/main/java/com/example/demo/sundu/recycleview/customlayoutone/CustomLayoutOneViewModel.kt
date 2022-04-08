@@ -16,7 +16,7 @@ class CustomLayoutOneViewModel : ViewModel() {
     fun loadData() {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                for (i: Int in 1..100) {
+                for (i: Int in 0..40) {
                     listData.add(CustomLayoutOneData("第 $i 项"))
                 }
             }
