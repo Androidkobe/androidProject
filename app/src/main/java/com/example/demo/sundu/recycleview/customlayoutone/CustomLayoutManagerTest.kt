@@ -24,8 +24,10 @@ class CustomLayoutManagerTest : RecyclerView.LayoutManager() {
         if (state.itemCount <= 0 || state.isPreLayout) {
             return
         }
-        detachAndScrapAttachedViews(recycler)
-        fillLayoutChild(recycler, state, 0, 0, getAbleHeight())
+        if (childCount <= 0) {
+            detachAndScrapAttachedViews(recycler)
+            fillLayoutChild(recycler, state, 0, 0, getAbleHeight())
+        }
     }
 
 
@@ -86,7 +88,7 @@ class CustomLayoutManagerTest : RecyclerView.LayoutManager() {
         lastView?.let {
             if (lastView.bottom >= getAbleHeight()) {
                 var lastPostion = getPosition(lastView)
-                if (lastPostion == state.itemCount) {
+                if (lastPostion == state.itemCount - 1) {
                     var offect = (lastView.bottom - getAbleHeight()).coerceAtMost(scrolloffect)
                     Log.e("sundu", "last view move $offect")
                     return offect
@@ -105,7 +107,7 @@ class CustomLayoutManagerTest : RecyclerView.LayoutManager() {
                             state,
                             lastPostion + 1,
                             lastView.bottom,
-                            lastView.bottom + scrolloffect
+                            scrolloffect
                         )
                         var fillLastView = getChildAt(childCount - 1)
                         fillLastView?.let {
