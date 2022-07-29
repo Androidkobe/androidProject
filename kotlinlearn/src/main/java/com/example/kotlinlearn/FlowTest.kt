@@ -1,12 +1,19 @@
 package com.example.kotlinlearn
 
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.launch
 
+
+fun main(){
+    println("开始  ${getThreadInfo()}")
+    FlowTest().test()
+    Thread.sleep(100000)
+}
 class FlowTest {
 
     private fun getThreadInfo(): String {
@@ -24,14 +31,15 @@ class FlowTest {
 
     }.flowOn(Dispatchers.Default)
 
-    fun main() = runBlocking<Unit> {
-        println("开始  ${getThreadInfo()}")
-        simple().collect { value ->
-            println("接收  ${getThreadInfo()}")
-            println(value)
+
+    fun test(){
+         CoroutineScope(Dispatchers.IO).launch{
+             simple().collect { value ->
+                 println("接收  ${com.example.kotlinlearn.getThreadInfo()}")
+                 println(value)
+             }
         }
     }
-
 
 
 //suspend fun performRequest(request: Int): String {

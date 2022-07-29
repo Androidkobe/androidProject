@@ -50,7 +50,8 @@ fun main() {
     // asyncTest2()//并发执行
     //launch 返回job 执行无返回值  async 执行返回 Deferred 有返回值
     //jobTest()//线程控制  === Thread  job 控制协程中子线程的取消 开始
-    execptionTest()
+//    execptionTest()
+    cancelTest()
     Thread.sleep(10000)
 }
 
@@ -96,18 +97,29 @@ fun asyncTest1() {
             println("顺序执行2")
             "HelloWord 2 "//这里返回值为HelloWord
         }
-
         //等待async执行完成获取返回值,此处并不会阻塞线程,而是挂起,将线程的执行权交出去
         //等到async的协程体执行完毕后,会恢复协程继续往下执行
 
         val result = deferred.await()
         println("result == $result")
         val result2 = deferred2.await()
+
         println("result2 == $result2")
 
     }
     println("end")
 }
+suspend fun fetchTwoDocs() =        // 在任何调度器上调用（任何线程包括主线程）
+    coroutineScope {
+        val deferreds = listOf(     // 同时获取两个文档
+            async { //
+                 },  // 异步返回第一个文档
+            async {
+
+            }   // 异步返回第二个文档
+        )
+        deferreds.awaitAll()        // 使用 awaitAll 等待两个网络请求返回
+    }
 
 //async 并发
 fun asyncTest2() {
@@ -178,6 +190,44 @@ fun execptionTest() {
             println("6. $e")
         }
     }
+}
+
+fun cancelTest(){
+    println("parent thread name = ${Thread.currentThread().name} ")
+//    var scope = CoroutineScope(Dispatchers.IO)
+//    var job = scope.launch(scope.coroutineContext,CoroutineStart.LAZY) {
+//        println("this thread name = ${Thread.currentThread().name} 执行开始")
+//        sleep(1000)
+//        println("this thread name = ${Thread.currentThread().name} 执行完成")
+//    }
+//    println("停止 300 ms")
+//    sleep(300)
+//    job.cancel()
+//    println("取消job")
+    var scope = CoroutineScope(Dispatchers.IO)
+
+    val job  = scope.launch {
+//        launch {
+//            repeat(1000) { i ->
+//                println("job: I'm sleeping $i ...")
+//                delay(500L)
+//            }
+//        }
+//        println("this thread name = ${Thread.currentThread().name} 执行开始")
+//        delay(5000)
+//        println("this thread name = ${Thread.currentThread().name} 执行完成")
+        try {
+            withTimeout(1300L) {
+                repeat(1000) { i ->
+                    println("I'm sleeping $i ...")
+                    delay(500L)
+                }
+            }
+        }catch (e:Exception){
+            println(e.toString())
+        }
+    }
+
 }
 
 

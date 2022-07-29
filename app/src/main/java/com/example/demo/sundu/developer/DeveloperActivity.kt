@@ -9,7 +9,9 @@ import com.example.demo.R
 import com.example.demo.sundu.developer.immersive.ImmerSiveActivity
 import com.example.demo.sundu.developer.netingscrollview.NestingScrollActivity
 import com.example.demo.sundu.developer.nineimageload.NineImgLoadActivity
+import com.example.demo.sundu.developer.permission.PermissionActivity
 import com.example.demo.sundu.developer.sensor.SenSorActivity
+import com.example.demo.sundu.developer.sensorgyr.GyrActivity
 import com.example.demo.sundu.developer.viewapi.ViewScrollToApiActivity
 import com.example.demo.sundu.developer.viewpager.ViewPager2Activity
 import com.example.demo.sundu.developer.viewpager.ViewPagerActivity
@@ -71,6 +73,18 @@ class DeveloperActivity : AppCompatActivity() {
                         ViewScrollToApiActivity::class.java
                     )
                 )
+                7 -> startActivity(
+                    Intent(
+                        this@DeveloperActivity,
+                        GyrActivity::class.java
+                    )
+                )
+                8 -> startActivity(
+                    Intent(
+                        this@DeveloperActivity,
+                        PermissionActivity::class.java
+                    )
+                )
             }
         }
     }
@@ -84,6 +98,8 @@ class DeveloperActivity : AppCompatActivity() {
         stringArray.add("SenSor")
         stringArray.add("NestingScrollActivity")
         stringArray.add("ViewScrollApi")
+        stringArray.add("SenSor-陀螺仪")
+        stringArray.add("Permission")
         return stringArray
     }
 }

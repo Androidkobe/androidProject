@@ -16,7 +16,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity
+            android:name=".sundu.developer.permission.PermissionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".sundu.developer.sensorgyr.GyrActivity"
+            android:exported="false" />
         <activity
             android:name=".other.yuntask.YunTaskActivity"
             android:exported="true" />
@@ -30,7 +35,7 @@
         <activity android:name=".sundu.recycleview.normaluse.itemdecoration.DecorationRecycleView" />
         <activity android:name=".sundu.recycleview.normaluse.NormalUseRecycleViewActivity" />
         <activity android:name=".sundu.developer.netingscrollview.NestingScrollActivity" />
-        <activity android:name="com.example.demo.sundu.developer.viewapi.ViewScrollToApiActivity" />
+        <activity android:name=".sundu.developer.viewapi.ViewScrollToApiActivity" />
         <activity android:name=".sundu.developer.netingscrollview.three.CoordinatorLayoutActivity" />
         <activity android:name=".sundu.developer.netingscrollview.one.EventDispatchPlanActivity" />
         <activity android:name=".sundu.developer.netingscrollview.two.NestingScrollActivity" />

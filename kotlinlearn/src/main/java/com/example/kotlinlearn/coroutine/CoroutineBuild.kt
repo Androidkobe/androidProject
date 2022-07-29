@@ -53,13 +53,14 @@ private fun GlobalScope_Launch() {
  * Dispatchers.IO 底层实现了CoroutineContext
  * 生命周期由Dispatchers.IO 控制
  */
-private fun CoroutineScope_Launch() {
+private suspend fun CoroutineScope_Launch() {
     log("start")
     //开启一个IO模式的协程，通过协程上下文创建一个CoroutineScope对象,需要一个类型为CoroutineContext的参数
     val job = CoroutineScope(Dispatchers.IO).launch {
         delay(1000)//1秒无阻塞延迟（默认单位为毫秒）
         log("CoroutineScope.launch")
     }
+    job.cancelAndJoin()
     log("end")//主线程继续，而协程被延迟
 }
 
