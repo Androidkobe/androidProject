@@ -6,6 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.demo.R
+import com.example.demo.sundu.developer.fullscreen.FullScreenActivity
 import com.example.demo.sundu.developer.immersive.ImmerSiveActivity
 import com.example.demo.sundu.developer.netingscrollview.NestingScrollActivity
 import com.example.demo.sundu.developer.nineimageload.NineImgLoadActivity
@@ -85,6 +86,12 @@ class DeveloperActivity : AppCompatActivity() {
                         PermissionActivity::class.java
                     )
                 )
+                9 -> startActivity(
+                    Intent(
+                        this@DeveloperActivity,
+                        FullScreenActivity::class.java
+                    )
+                )
             }
         }
     }
@@ -100,6 +107,7 @@ class DeveloperActivity : AppCompatActivity() {
         stringArray.add("ViewScrollApi")
         stringArray.add("SenSor-陀螺仪")
         stringArray.add("Permission")
+        stringArray.add("fullScreen")
         return stringArray
     }
 }

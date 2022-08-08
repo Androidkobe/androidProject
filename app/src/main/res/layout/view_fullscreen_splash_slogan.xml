@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/view_slogan_image"
+        android:layout_width="@dimen/splash_fullscreen_slogan_icon"
+        android:layout_height="@dimen/splash_fullscreen_slogan_icon"
+        android:layout_marginLeft="@dimen/splash_fullscreen_slogan_icon_left_margin"
+        android:layout_marginTop="@dimen/splash_fullscreen_slogan_icon_top_margin"
+        android:layout_marginBottom="@dimen/splash_fullscreen_slogan_icon_bottom_margin"
+        android:scaleType="fitCenter" />
+
+    <TextView
+        android:id="@+id/view_app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/splash_fullscreen_slogan_text_left_margin"
+        android:layout_toRightOf="@id/view_slogan_image"
+        android:textColor="@color/splash_slogan_app_name_color_for_video_ad"
+        android:textSize="@dimen/splash_fullscreen_slogan_app_name_size" />
+
+    <LinearLayout
+        android:id="@+id/view_skip_button_nearby"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:clickable="false"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/splash_fullscreen_skip_nearby_margin">
+
+        <TextView
+            android:id="@+id/view_skip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/splash_fullscreen_skip_bg"
+            android:gravity="center"
+            android:minWidth="84dp"
+            android:minHeight="@dimen/splash_fullscreen_skip_height"
+            android:paddingLeft="14dp"
+            android:paddingTop="8dp"
+            android:paddingRight="14dp"
+            android:paddingBottom="8dp"
+            android:text="跳过广告"
+            android:textColor="@color/splash_skip_text_color_for_video_ad"
+            android:textSize="@dimen/splash_fullscreen_slogan_skip_size" />
+    </LinearLayout>
+
+</RelativeLayout>

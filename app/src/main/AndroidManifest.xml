@@ -28,6 +28,7 @@
         <activity
             android:name=".sundu.custview.scaleimage.ScaleImageActivity"
             android:exported="false" />
+        <activity android:name=".sundu.developer.fullscreen.FullScreenActivity" />
         <activity android:name=".sundu.lifecycle.LifecycleActivity" />
         <activity android:name=".sundu.threadpoll.ThreadPollTest" />
         <activity android:name=".sundu.recycleview.customlayoutone.CustomLayoutOneRecycleView" />

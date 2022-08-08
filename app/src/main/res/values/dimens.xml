@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <dimen name="splash_fullscreen_slogan_icon">36dp</dimen>
+    <dimen name="splash_fullscreen_slogan_icon_left_margin">18dp</dimen>
+    <dimen name="splash_fullscreen_slogan_icon_bottom_margin">18dp</dimen>
+    <dimen name="splash_fullscreen_slogan_icon_top_margin">18dp</dimen>
+    <dimen name="splash_fullscreen_slogan_app_name_size">14dp</dimen>
+    <dimen name="splash_fullscreen_slogan_skip_size">14dp</dimen>
+    <dimen name="splash_fullscreen_slogan_text_left_margin">14dp</dimen>
+    <dimen name="splash_fullscreen_skip_nearby_margin">18dp</dimen>
+    <dimen name="splash_fullscreen_skip_height">28dp</dimen>
+    <dimen name="splash_fullscreen_skip_text_margin">15dp</dimen>
+    <dimen name="splash_fullscreen_share_margin_right">18dp</dimen>
 </resources>

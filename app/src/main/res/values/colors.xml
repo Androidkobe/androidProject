@@ -8,4 +8,16 @@
     <color name="light_blue_A200">#FF40C4FF</color>
     <color name="light_blue_A400">#FF00B0FF</color>
     <color name="black_overlay">#66000000</color>
+
+    <!--splash dark mode bg color-->
+    <color name="splash_bg_color">#ffffff</color>
+    <color name="splash_skip_color">#cccccc</color>
+    <color name="splash_fullscreen_skip_color">#40000000</color>
+    <!-- splash slogan text color -->
+    <color name="splash_slogan_app_name_color_for_image_ad">#e6000000</color>
+    <color name="splash_slogan_app_name_color_for_video_ad">@android:color/white</color>
+    <color name="splash_slogan_app_name_shadow_color_for_video_ad">#000000</color>
+    <!-- splash skip button text color-->
+    <color name="splash_skip_text_color_for_image_ad">#b3000000</color>
+    <color name="splash_skip_text_color_for_video_ad">@android:color/white</color>
 </resources>
