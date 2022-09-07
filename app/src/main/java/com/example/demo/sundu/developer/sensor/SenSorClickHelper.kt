@@ -3,7 +3,6 @@ package com.example.demo.sundu.developer.sensor
 import android.app.Activity
 import android.app.Service
 import android.os.Vibrator
-import android.util.Log
 import android.widget.Toast
 
 
@@ -29,8 +28,8 @@ class SenSorClickHelper(var activity: Activity, val data: SenSorData, val result
 
     val shareListener = object : SenSorHelper.ShakeListener {
         override fun onShake() {
-            Log.e("sundu", "震动")
-            vibrate(2000)
+//            Log.e("sundu", "震动")
+            //   vibrate(2000)
         }
 
     }

@@ -12,6 +12,11 @@ public class GyrActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.developer_sensor_gyr);
-        findViewById(R.id.start).setOnClickListener(v -> new SenSorHelper().start(GyrActivity.this));
+        findViewById(R.id.start).setOnClickListener(v -> new SenSorGyrHelper().registerListener(GyrActivity.this, new SenSorGyrHelper.SensorRotateListener() {
+            @Override
+            public void rotate(boolean left) {
+
+            }
+        }));
     }
 }
