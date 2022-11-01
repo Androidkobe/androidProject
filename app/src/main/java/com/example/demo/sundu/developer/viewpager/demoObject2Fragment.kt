@@ -30,8 +30,8 @@ class DemoObjectFragment : Fragment() {
         arguments?.takeIf {
             it.containsKey(ARG_OBJECT)
         }?.apply {
-            val textView: TextView = view.text
-            textView.text = getInt(ARG_OBJECT).toString()
+//            val textView: TextView = view.text
+//            textView.text = getInt(ARG_OBJECT).toString()
         }
     }
 }

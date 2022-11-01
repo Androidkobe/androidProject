@@ -1,19 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <androidx.viewpager2.widget.ViewPager2
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.viewpager2.widget.ViewPager2 xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
     </androidx.viewpager2.widget.ViewPager2>
-</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/hideshow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="选项隐藏显示" />
+
+        <Button
+            android:id="@+id/set"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="设置" />
+
+        <LinearLayout
+            android:id="@+id/check_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/color_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="主色" />
+
+            <CheckBox
+                android:id="@+id/color_mute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="柔和色" />
+
+            <CheckBox
+                android:id="@+id/color_light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="柔和明亮色" />
+
+            <CheckBox
+                android:id="@+id/color_dark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="柔和暗色" />
+
+            <CheckBox
+                android:id="@+id/color_va_light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="活跃明亮色" />
+
+            <CheckBox
+                android:id="@+id/color_va_dark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="活跃暗色" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioGroup
+                android:id="@+id/radiogroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/tb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="上-下" />
+
+                <RadioButton
+                    android:id="@+id/bt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="下-上" />
+
+                <RadioButton
+                    android:id="@+id/lr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="左-右" />
+
+                <RadioButton
+                    android:id="@+id/rl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="右-左" />
+
+                <RadioButton
+                    android:id="@+id/tlbr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="上左-下右" />
+
+                <RadioButton
+                    android:id="@+id/trbl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="上右-下左" />
+
+                <RadioButton
+                    android:id="@+id/bltr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="下左-上右" />
+
+                <RadioButton
+                    android:id="@+id/brtl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="下右-上左" />
+            </RadioGroup>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
