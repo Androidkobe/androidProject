@@ -13,9 +13,12 @@ import com.example.demo.sundu.developer.nineimageload.NineImgLoadActivity
 import com.example.demo.sundu.developer.permission.PermissionActivity
 import com.example.demo.sundu.developer.sensor.SenSorActivity
 import com.example.demo.sundu.developer.sensorgyr.GyrActivity
+import com.example.demo.sundu.developer.svgedit.SvgEditeActivity
 import com.example.demo.sundu.developer.viewapi.ViewScrollToApiActivity
 import com.example.demo.sundu.developer.viewpager.ViewPager2Activity
 import com.example.demo.sundu.developer.viewpager.ViewPagerActivity
+import com.example.demo.sundu.developer.viewpager3.ViewPager3Activity
+import com.example.demo.sundu.developer.viewpager4.ViewPager4Activity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class DeveloperActivity : AppCompatActivity() {
@@ -92,6 +95,24 @@ class DeveloperActivity : AppCompatActivity() {
                         FullScreenActivity::class.java
                     )
                 )
+                10 -> startActivity(
+                    Intent(
+                        this@DeveloperActivity,
+                        SvgEditeActivity::class.java
+                    )
+                )
+                11 -> startActivity(
+                    Intent(
+                        this@DeveloperActivity,
+                        ViewPager3Activity::class.java
+                    )
+                )
+                12 -> startActivity(
+                    Intent(
+                        this@DeveloperActivity,
+                        ViewPager4Activity::class.java
+                    )
+                )
             }
         }
     }
@@ -108,6 +129,9 @@ class DeveloperActivity : AppCompatActivity() {
         stringArray.add("SenSor-陀螺仪")
         stringArray.add("Permission")
         stringArray.add("fullScreen")
+        stringArray.add("svgEdite")
+        stringArray.add("相近色-渐变")
+        stringArray.add("相近色")
         return stringArray
     }
 }

@@ -17,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".sundu.developer.svgedit.SvgEditeActivity"
+            android:exported="false" />
+        <activity
             android:name=".sundu.developer.permission.PermissionActivity"
             android:exported="false" />
         <activity
@@ -78,6 +81,8 @@
         <activity android:name=".sundu.jetpack.navigatin.JetPackNavigationActivity" />
         <activity android:name=".sundu.kotlin.coroutine.KotlinCoroutineActivity" />
         <activity android:name=".sundu.developer.viewpager.ViewPager2Activity" />
+        <activity android:name=".sundu.developer.viewpager3.ViewPager3Activity" />
+        <activity android:name=".sundu.developer.viewpager4.ViewPager4Activity" />
         <activity android:name=".sundu.developer.DeveloperActivity" />
         <activity android:name=".sundu.recycleview.RecycleViewActivity" />
         <activity android:name=".sundu.custview.downloadview.DownLoadViewActivity" />
