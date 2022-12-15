@@ -34,7 +34,7 @@ class DemoObject3Fragment : Fragment() {
 
     var created = false
 
-    val bgColors = arrayOf(0x19C20C, 0xC44DFF, 0xFF3362, 0x00C0C7, 0xFCA311, 0x00ABF5)
+    val bgColors = arrayOf(0xC44DFF,0x00ABF5,0xFCA311,0xFF3362,0x00C0C7,0x19C20C)
 
     init {
         colorsMap[0] = R.mipmap.res_one
