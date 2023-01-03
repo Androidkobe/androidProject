@@ -237,11 +237,15 @@ class SenSorGyrHelper : SensorEventListener {
         return object : TimerTask() {
             override fun run() {
                 Log.d("sundu", "============== 晃动了 =========================")
+                if (listener != null) {
+                    listener?.rotate(false)
+                }
+                cancelListener()
             }
         }
     }
 
-    fun cancel() {
+    fun cancelListener() {
         listener = null
         try {
             mSensorManager!!.unregisterListener(this, magneticSensor)

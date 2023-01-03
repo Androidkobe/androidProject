@@ -1,6 +1,8 @@
 package com.example.demo.sundu.developer.sensorgyr;
 
+import android.app.Service;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,14 +19,20 @@ public class GyrActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 SenSorGyrHelper sen = new SenSorGyrHelper();
-                sen.setThreshold(8000, 30, 50);
+                sen.setThreshold(3000, 30, 50);
                 sen.registerListener(GyrActivity.this, new SenSorGyrHelper.SensorRotateListener() {
                     @Override
                     public void rotate(boolean left) {
-
+                        vibrate(2000);
                     }
                 });
             }
         });
+    }
+
+
+    private void vibrate(long milliseconds) {
+        Vibrator vib = (Vibrator) getSystemService(Service.VIBRATOR_SERVICE);
+        vib.vibrate(milliseconds);
     }
 }
