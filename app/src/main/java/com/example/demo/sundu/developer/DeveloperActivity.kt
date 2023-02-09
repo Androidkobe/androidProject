@@ -6,6 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.demo.R
+import com.example.demo.sundu.developer.compass.CompassActivity
 import com.example.demo.sundu.developer.fullscreen.FullScreenActivity
 import com.example.demo.sundu.developer.immersive.ImmerSiveActivity
 import com.example.demo.sundu.developer.netingscrollview.NestingScrollActivity
@@ -13,6 +14,7 @@ import com.example.demo.sundu.developer.nineimageload.NineImgLoadActivity
 import com.example.demo.sundu.developer.permission.PermissionActivity
 import com.example.demo.sundu.developer.sensor.SenSorActivity
 import com.example.demo.sundu.developer.sensorgyr.GyrActivity
+import com.example.demo.sundu.developer.sensorxyz.SenSorxyz
 import com.example.demo.sundu.developer.svgedit.SvgEditeActivity
 import com.example.demo.sundu.developer.viewapi.ViewScrollToApiActivity
 import com.example.demo.sundu.developer.viewpager.ViewPager2Activity
@@ -113,6 +115,18 @@ class DeveloperActivity : AppCompatActivity() {
                         ViewPager4Activity::class.java
                     )
                 )
+                13 -> startActivity(
+                    Intent(
+                        this@DeveloperActivity,
+                        SenSorxyz::class.java
+                    )
+                )
+                14 -> startActivity(
+                    Intent(
+                        this@DeveloperActivity,
+                        CompassActivity::class.java
+                    )
+                )
             }
         }
     }
@@ -132,6 +146,8 @@ class DeveloperActivity : AppCompatActivity() {
         stringArray.add("svgEdite")
         stringArray.add("相近色-渐变")
         stringArray.add("相近色")
+        stringArray.add("陀螺仪-xyz")
+        stringArray.add("指南针")
         return stringArray
     }
 }

@@ -87,6 +87,8 @@
         <activity android:name=".sundu.recycleview.RecycleViewActivity" />
         <activity android:name=".sundu.custview.downloadview.DownLoadViewActivity" />
         <activity android:name=".sundu.touchevent.MovieLineActivity" />
+        <activity android:name=".sundu.developer.sensorxyz.SenSorxyz" />
+        <activity android:name=".sundu.developer.compass.CompassActivity" />
 
         <service
             android:name="com.tencent.smtt.export.external.DexClassLoaderProviderService"
