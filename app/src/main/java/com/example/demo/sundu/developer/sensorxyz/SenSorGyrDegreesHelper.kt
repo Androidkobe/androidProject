@@ -31,6 +31,20 @@ class SenSorGyrDegreesHelper : SensorEventListener {
 
     private var mContext: Context? = null
 
+    private var firstXOrientation = 0.0
+
+    private var firstYOrientation = 0.0
+
+    private var firstZOrientation = 0.0
+
+    private var LOAD_FIRST_ORIENTATION = false
+
+    private var ANGLE = 70
+
+    private var intervalX: Array<Int>? = null
+    private var intervalY: Array<Int>? = null
+    private var intervalZ: Array<Int>? = null
+
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     fun registerListener(
         context: Context,
@@ -66,14 +80,126 @@ class SenSorGyrDegreesHelper : SensorEventListener {
         if (event != null && mSensorManager != null) {
             SensorManager.getRotationMatrixFromVector(
                 r, event.values
-            );
+            )
             //values从这里返回
             SensorManager.getOrientation(r, values)
-            var x = toDegrees(values[1].toDouble())
-            var y = toDegrees(values[2].toDouble())
-            var z = toDegrees(values[0].toDouble())
-            Log.d("sundu", "a = ${x} , b = ${y} ,z = ${z}")
-            mViewModel?.sendData(x, y, z)
+
+            if (!LOAD_FIRST_ORIENTATION) {
+                firstXOrientation = getxXOrientation(values[1].toDouble(), values[0].toDouble())
+                firstYOrientation = getyOrientation(values[2].toDouble())
+                firstZOrientation = getzOrientation(values[0].toDouble())
+                intervalX = setInterval(firstXOrientation.toInt(), angle = ANGLE)
+                intervalY = setInterval(firstYOrientation.toInt(), angle = ANGLE)
+                intervalZ = setInterval(firstZOrientation.toInt(), angle = ANGLE)
+                LOAD_FIRST_ORIENTATION = true
+                return
+            }
+            var currentXOrientation =
+                getxXOrientation(values[1].toDouble(), values[0].toDouble()).toInt()
+            var currentYOrientation = getyOrientation(values[2].toDouble()).toInt()
+            var currentZOrientation = getzOrientation(values[0].toDouble()).toInt()
+
+            var xExt = exceedSetThreshold(currentXOrientation, intervalX)
+            // var yExt = exceedSetThreshold(firstYOrientation.toInt(),intervalY)
+            // var zExt = exceedSetThreshold(firstZOrientation.toInt(),intervalZ)
+
+            intervalX?.let {
+                Log.e("sundu", "X $currentXOrientation [${it[0]}-${it[1]}] $xExt")
+            }
+//            intervalY?.let {
+//                Log.e("sundu","Y $currentYOrientation [${it[0]}-${it[1]}] $yExt")
+//            }
+//
+//            intervalZ?.let {
+//                Log.e("sundu","Y $currentZOrientation [${it[0]}-${it[1]}] $zExt")
+//            }
+            if (xExt) {
+                Log.d("sundu", "x 超过$ANGLE 度")
+            }
+
+//            if (yExt){
+//                Log.d("sundu", "y 超过$ANGLE 度")
+//            }
+//
+//            if (zExt){
+//                Log.d("sundu", "z 超过$ANGLE 度")
+//            }
+
+//            Log.d("sundu", "a = ${currentXOrientation} , b = ${currentYOrientation} ,z = ${currentZOrientation}")
+            mViewModel?.sendData(currentXOrientation, currentYOrientation, currentZOrientation)
+        }
+    }
+
+
+    fun getxXOrientation(angradx: Double, angradz: Double): Double {
+        var anglex = toDegrees(angradx)
+        var anglez = toDegrees(angradz)
+        if (anglex < 0 && anglez > 0) {
+            return Math.abs(anglex)
+        } else if (anglex < 0 && anglez < 0) {
+            return 180 + anglex
+        } else if (anglex > 0 && anglez < 0) {
+            return 180 + anglex
+        } else {
+            return 360 - anglex
+        }
+    }
+
+    fun getyOrientation(angrad: Double): Double {
+        var angle = toDegrees(angrad)
+        if (angle > 0) {
+            return angle
+        }
+        return angle + 360
+    }
+
+    fun getzOrientation(angrad: Double): Double {
+        var angle = toDegrees(angrad)
+        if (angle > 0) {
+            return angle
+        }
+        return angle + 360
+    }
+
+    fun setInterval(firstData: Int, angle: Int): Array<Int> {
+        var threshold = angle
+
+        if (threshold >= 180) {
+            threshold = 180 - 1
+        }
+        var left = 0
+        var right = 360
+
+        //正常
+        if (firstData - threshold >= 0 && firstData + threshold <= 360) {
+            left = firstData - threshold
+            right = firstData - threshold + 360
+        }
+
+        //临界 eg 45
+        if (firstData - threshold < 0 && firstData + threshold <= 360) {
+            left = firstData + threshold
+            right = firstData - threshold + 360
+        }
+
+        //临界 eg 355
+        if (firstData - threshold >= 0 && firstData + threshold >= 360) {
+            left = firstData + threshold - 360
+            right = firstData - threshold
+        }
+
+
+        return arrayOf(left, right)
+    }
+
+    private fun exceedSetThreshold(orientation: Int, interval: Array<Int>?): Boolean {
+        interval?.let {
+            if (orientation >= interval[0] && orientation <= interval[1]) {
+                return true
+            }
+            return false
+        } ?: let {
+            return false
         }
     }
 

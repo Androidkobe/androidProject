@@ -25,7 +25,7 @@ class SensorViewModel(application: Application) : AndroidViewModel(application) 
         )
     }
 
-    fun sendData(currentDegreeX: Double, currentDegreeY: Double, currentDegreeZ: Double) {
+    fun sendData(currentDegreeX: Int, currentDegreeY: Int, currentDegreeZ: Int) {
         var senSorData = senSorDataLiveData.value
         senSorData?.x = currentDegreeX.toString()
         senSorData?.y = currentDegreeY.toString()
