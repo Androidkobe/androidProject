@@ -60,7 +60,7 @@ class SenSorGyrDegreesHelper : SensorEventListener {
             mSensorManager!!.registerListener(
                 this,
                 sensor,
-                SensorManager.SENSOR_DELAY_NORMAL
+                SensorManager.SENSOR_DELAY_UI
             )
         }
         listener = sensorRotateListener
@@ -99,23 +99,27 @@ class SenSorGyrDegreesHelper : SensorEventListener {
             var currentYOrientation = getyOrientation(values[2].toDouble()).toInt()
             var currentZOrientation = getzOrientation(values[0].toDouble()).toInt()
 
-            var xExt = exceedSetThreshold(currentXOrientation, intervalX)
-            // var yExt = exceedSetThreshold(firstYOrientation.toInt(),intervalY)
-            // var zExt = exceedSetThreshold(firstZOrientation.toInt(),intervalZ)
+//            var xExt = exceedSetThreshold(currentXOrientation, intervalX)
+            // var yExt = exceedSetThreshold(currentZOrientation,intervalY)
+            var zExt = exceedSetThreshold(
+                currentZOrientation,
+                intervalZ,
+                getReverseCheck(firstZOrientation.toInt())
+            )
 
-            intervalX?.let {
-                Log.e("sundu", "X $currentXOrientation [${it[0]}-${it[1]}] $xExt")
-            }
+//            intervalX?.let {
+//                Log.e("sundu", "X $currentXOrientation [${it[0]}-${it[1]}] $xExt")
+//            }
 //            intervalY?.let {
 //                Log.e("sundu","Y $currentYOrientation [${it[0]}-${it[1]}] $yExt")
 //            }
 //
-//            intervalZ?.let {
-//                Log.e("sundu","Y $currentZOrientation [${it[0]}-${it[1]}] $zExt")
-//            }
-            if (xExt) {
-                Log.d("sundu", "x 超过$ANGLE 度")
+            intervalZ?.let {
+                Log.e("sundu", "Y $currentZOrientation [${it[0]}-${it[1]}] $zExt")
             }
+//            if (xExt) {
+//                Log.d("sundu", "x 超过$ANGLE 度")
+//            }
 
 //            if (yExt){
 //                Log.d("sundu", "y 超过$ANGLE 度")
@@ -173,7 +177,7 @@ class SenSorGyrDegreesHelper : SensorEventListener {
         //正常
         if (firstData - threshold >= 0 && firstData + threshold <= 360) {
             left = firstData - threshold
-            right = firstData - threshold + 360
+            right = firstData + threshold
         }
 
         //临界 eg 45
@@ -192,10 +196,28 @@ class SenSorGyrDegreesHelper : SensorEventListener {
         return arrayOf(left, right)
     }
 
-    private fun exceedSetThreshold(orientation: Int, interval: Array<Int>?): Boolean {
+
+    private fun getReverseCheck(orientation: Int): Boolean {
+        if (orientation > 90 && orientation < 270) {
+            return true
+        }
+        return false
+    }
+
+    private fun exceedSetThreshold(
+        orientation: Int,
+        interval: Array<Int>?,
+        isReverseCheck: Boolean
+    ): Boolean {
         interval?.let {
-            if (orientation >= interval[0] && orientation <= interval[1]) {
-                return true
+            if (isReverseCheck) {
+                if ((orientation <= interval[0] && orientation >= 0) || (orientation >= interval[1] && orientation <= 360)) {
+                    return true
+                }
+            } else {
+                if (orientation >= interval[0] && orientation <= interval[1]) {
+                    return true
+                }
             }
             return false
         } ?: let {

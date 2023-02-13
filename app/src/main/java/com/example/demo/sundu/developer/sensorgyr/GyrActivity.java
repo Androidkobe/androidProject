@@ -19,7 +19,6 @@ public class GyrActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 SenSorGyrHelper sen = new SenSorGyrHelper();
-                sen.setThreshold(3000, 30, 50);
                 sen.registerListener(GyrActivity.this, new SenSorGyrHelper.SensorRotateListener() {
                     @Override
                     public void rotate(boolean left) {
