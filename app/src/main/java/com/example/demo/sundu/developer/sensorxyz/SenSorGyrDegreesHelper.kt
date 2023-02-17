@@ -13,8 +13,10 @@ import java.util.*
 
 class SenSorGyrDegreesHelper : SensorEventListener {
 
+    var TAG = "SenSorGyrDegreesHelper"
+
     //存储旋转矩阵
-    private val r = FloatArray(9)
+    private val rotationMatrix = FloatArray(9)
 
     //用来保存最终的结果
     private val values = FloatArray(3)
@@ -39,7 +41,7 @@ class SenSorGyrDegreesHelper : SensorEventListener {
 
     private var LOAD_FIRST_ORIENTATION = false
 
-    private var ANGLE = 70
+    private var angleThreshold = 35
 
     private var intervalX: Array<Int>? = null
     private var intervalY: Array<Int>? = null
@@ -79,63 +81,59 @@ class SenSorGyrDegreesHelper : SensorEventListener {
     fun handXiaomiCompass(event: SensorEvent?) {
         if (event != null && mSensorManager != null) {
             SensorManager.getRotationMatrixFromVector(
-                r, event.values
+                rotationMatrix, event.values
             )
             //values从这里返回
-            SensorManager.getOrientation(r, values)
+            SensorManager.getOrientation(rotationMatrix, values)
 
             if (!LOAD_FIRST_ORIENTATION) {
-                firstXOrientation = getxXOrientation(values[1].toDouble(), values[0].toDouble())
+                firstXOrientation = getxOrientation(values[1].toDouble(), values[0].toDouble())
                 firstYOrientation = getyOrientation(values[2].toDouble())
                 firstZOrientation = getzOrientation(values[0].toDouble())
-                intervalX = setInterval(firstXOrientation.toInt(), angle = ANGLE)
-                intervalY = setInterval(firstYOrientation.toInt(), angle = ANGLE)
-                intervalZ = setInterval(firstZOrientation.toInt(), angle = ANGLE)
+                intervalX = setInterval(firstXOrientation.toInt(), angle = angleThreshold)
+                intervalY = setInterval(firstYOrientation.toInt(), angle = angleThreshold)
+                intervalZ = setInterval(firstZOrientation.toInt(), angle = angleThreshold)
                 LOAD_FIRST_ORIENTATION = true
                 return
             }
             var currentXOrientation =
-                getxXOrientation(values[1].toDouble(), values[0].toDouble()).toInt()
+                getxOrientation(values[1].toDouble(), values[0].toDouble()).toInt()
             var currentYOrientation = getyOrientation(values[2].toDouble()).toInt()
             var currentZOrientation = getzOrientation(values[0].toDouble()).toInt()
 
-//            var xExt = exceedSetThreshold(currentXOrientation, intervalX)
-            // var yExt = exceedSetThreshold(currentZOrientation,intervalY)
-            var zExt = exceedSetThreshold(
-                currentZOrientation,
-                intervalZ,
-                getReverseCheck(firstZOrientation.toInt())
-            )
-
+            var xExt = exceedSetThreshold(currentXOrientation, intervalX)
+            var yExt = exceedSetThreshold(currentYOrientation, intervalY)
+            var zExt = exceedSetThreshold(currentZOrientation, intervalZ)
+//
+//            var detialX = ""
 //            intervalX?.let {
-//                Log.e("sundu", "X $currentXOrientation [${it[0]}-${it[1]}] $xExt")
+//                detialX = if (isXReverseCheck) "[0-${it[0]}] | [${it[1]}-360]" else "[${it[0]} - ${it[1]}]"
 //            }
+//            Log.d(TAG,"orientation : X $xExt  first: $firstXOrientation curr :$currentXOrientation  check : $detialX")
+
+//            var detialY = ""
 //            intervalY?.let {
-//                Log.e("sundu","Y $currentYOrientation [${it[0]}-${it[1]}] $yExt")
+//                detialY = if (isYReverseCheck) "[0-${it[0]}] | [${it[1]}-360]" else "[${it[0]} - ${it[1]}]"
 //            }
+//            Log.d(TAG,"orientation : Y $yExt   first: $firstYOrientation curr : $currentYOrientation  check : $detialY")
 //
+            var detialZ = ""
             intervalZ?.let {
-                Log.e("sundu", "Y $currentZOrientation [${it[0]}-${it[1]}] $zExt")
+                detialZ = "[0-${it[0]}] | [${it[1]}-360]"
             }
-//            if (xExt) {
-//                Log.d("sundu", "x 超过$ANGLE 度")
+            Log.d(
+                TAG,
+                "orientation : Z $zExt   first: $firstZOrientation curr : $currentZOrientation  check : $detialZ"
+            )
+//            if (xExt || zExt || yExt){
+//                var o = if (xExt) 1 else if(yExt) 2 else 3
+//                notifyShake(SHAKE_TYPE_ORI,o)
 //            }
-
-//            if (yExt){
-//                Log.d("sundu", "y 超过$ANGLE 度")
-//            }
-//
-//            if (zExt){
-//                Log.d("sundu", "z 超过$ANGLE 度")
-//            }
-
-//            Log.d("sundu", "a = ${currentXOrientation} , b = ${currentYOrientation} ,z = ${currentZOrientation}")
-            mViewModel?.sendData(currentXOrientation, currentYOrientation, currentZOrientation)
         }
     }
 
 
-    fun getxXOrientation(angradx: Double, angradz: Double): Double {
+    fun getxOrientation(angradx: Double, angradz: Double): Double {
         var anglex = toDegrees(angradx)
         var anglez = toDegrees(angradz)
         if (anglex < 0 && anglez > 0) {
@@ -173,45 +171,39 @@ class SenSorGyrDegreesHelper : SensorEventListener {
         }
         var left = 0
         var right = 360
+        var type = 0 //计算方式
 
         //正常
         if (firstData - threshold >= 0 && firstData + threshold <= 360) {
             left = firstData - threshold
             right = firstData + threshold
+            type = 0
         }
 
         //临界 eg 45
-        if (firstData - threshold < 0 && firstData + threshold <= 360) {
+        if (firstData - threshold <= 0 && firstData + threshold <= 360) {
             left = firstData + threshold
             right = firstData - threshold + 360
+            type = 1
         }
 
         //临界 eg 355
         if (firstData - threshold >= 0 && firstData + threshold >= 360) {
             left = firstData + threshold - 360
             right = firstData - threshold
+            type = 1
         }
 
-
-        return arrayOf(left, right)
-    }
-
-
-    private fun getReverseCheck(orientation: Int): Boolean {
-        if (orientation > 90 && orientation < 270) {
-            return true
-        }
-        return false
+        return arrayOf(left, right, type)
     }
 
     private fun exceedSetThreshold(
         orientation: Int,
         interval: Array<Int>?,
-        isReverseCheck: Boolean
     ): Boolean {
         interval?.let {
-            if (isReverseCheck) {
-                if ((orientation <= interval[0] && orientation >= 0) || (orientation >= interval[1] && orientation <= 360)) {
+            if (interval[2] == 0) {
+                if ((orientation >= 0 && orientation <= interval[0]) || (orientation >= interval[1] && orientation <= 360)) {
                     return true
                 }
             } else {
