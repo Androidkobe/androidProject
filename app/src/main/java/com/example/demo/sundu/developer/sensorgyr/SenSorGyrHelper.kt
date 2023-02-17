@@ -7,6 +7,7 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.util.Log
 import java.lang.Math.toDegrees
+import java.util.*
 import java.util.concurrent.LinkedBlockingDeque
 import kotlin.math.abs
 import kotlin.math.sqrt
@@ -29,13 +30,16 @@ class SenSorGyrHelper : SensorEventListener {
 
     private var lastZOrientation = 0
 
-    private var ORIENTATION_QUEUE_SIZE = 3
-
-    private var checkTime = 300
+    private var checkTime = 100
 
     private var lastCheckTime = 0L
 
-    private var orientationQueue = LinkedBlockingDeque<Boolean>(ORIENTATION_QUEUE_SIZE)
+    private var ORI_QUEUE_SIZE = 10
+
+    private var orientationCheckQueue = LinkedBlockingDeque<Boolean>()
+    private var orientationQueue = LinkedBlockingDeque<Boolean>(ORI_QUEUE_SIZE)
+
+    private var isOrientationStartShake = false
 
     //传感器控制类
     private var mSensorManager: SensorManager? = null
@@ -72,6 +76,20 @@ class SenSorGyrHelper : SensorEventListener {
             )
         }
         listener = sensorRotateListener
+
+//        var timer = Timer()
+//        timer.schedule(object :TimerTask(){
+//            override fun run() {
+//                Log.e("sundu",orientationQueue.toString())
+//               removeListener()
+//            }
+//
+//        },3*1000)
+    }
+
+
+    fun removeListener() {
+        mSensorManager?.unregisterListener(this, sensor)
     }
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
@@ -133,7 +151,6 @@ class SenSorGyrHelper : SensorEventListener {
 
     fun handXiaomiCompass(event: SensorEvent?) {
         if (event != null && mSensorManager != null) {
-
             if (System.currentTimeMillis() - lastCheckTime < checkTime) {
                 return
             }
@@ -149,65 +166,75 @@ class SenSorGyrHelper : SensorEventListener {
             var currentYOrientation = getyOrientation(values[2].toDouble()).toInt()
             var currentZOrientation = getzOrientation(values[0].toDouble()).toInt()
 
-            if ((lastXOrientation == 0 || lastYOrientation == 0 || lastZOrientation == 0)) {
+            if (lastXOrientation == 0 && lastYOrientation == 0 && lastZOrientation == 0) {
                 lastXOrientation = currentXOrientation
                 lastYOrientation = currentYOrientation
                 lastZOrientation = currentZOrientation
                 return
             }
-
-            var xTwist = false
-            var yTwist = false
-            var zTwist = false
-
-            if (abs(lastXOrientation - currentXOrientation) < 180) {
-                xTwist = isTwist(currentXOrientation, lastXOrientation)
-            }
-
-            if (abs(lastYOrientation - currentYOrientation) < 180) {
-                yTwist = isTwist(currentYOrientation, lastYOrientation)
-            }
-
-            if (abs(lastZOrientation - currentZOrientation) < 180) {
-                zTwist = isTwist(currentZOrientation, lastZOrientation)
-            }
+            var xSpace = abs(currentXOrientation - lastXOrientation)
+            var ySpace = abs(currentYOrientation - lastYOrientation)
+            var zSpace = abs(currentZOrientation - lastZOrientation)
 
             lastXOrientation = currentXOrientation
             lastYOrientation = currentYOrientation
             lastZOrientation = currentZOrientation
 
-            var twist = zTwist || xTwist || yTwist
+            var isShake = zSpace >= 4 || xSpace >= 4 || ySpace >= 4
 
-            if (orientationQueue.size < ORIENTATION_QUEUE_SIZE) {
-                orientationQueue.add(twist)
+            if (orientationQueue.size < ORI_QUEUE_SIZE) {
+                orientationQueue.add(isShake)
             } else {
-                if (twistShake(orientationQueue)) {
-                    Log.e("sundu", "晃动中")
-                } else {
-                    Log.d("sundu", "停止晃动")
+                orientationQueue.removeFirst()
+                orientationQueue.add(isShake)
+                var shake = isShakeOrientation(orientationQueue)
+                if (shake && !isOrientationStartShake) {
+                    Log.e("sundu", "开始晃动")
+                    isOrientationStartShake = true
+                    var timer = Timer()
+                    timer.schedule(object : TimerTask() {
+                        override fun run() {
+                            isOrientationStartShake = false
+                            removeListener()
+                            var isShake = checkTimeShake(orientationCheckQueue)
+                            orientationCheckQueue.clear()
+                            when (isShake) {
+                                true -> {
+                                    Log.e("sundu", "晃动了")
+                                }
+                                false -> {
+                                    Log.e("sundu", "没有晃动")
+                                }
+                            }
+                        }
+
+                    }, 3 * 1000)
                 }
-                orientationQueue.clear()
+                if (isOrientationStartShake) {
+                    orientationCheckQueue.add(shake)
+                }
             }
         }
     }
 
-    fun isTwist(last: Int, current: Int): Boolean {
-        var s = abs(current - last)
-        Log.d("sundu", "$last $current $s")
-        if (abs(current - last) > 3) {
-            return true
+    private fun checkTimeShake(orientationCheckQueue: LinkedBlockingDeque<Boolean>): Boolean {
+        var count = 0.0f
+        var size = orientationCheckQueue.size
+        var throld = size * 0.8f
+        orientationCheckQueue.forEach {
+            if (it) count += 1
         }
-        return false
+        return count >= throld
     }
 
-    fun twistShake(queue: LinkedBlockingDeque<Boolean>): Boolean {
-        var i = 0
-        queue.forEach {
-            if (it) {
-                i++
-            }
+    private fun isShakeOrientation(orientationQueue: LinkedBlockingDeque<Boolean>): Boolean {
+        var count = 0.0f
+        var size = orientationQueue.size
+        var throld = size * 0.5f
+        orientationQueue.forEach {
+            if (it) count += 1
         }
-        return i >= 2
+        return count >= throld
     }
 
 
