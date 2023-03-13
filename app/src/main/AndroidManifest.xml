@@ -17,6 +17,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".sundu.custview.animationview.lottie.ProcessLottieActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".sundu.custview.shakeview.ShakeCustomViewActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".sundu.developer.svgedit.SvgEditeActivity"
             android:exported="false" />
         <activity

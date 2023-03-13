@@ -16,12 +16,12 @@ class SensorViewModel(application: Application) : AndroidViewModel(application) 
         senSorDataLiveData?.value = senSorData
         SenSorGyrDegreesHelper().registerListener(
             getApplication(),
-            object : SenSorGyrDegreesHelper.SensorRotateListener {
-                override fun rotate(left: Boolean) {
+            object : SenSorGyrDegreesHelper.SenSorTwistListener {
+                override fun twistSuccess(orientationType: Int, orientation: Int) {
                 }
 
-            },
-            this
+            },//x 轴 35度
+            3, 35
         )
     }
 

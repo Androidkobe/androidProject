@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".sundu.custview.animationview.lottie.ProcessLottieActivity">
+
+    <RelativeLayout
+        android:id="@+id/lottieViewZ"
+        android:layout_width="146dp"
+        android:layout_height="146dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/mimo_twist_tip_bg"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottieViewZ_Animation"
+                android:layout_width="72dp"
+                android:layout_height="72dp" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottieViewZ_Interact"
+                android:layout_width="72dp"
+                android:layout_height="17dp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/lottieViewY"
+        android:layout_width="146dp"
+        android:layout_height="146dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/mimo_twist_tip_bg"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lottieViewZ"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottieViewY_Animation"
+                android:layout_width="72dp"
+                android:layout_height="72dp" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottieViewY_Interact"
+                android:layout_width="72dp"
+                android:layout_height="17dp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/lottieViewX"
+        android:layout_width="146dp"
+        android:layout_height="146dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/mimo_twist_tip_bg"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lottieViewY"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottieViewX_Animation"
+                android:layout_width="17dp"
+                android:layout_height="16dp" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottieViewX_Interact"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginTop="5dp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
