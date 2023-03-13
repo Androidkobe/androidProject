@@ -5,6 +5,7 @@ import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
+import android.util.Log
 import java.lang.Math.toDegrees
 
 class ProcessHelper : SensorEventListener {
@@ -27,6 +28,7 @@ class ProcessHelper : SensorEventListener {
     }
 
     private var delayTime = 500
+
     private var startMonitorTime = -1L
 
     private var listener: ProcessListener? = null
@@ -53,11 +55,9 @@ class ProcessHelper : SensorEventListener {
 
     private var LOAD_FIRST_ORIENTATION = false
 
-    private var angleThreshold = 35
 
     private var mOrientationType = TWIST_AXIS_Z
 
-    private var notifyTwist = false
 
     fun registerListener(
         context: Context,
@@ -110,56 +110,58 @@ class ProcessHelper : SensorEventListener {
             SensorManager.getOrientation(rotationMatrix, values)
 
             if (!LOAD_FIRST_ORIENTATION) {
-                firstXOrientation = getxOrientation(values[1].toDouble())
-                firstYOrientation = getyOrientation(values[2].toDouble())
-                firstZOrientation = getzOrientation(values[0].toDouble())
+                firstXOrientation = getXDegrees(values[1].toDouble())
+                firstYOrientation = getYZDegrees(values[2].toDouble())
+                firstZOrientation = getYZDegrees(values[0].toDouble())
                 LOAD_FIRST_ORIENTATION = true
                 return
             }
-            var currentXOrientation = getxOrientation(values[1].toDouble()).toInt()
-            var currentYOrientation = getyOrientation(values[2].toDouble()).toInt()
-            var currentZOrientation = getzOrientation(values[0].toDouble()).toInt()
+            var currentXOrientation = getXDegrees(values[1].toDouble())
+            var currentYOrientation = getYZDegrees(values[2].toDouble())
+            var currentZOrientation = getYZDegrees(values[0].toDouble())
+            Log.e("xxx", "${toDegrees(values[1].toDouble()).toInt()}")
             when (mOrientationType) {
                 ORIENTATION_X -> {
-                    listener?.process(firstXOrientation.toInt(), currentXOrientation)
+                    listener?.process(Math.abs(firstXOrientation - currentXOrientation))
                 }
                 ORIENTATION_Y -> {
-                    listener?.process(firstYOrientation.toInt(), currentYOrientation)
+                    listener?.process(getYZRotateAngle(firstYOrientation, currentYOrientation))
                 }
                 ORIENTATION_Z -> {
-                    listener?.process(firstZOrientation.toInt(), currentZOrientation)
+                    listener?.process(getYZRotateAngle(firstZOrientation, currentZOrientation))
                 }
             }
         }
     }
 
 
-    /*0 ~ 180 */
-    private fun getxOrientation(angradx: Double): Double {
+    private fun getXDegrees(angradx: Double): Double {
         var anglex = toDegrees(angradx)
-        return 90 + anglex
+        return (90 + anglex)
     }
 
-    /*0 ~ 360 */
-    private fun getyOrientation(angrad: Double): Double {
-        var angle = toDegrees(angrad)
-        if (angle > 0) {
-            return angle
-        }
-        return angle + 360
+    private fun getYZDegrees(angradx: Double): Double {
+        var anglex = toDegrees(angradx)
+        return anglex
     }
 
-    /*0 ~ 360 */
-    private fun getzOrientation(angrad: Double): Double {
-        var angle = toDegrees(angrad)
-        if (angle > 0) {
-            return angle
+    private fun getYZRotateAngle(start: Double, end: Double): Double {
+        if (start >= 0 && end >= 0) {
+            return Math.abs(end - start)
+        } else if (start <= 0 && end <= 0) {
+            return Math.abs(end - start)
+        } else {
+            if (Math.abs(end - start) > 180) {
+                return (180 - Math.abs(start)) + (180 - Math.abs(end))
+            } else {
+                return Math.abs(end - start)
+            }
         }
-        return angle + 360
     }
+
 
     interface ProcessListener {
-        fun process(first: Int, current: Int)
+        fun process(angle: Double)
     }
 
 }
