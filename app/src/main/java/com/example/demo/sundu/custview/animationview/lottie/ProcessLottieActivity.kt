@@ -12,7 +12,7 @@ class ProcessLottieActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_process_lottie)
         val particles = 1000
-        val angle = 60 * particles
+        val angle = 45 * particles
         //z轴动画部分
         lottieViewZ_Animation.setAnimation("twistz/animation/data.json")
         lottieViewZ_Animation.repeatCount = ValueAnimator.INFINITE

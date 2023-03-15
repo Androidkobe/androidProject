@@ -1,9 +1,12 @@
 package com.example.demo
 
 import android.Manifest
+import android.app.ActivityManager
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -26,12 +29,14 @@ import com.example.demo.sundu.touchevent.MovieLineActivity
 import com.example.demo.sundu.webview.MyWebViewActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
+
 class MainActivity : AppCompatActivity() {
 
     val dataMap = HashMap<String, Class<*>>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        getMaxSize()
         setContentView(R.layout.activity_main)
         createData()
         mRecycleView.setHasFixedSize(true)
@@ -90,6 +95,11 @@ class MainActivity : AppCompatActivity() {
         } else {
             Toast.makeText(this, "您已经申请了权限!", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun getMaxSize() {
+        val maxMemory = (getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager).memoryClass
+        Log.e("sundu", "最大内存 ${maxMemory}")
     }
 
 //    override fun onRequestPermissionsResult(

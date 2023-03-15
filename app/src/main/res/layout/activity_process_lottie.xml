@@ -26,13 +26,20 @@
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/lottieViewZ_Animation"
-                android:layout_width="72dp"
-                android:layout_height="72dp" />
+                android:layout_width="65dp"
+                android:layout_height="65dp" />
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/lottieViewZ_Interact"
-                android:layout_width="72dp"
-                android:layout_height="17dp" />
+                android:layout_width="65dp"
+                android:layout_height="16dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:text="扭动手机"
+                android:textSize="14dp" />
         </LinearLayout>
     </RelativeLayout>
 
@@ -57,13 +64,20 @@
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/lottieViewY_Animation"
-                android:layout_width="72dp"
-                android:layout_height="72dp" />
+                android:layout_width="65dp"
+                android:layout_height="65dp" />
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/lottieViewY_Interact"
-                android:layout_width="72dp"
-                android:layout_height="17dp" />
+                android:layout_width="65dp"
+                android:layout_height="16dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:text="扭动手机"
+                android:textSize="14dp" />
         </LinearLayout>
     </RelativeLayout>
 
@@ -93,9 +107,16 @@
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/lottieViewX_Interact"
-                android:layout_width="72dp"
-                android:layout_height="72dp"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
                 android:layout_marginTop="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:text="扭动手机"
+                android:textSize="14dp" />
         </LinearLayout>
     </RelativeLayout>
 

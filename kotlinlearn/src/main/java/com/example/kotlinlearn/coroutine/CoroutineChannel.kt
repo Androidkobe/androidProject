@@ -7,7 +7,7 @@ import java.lang.Thread.sleep
 
 fun main() {
     channelTest()
-    channelTest2()
+//    channelTest2()
     sleep(1000000)
 }
 
@@ -17,15 +17,29 @@ fun channelTest(){
         val channel = Channel<Int>()
 
         // 2. Channel 发送数据
-        launch {
+//        val job1 = launch {
+//            for (i in 1..4) {
+//                println("发送 ${i}")
+//                delay(100)
+//                channel.send(i)//发送
+//            }
+//            channel.close()//关闭Channel，发送结束
+//        }
+//        job1.cancel()
+//        println("取消")
+
+        val job1 = async {
             for (i in 1..4) {
+                println("发送 ${i}")
                 delay(100)
                 channel.send(i)//发送
             }
             channel.close()//关闭Channel，发送结束
         }
+//        job1.await()//阻塞 开始等待
 
-        // 3. Channel 接收数据
+
+//        // 3. Channel 接收数据
         launch {
             repeat(3) {
                 val receive = channel.receive()//接收
