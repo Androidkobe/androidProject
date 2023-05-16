@@ -9,11 +9,60 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#00ff99">
-
-        <com.example.demo.sundu.ontouch.MyButtonView
+        <com.example.demo.sundu.ontouch.FourViewGroup
+            android:id="@+id/fourHierarchy"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="100dp"
-            android:background="#ff9900" />
+            android:layout_height="match_parent">
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="第四层"
+                android:layout_marginTop="400dp"
+                />
+        </com.example.demo.sundu.ontouch.FourViewGroup>
+        <com.example.demo.sundu.ontouch.ThreeViewGroup
+            android:id="@+id/threeHierarchy"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:text="第三层"
+                android:layout_marginTop="120dp"
+                android:visibility="gone"
+                />
+            <com.example.demo.sundu.ontouch.SwipeUpGesturesView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#89ff0000"
+                />
+        </com.example.demo.sundu.ontouch.ThreeViewGroup>
+        <com.example.demo.sundu.ontouch.SecondViewGroup
+            android:id="@+id/secondHierarchy"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="第二层"
+                android:layout_marginTop="80dp"
+                />
+        </com.example.demo.sundu.ontouch.SecondViewGroup>
+        <com.example.demo.sundu.ontouch.FirstViewGroup
+            android:id="@+id/firstHierarchy"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="第一层"
+                android:layout_marginTop="20dp"
+                />
+        </com.example.demo.sundu.ontouch.FirstViewGroup>
     </com.example.demo.sundu.ontouch.MyViewGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>
