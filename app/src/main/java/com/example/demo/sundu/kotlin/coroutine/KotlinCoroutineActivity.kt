@@ -1,9 +1,8 @@
 package com.example.demo.sundu.kotlin.coroutine
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.lifecycle.lifecycleScope
+import androidx.appcompat.app.AppCompatActivity
 import com.example.demo.R
 import kotlinx.android.synthetic.main.kotlin_coroutine_activity_layout.*
 import kotlinx.coroutines.*
@@ -12,43 +11,64 @@ class KotlinCoroutineActivity : AppCompatActivity() {
 
     var coroutineString: StringBuffer = StringBuffer()
 
-    var scope : CoroutineScope = MainScope()
+    var scope: CoroutineScope = MainScope()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        scope.cancel()
         setContentView(R.layout.kotlin_coroutine_activity_layout)
-            scope.launch(CoroutineExceptionHandler{ _, throwable ->
-                Log.e("sundu", "throwable - ${throwable.toString()}")
-            }) {
-                   when(3){
-                       1->{action()}
-                       2->{
-                           try {
-                               action2()
-                           }catch (e:java.lang.Exception){
-                                println("----------${e.toString()}")
-                           }
-                       }
-                       3->{action3()}
-                       4->{
-                            action4()
-                       }
-                       5->{
-                           action5()
-                       }
-                   }
+
+        GlobalScope.launch {
+
+            getUserInfo()
+
+            print("----------------------------------")
+        }
+    }
+
+    suspend fun getUserInfo() {
+        for (i in 1..10000) {
+            println(i)
+        }
+    }
+
+    fun start() {
+        scope.launch(CoroutineExceptionHandler { _, throwable ->
+            Log.e("sundu", "throwable - ${throwable.toString()}")
+        }) {
+            when (3) {
+                1 -> {
+                    action()
+                }
+                2 -> {
+                    try {
+                        action2()
+                    } catch (e: java.lang.Exception) {
+                        println("----------${e.toString()}")
+                    }
+                }
+                3 -> {
+                    action3()
+                }
+                4 -> {
+                    action4()
+                }
+                5 -> {
+                    action5()
+                }
             }
+        }
     }
 
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
-        Log.e("sundu","onDetachedFromWindow")
+        Log.e("sundu", "onDetachedFromWindow")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.e("sundu","destory")
+        Log.e("sundu", "destory")
         scope.cancel()
     }
 

@@ -10,11 +10,11 @@ fun main() {
     //阻塞线程
 //    RunBlocking()
     //非阻塞线程
-//    GlobalScope_Launch() //全局作用域
+    GlobalScope_Launch() //全局作用域
 //    CoroutineScope_Launch()//局部作用域
 //    CoroutineScopeLaunchTest()//局部作用域
 //    coroutineScope()//coroutineScope 一个子协程 失败 整个作用域停止
-    supervisorScope()//supervisorScope 一个子协程 失败 不影响其它作用域
+    // supervisorScope()//supervisorScope 一个子协程 失败 不影响其它作用域
     sleep(100000L)
 }
 
@@ -35,15 +35,15 @@ private fun RunBlocking() {
  * 全局作用域
  */
 private fun GlobalScope_Launch() {
-    log("start")
+    log("start-")
     //创建一个全局作用域协程，不会阻塞当前线程，生命周期与应用程序一致
     GlobalScope.launch {
         //在这1000毫秒内该协程所处的线程不会阻塞
         //协程将线程的执行权交出去，该线程继续干它要干的事情，到时间后会恢复至此继续向下执行
         delay(1000)//1秒无阻塞延迟（默认单位为毫秒）
-        log("GlobalScope.launch")
+        log("GlobalScope.launch-")
     }
-    log("end")//主线程继续，而协程被延迟
+    log("end-")//主线程继续，而协程被延迟
 }
 
 /**

@@ -5,11 +5,26 @@ import kotlinx.coroutines.flow.*
 import kotlin.system.measureTimeMillis
 
 fun main() {
+    action1()
 //    normal()
 //    cancel()
-    pressback2()
+//    pressback2()
     Thread.sleep(10000)
 }
+
+suspend fun myFlowCollectorFunction(flowCollector: FlowCollector<Int>) = flowCollector.run {
+    // 在这里编写你的 Flow 逻辑
+    emit(1)
+}
+
+fun action1() {
+    GlobalScope.launch {
+        flow<Int>(::myFlowCollectorFunction).collect() {
+            println(it)
+        }
+    }
+}
+
 
 fun normal() {
     GlobalScope.launch {

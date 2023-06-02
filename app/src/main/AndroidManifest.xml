@@ -103,6 +103,9 @@
         <activity android:name=".sundu.touchevent.MovieLineActivity" />
         <activity android:name=".sundu.developer.sensorxyz.SenSorxyz" />
         <activity android:name=".sundu.developer.compass.CompassActivity" />
+        <activity android:name=".sundu.custview.path.PathDrawActivity" />
+        <activity android:name=".sundu.custview.bgcolorchange.BackgroundColorChangeActivity" />
+        <activity android:name=".sundu.custview.ripple.RippleViewActivity" />
 
         <service
             android:name="com.tencent.smtt.export.external.DexClassLoaderProviderService"

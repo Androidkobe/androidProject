@@ -50,4 +50,13 @@
         <attr name="header_init_offset" />
         <attr name="target_init_offset" />
     </declare-styleable>
+
+    <!--涟漪控件属性-->
+    <declare-styleable name="mRippleView">
+        <attr name="cColor" format="color" />
+        <attr name="cSpeed" format="integer" />
+        <attr name="cDensity" format="integer" />
+        <attr name="cIsFill" format="boolean" />
+        <attr name="cIsAlpha" format="boolean" />
+    </declare-styleable>
 </resources>

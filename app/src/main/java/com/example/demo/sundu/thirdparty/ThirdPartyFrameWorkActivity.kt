@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.demo.R
+import com.example.demo.sundu.thirdparty.lottie.LottieViewActivity
 import com.example.demo.sundu.thirdparty.rxjava.Rxjava_Activity
 import kotlinx.android.synthetic.main.activity_third_party_frame_work.*
 
@@ -15,6 +16,7 @@ class ThirdPartyFrameWorkActivity : AppCompatActivity() {
 
     init {
         sourceData["RxJava"] = Rxjava_Activity::class.java
+        sourceData["Lottie"] = LottieViewActivity::class.java
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

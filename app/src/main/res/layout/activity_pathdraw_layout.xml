@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.example.demo.sundu.custview.path.LoadingView
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+
+    <com.example.demo.sundu.custview.path.GradientPathView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp" />
+
+
+    <com.example.demo.sundu.custview.path.GradientRingView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp" />
+
+    <com.example.demo.sundu.custview.path.RectPathLoadView
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp" />
+</LinearLayout>
