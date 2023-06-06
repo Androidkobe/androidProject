@@ -40,6 +40,8 @@ class RectPathLoadView @JvmOverloads constructor(
 
     var gradient: SweepGradient? = null
 
+    var linearGradient: LinearGradient? = null
+
     init {
         mStockPaint.color = mStockColor
         mStockPaint.style = Paint.Style.STROKE
@@ -119,8 +121,16 @@ class RectPathLoadView @JvmOverloads constructor(
                     mViewWidth / 2f, mViewHeight / 2f,
                     Color.RED, Color.BLUE
                 )
+                linearGradient = LinearGradient(
+                    0f,
+                    0f,
+                    lineLength,
+                    0f,
+                    Color.RED,
+                    Color.BLUE,
+                    Shader.TileMode.CLAMP
+                )
             }
-            mStockPaint.shader = gradient
             canvas.drawPath(mStockPath, mStockPaint)
             mPathMeasure.setPath(mStockPath, true)
         }
@@ -129,6 +139,7 @@ class RectPathLoadView @JvmOverloads constructor(
     private fun drawStockLeft(canvas: Canvas?) {
         canvas?.let { canvas ->
             pathLength = mPathMeasure.length
+            mRunStockPaint.shader = linearGradient
             mRunStockPath.reset()
             if (lineOffset <= pathLength - lineLength) {
                 mPathMeasure.getSegment(lineOffset, lineOffset + lineLength, mRunStockPath, true)
@@ -152,6 +163,7 @@ class RectPathLoadView @JvmOverloads constructor(
 
     private fun drawStockRight(canvas: Canvas?) {
         canvas?.let { canvas ->
+            mRunStockPaint.shader = linearGradient
             pathLength = mPathMeasure.length
             var rightLineOffset = lineOffset + pathLength / 2
 

@@ -19,6 +19,8 @@ class BidirectionalActivity : Activity() {
             R.layout.activity_data_binding_shuangxiang
         )
 
+        binding.timeModel
+
         binding.timeModel = TimeModel().apply {
             timeObservable.set(format.format(Date()))
         }
