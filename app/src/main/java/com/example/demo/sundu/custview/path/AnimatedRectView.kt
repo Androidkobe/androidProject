@@ -1,71 +1,99 @@
 package com.example.demo.sundu.custview.path
 
-import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 
 class AnimatedRectView(context: Context, attrs: AttributeSet? = null) : View(context, attrs) {
+    private val paint: Paint = Paint()
+    private val arcRect: RectF = RectF()
+    private var startAngle = 0f
+    private val sweepAngle = 70f
+    private val animationDuration = 2000L // 动画时长，单位为毫秒
+    private val startColor = Color.RED
+    private val endColor = Color.GREEN
+    private val startTime: Long = System.currentTimeMillis()
+    private var mMatrix = Matrix()
 
-    private val rectPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        style = Paint.Style.STROKE
-        strokeWidth = 4f
-        color = Color.GRAY
-    }
-    private val linePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        style = Paint.Style.STROKE
-        strokeWidth = 100f
-        strokeCap = Paint.Cap.ROUND
-        shader = createGradientShader()
-    }
+    private var colorList = IntArray(6)
 
-    private var lineOffset = 0f
-    private val animator = ValueAnimator.ofFloat(0f, 1f).apply {
-        duration = 2000
-        repeatMode = ValueAnimator.REVERSE
-        repeatCount = ValueAnimator.INFINITE
-        addUpdateListener { valueAnimator ->
-            lineOffset = valueAnimator.animatedFraction
-            invalidate()
-        }
-    }
+    private var postionList = FloatArray(6)
 
     init {
-        animator.start()
-    }
+        paint.isAntiAlias = true
+        paint.style = Paint.Style.STROKE
+        paint.strokeWidth = 20f
+        paint.strokeCap = Paint.Cap.ROUND
 
-    override fun onDetachedFromWindow() {
-        super.onDetachedFromWindow()
-        animator.cancel()
+        // 创建线性渐变
+        val width = width
+        val height = height
+        val radius = 80
+        val centerX = width / 2
+        val centerY = height / 2
+        colorList[0] = Color.parseColor("#00FFFFFF")
+        colorList[1] = Color.parseColor("#22FFFFFF")
+        colorList[2] = Color.parseColor("#55FFFFFF")
+        colorList[3] = Color.parseColor("#FFFFFFFF")
+        colorList[4] = Color.parseColor("#EEFFFFFF")
+        colorList[5] = Color.TRANSPARENT
+
+        postionList[0] = 0f
+        postionList[1] = 0.05f
+        postionList[2] = 0.1f
+        postionList[3] = 0.18f
+        postionList[4] = 0.19f
+        postionList[5] = 1f
     }
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        val radius = height / 2f
-        val rect = RectF(0f, 0f, width.toFloat(), height.toFloat())
-        canvas.drawRoundRect(rect, radius, radius, rectPaint)
+        // 获取控件的宽度和高度
+        val width = width
+        val height = height
 
-        val startX = 0f
-        val endX = width.toFloat()
-        val y = height / 2f
-        canvas.drawLine(startX, y, endX, y, linePaint.apply {
-            pathEffect = createPathEffect(lineOffset, endX - startX)
-        })
-    }
+        // 计算扇形的位置
+        val radius = 190
+        val centerX = width / 2
+        val centerY = height / 2
+        arcRect.set(
+            (centerX - radius).toFloat(),
+            (centerY - radius).toFloat(),
+            (centerX + radius).toFloat(),
+            (centerY + radius).toFloat()
+        )
 
-    private fun createGradientShader(): Shader {
-        val colors = intArrayOf(Color.RED, Color.BLUE)
-        return LinearGradient(0f, 0f, 100f, 0f, colors, null, Shader.TileMode.CLAMP)
-    }
+        canvas.save()
+        // 更新渐变矩阵
+        mMatrix.reset()
+        mMatrix.setRotate(startAngle, centerX.toFloat(), centerY.toFloat())
+        canvas.setMatrix(mMatrix)
+        // 设置画笔颜色为渐变
+        paint.shader = SweepGradient(centerX * 1f, centerY * 1f, colorList, postionList)
+        // 绘制扇形
+        canvas.drawArc(arcRect, 0f, 70f, false, paint)
+        canvas.restore()
 
-    private fun createPathEffect(offset: Float, length: Float): PathEffect {
-        return DashPathEffect(floatArrayOf(length, length), offset * length)
-    }
+        canvas.save()
+        // 更新渐变矩阵
+        mMatrix.reset()
+        mMatrix.setRotate(startAngle + 180, centerX.toFloat(), centerY.toFloat())
+        canvas.setMatrix(mMatrix)
+        // 设置画笔颜色为渐变
+        paint.shader = SweepGradient(centerX * 1f, centerY * 1f, colorList, postionList)
+        // 绘制扇形
+        canvas.drawArc(arcRect, 0f, 70f, false, paint)
+        canvas.restore()
 
-    private fun Float.dpToPx(): Float {
-        val scale = resources.displayMetrics.density
-        return this * scale
+        // 更新起始角度
+        startAngle += 5f // 每次增加的角度，控制旋转速度
+
+        if (startAngle > 360) {
+            startAngle = 0f
+        }
+        // 强制重绘，形成动画效果
+        invalidate()
     }
 }

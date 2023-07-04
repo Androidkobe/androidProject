@@ -3,6 +3,7 @@ package com.example.demo.sundu.kotlin.coroutine
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.example.demo.R
 import kotlinx.android.synthetic.main.kotlin_coroutine_activity_layout.*
 import kotlinx.coroutines.*
@@ -24,6 +25,9 @@ class KotlinCoroutineActivity : AppCompatActivity() {
             getUserInfo()
 
             print("----------------------------------")
+        }
+        lifecycleScope.launchWhenResumed {
+
         }
     }
 

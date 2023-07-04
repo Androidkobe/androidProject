@@ -23,4 +23,16 @@
         android:layout_width="200dp"
         android:layout_height="60dp"
         android:layout_marginTop="20dp" />
+
+    <RelativeLayout
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="20dp"
+        android:background="#55000000">
+
+        <com.example.demo.sundu.custview.path.AnimatedRectView
+            android:layout_width="145dp"
+            android:layout_height="145dp"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
 </LinearLayout>
