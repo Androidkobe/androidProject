@@ -8,11 +8,13 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
+import com.bumptech.glide.Glide
 import com.example.demo.common.ItemViewClick
 import com.example.demo.other.yuntask.YunTaskActivity
 import com.example.demo.sundu.custview.CustomViewActivity
@@ -50,6 +52,12 @@ class MainActivity : AppCompatActivity() {
         override fun onItemViewClick(position: Int, view: View) {
             startActivity(Intent(this@MainActivity, dataMap[getData()[position]]))
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        var sss = "https://lmg.jj20.com/up/allimg/1113/031920120534/200319120534-7-1200.jpg"
+        Glide.with(this).load(sss).into((findViewById<ImageView>(R.id.im)))
     }
 
     private fun getData(): List<String> {

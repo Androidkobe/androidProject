@@ -14,6 +14,7 @@ import com.example.demo.sundu.custview.beziercurve.dragpop.BezierCurverDragPopAc
 import com.example.demo.sundu.custview.bgcolorchange.BackgroundColorChangeActivity
 import com.example.demo.sundu.custview.bitmapshader.BitmapShaderTelescopeViewActivity
 import com.example.demo.sundu.custview.downloadview.DownLoadViewActivity
+import com.example.demo.sundu.custview.movebutton.MoveButtonActivity
 import com.example.demo.sundu.custview.path.PathDrawActivity
 import com.example.demo.sundu.custview.region.RegionActivity
 import com.example.demo.sundu.custview.ripple.RippleViewActivity
@@ -56,6 +57,7 @@ class CustomViewActivity : AppCompatActivity() {
         dataSource["PathDraw"] = PathDrawActivity::class.java
         dataSource["颜色渐变"] = BackgroundColorChangeActivity::class.java
         dataSource["波纹"] = RippleViewActivity::class.java
+        dataSource["移动按钮"] = MoveButtonActivity::class.java
     }
 
     private fun getData(): List<String> {
