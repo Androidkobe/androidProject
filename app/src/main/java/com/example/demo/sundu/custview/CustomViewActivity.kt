@@ -13,6 +13,7 @@ import com.example.demo.sundu.custview.animationview.lottie.ProcessLottieActivit
 import com.example.demo.sundu.custview.beziercurve.dragpop.BezierCurverDragPopActivity
 import com.example.demo.sundu.custview.bgcolorchange.BackgroundColorChangeActivity
 import com.example.demo.sundu.custview.bitmapshader.BitmapShaderTelescopeViewActivity
+import com.example.demo.sundu.custview.cropimage.CropImageActivity
 import com.example.demo.sundu.custview.downloadview.DownLoadViewActivity
 import com.example.demo.sundu.custview.movebutton.MoveButtonActivity
 import com.example.demo.sundu.custview.path.PathDrawActivity
@@ -58,6 +59,7 @@ class CustomViewActivity : AppCompatActivity() {
         dataSource["颜色渐变"] = BackgroundColorChangeActivity::class.java
         dataSource["波纹"] = RippleViewActivity::class.java
         dataSource["移动按钮"] = MoveButtonActivity::class.java
+        dataSource["左右屏蔽图片"] = CropImageActivity::class.java
     }
 
     private fun getData(): List<String> {
