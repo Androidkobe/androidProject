@@ -2,8 +2,10 @@ package com.example.demo.sundu.custview
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.demo.R
 import com.example.demo.common.CommonSelectRecycleViewAdapter
@@ -23,6 +25,10 @@ import com.example.demo.sundu.custview.scaleimage.ScaleImageActivity
 import com.example.demo.sundu.custview.shakeview.ShakeCustomViewActivity
 import com.example.demo.sundu.custview.shimmer.ShimmerActivity
 import kotlinx.android.synthetic.main.activity_custom_view.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class CustomViewActivity : AppCompatActivity() {
 
@@ -35,13 +41,27 @@ class CustomViewActivity : AppCompatActivity() {
         custom_view_recycle.setHasFixedSize(true)
         custom_view_recycle.layoutManager = GridLayoutManager(this, 3)
         custom_view_recycle.adapter = CommonSelectRecycleViewAdapter(getData(), itemViewClick)
+        lifecycleScope.launch {
+            Log.e("sundu", "thread - 1 start" + Thread.currentThread().name)
+            var s = getMess()
+            Log.e("sundu", "thread - 1 mess $s" + Thread.currentThread().name)
+            Log.e("sundu", "thread - 1 end " + Thread.currentThread().name)
+        }
+        Log.e("sundu", "thread - 2 end " + Thread.currentThread().name)
+    }
+
+    suspend fun getMess() {
+        return withContext(Dispatchers.IO) {
+            delay(1000)
+            "123"
+        }
     }
 
     private val itemViewClick: ItemViewClick = object :
         ItemViewClick {
         override fun onItemViewClick(position: Int, view: View) {
-           val result =dataSource[getData()[position]]
-            startActivity(Intent(this@CustomViewActivity,result))
+            val result = dataSource[getData()[position]]
+            startActivity(Intent(this@CustomViewActivity, result))
         }
     }
 

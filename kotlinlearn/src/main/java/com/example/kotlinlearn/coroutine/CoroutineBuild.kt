@@ -2,6 +2,9 @@ package com.example.kotlinlearn.coroutine
 
 import kotlinx.coroutines.*
 import java.lang.Thread.sleep
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.coroutines.EmptyCoroutineContext
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
@@ -10,11 +13,12 @@ fun main() {
     //阻塞线程
 //    RunBlocking()
     //非阻塞线程
-    GlobalScope_Launch() //全局作用域
+//    GlobalScope_Launch() //全局作用域
 //    CoroutineScope_Launch()//局部作用域
 //    CoroutineScopeLaunchTest()//局部作用域
 //    coroutineScope()//coroutineScope 一个子协程 失败 整个作用域停止
     // supervisorScope()//supervisorScope 一个子协程 失败 不影响其它作用域
+    GlobalScopeAnsy().run()
     sleep(100000L)
 }
 
@@ -318,3 +322,61 @@ class GlobalScopeTest {
     }
 }
 
+class GlobalScopeAnsy {
+    fun run() {
+        log(" main run start ")
+        var coroutineScope = CoroutineScope(EmptyCoroutineContext)
+        coroutineScope.launch {
+            log("GlobalScope.launch start - " + Thread.currentThread().name)
+
+            withContext(Dispatchers.IO) {
+                log("withContext start- " + Thread.currentThread().name)
+                delay(10000)
+                log("withContext end - " + Thread.currentThread().name)
+            }
+
+
+            launch {
+                log("launch start - " + Thread.currentThread().name)
+                delay(10000)
+                log("launch end - " + Thread.currentThread().name)
+            }
+
+            launch(Dispatchers.IO) {
+                log("launch io start - " + Thread.currentThread().name)
+                delay(10000)
+                log("launch io end - " + Thread.currentThread().name)
+            }
+
+            async {
+                log("async start - " + Thread.currentThread().name)
+                delay(10000)
+                log("async end - " + Thread.currentThread().name)
+            }
+
+            async(Dispatchers.IO) {
+                log("asyncio start - " + Thread.currentThread().name)
+                delay(10000)
+                log("asyncio end - " + Thread.currentThread().name)
+            }
+
+            var result = async(Dispatchers.IO) {
+                log("asyncio await start - " + Thread.currentThread().name)
+                delay(10000)
+                log("asyncio await end - " + Thread.currentThread().name)
+                "this is return async"
+            }
+//            var data = result.await()
+//            log("asyncio await result - $data")
+            log("GlobalScope.launch end - " + Thread.currentThread().name)
+        }
+        log(" main run end ")
+    }
+
+    fun log(msg: String) {
+        var fram = "hh:mm:ss"
+        var dataFormat = SimpleDateFormat(fram)
+        var date = Date()
+        println(dataFormat.format(date).toString() + "--" + msg)
+    }
+}
