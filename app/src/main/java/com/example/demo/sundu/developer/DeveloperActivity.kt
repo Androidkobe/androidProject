@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.demo.R
 import com.example.demo.sundu.developer.compass.CompassActivity
+import com.example.demo.sundu.developer.coordinator.CoordinatorActivity
 import com.example.demo.sundu.developer.fullscreen.FullScreenActivity
 import com.example.demo.sundu.developer.immersive.ImmerSiveActivity
 import com.example.demo.sundu.developer.netingscrollview.NestingScrollActivity
@@ -127,6 +128,12 @@ class DeveloperActivity : AppCompatActivity() {
                         CompassActivity::class.java
                     )
                 )
+                15 -> startActivity(
+                    Intent(
+                        this@DeveloperActivity,
+                        CoordinatorActivity::class.java
+                    )
+                )
             }
         }
     }
@@ -148,6 +155,7 @@ class DeveloperActivity : AppCompatActivity() {
         stringArray.add("相近色")
         stringArray.add("陀螺仪-xyz")
         stringArray.add("指南针")
+        stringArray.add("协调布局")
         return stringArray
     }
 }
