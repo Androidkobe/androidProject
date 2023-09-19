@@ -5,49 +5,112 @@
 
     <data></data>
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".sundu.custview.CustomViewActivity">
+        android:layout_height="match_parent">
 
-        <com.google.android.material.appbar.AppBarLayout
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:ignore="MissingConstraints">
+            android:layout_height="match_parent"
+            tools:context=".sundu.custview.CustomViewActivity">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:background="#222222"
-                android:gravity="center"
-                android:text="该区域可折叠"
-                android:textColor="@android:color/white"
-                android:textSize="30sp"
-                app:layout_scrollFlags="scroll" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="#DD012D"
-                android:gravity="center"
-                android:text="该区域为上滑至头部固定区域"
-                android:textColor="@android:color/white"
-                android:textSize="20sp" />
-        </com.google.android.material.appbar.AppBarLayout>
-
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/rv_demo1_content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            tools:ignore="MissingConstraints">
-
-            <TextView
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/app_bar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#00ff00"
-                android:text="这是一个滚动布局"
-                android:textSize="200sp" />
-        </androidx.core.widget.NestedScrollView>
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+                tools:ignore="MissingConstraints">
+
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="270dp"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/leak_canary_icon"
+                        tools:ignore="ContentDescription" />
+
+                    <androidx.appcompat.widget.Toolbar
+                        android:layout_width="match_parent"
+                        android:layout_height="73dp"
+                        app:contentInsetStart="0dp"
+                        app:layout_collapseMode="pin" />
+
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp" />
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/rv_demo1_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                tools:ignore="MissingConstraints">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#00ff00"
+                    android:text="这是一个滚动布局"
+                    android:textSize="200sp" />
+            </androidx.core.widget.NestedScrollView>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="73dp"
+            android:background="#00000000"
+            app:contentInsetStart="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    tools:ignore="UselessLeaf">
+
+                    <FrameLayout
+                        android:id="@+id/layout_back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/imv_back"
+                            android:layout_width="9dp"
+                            android:layout_height="16dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginEnd="12dp"
+                            android:src="@android:drawable/ic_menu_rotate"
+                            android:visibility="visible"
+                            tools:ignore="ContentDescription" />
+
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/tev_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="3333"
+                        android:textColor="#00ff00"
+                        android:textSize="18sp" />
+
+                </FrameLayout>
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+    </FrameLayout>
 </layout>
