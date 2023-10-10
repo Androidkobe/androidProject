@@ -10,6 +10,7 @@ import com.example.demo.sundu.developer.compass.CompassActivity
 import com.example.demo.sundu.developer.coordinator.CoordinatorActivity
 import com.example.demo.sundu.developer.fullscreen.FullScreenActivity
 import com.example.demo.sundu.developer.immersive.ImmerSiveActivity
+import com.example.demo.sundu.developer.nestedscrollview.NestedScrollActivity
 import com.example.demo.sundu.developer.netingscrollview.NestingScrollActivity
 import com.example.demo.sundu.developer.nineimageload.NineImgLoadActivity
 import com.example.demo.sundu.developer.permission.PermissionActivity
@@ -134,6 +135,12 @@ class DeveloperActivity : AppCompatActivity() {
                         CoordinatorActivity::class.java
                     )
                 )
+                16 -> startActivity(
+                    Intent(
+                        this@DeveloperActivity,
+                        NestedScrollActivity::class.java
+                    )
+                )
             }
         }
     }
@@ -156,6 +163,7 @@ class DeveloperActivity : AppCompatActivity() {
         stringArray.add("陀螺仪-xyz")
         stringArray.add("指南针")
         stringArray.add("协调布局")
+        stringArray.add("NestedScrollView+recyclerView")
         return stringArray
     }
 }
