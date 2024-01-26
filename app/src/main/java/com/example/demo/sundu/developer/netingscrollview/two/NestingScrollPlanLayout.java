@@ -23,20 +23,35 @@ import com.example.demo.sundu.developer.netingscrollview.NestingScrollUtil;
 
 public class NestingScrollPlanLayout extends ViewGroup implements NestedScrollingParent {
     private static final String TAG = "NestingScrollPlanLayout";
+    //NestedScroll 辅助类 同时也有 NestedScrollingChildrenHelper
     private final NestedScrollingParentHelper mNestedScrollingParentHelper;
+    //头部id
     private int mHeaderViewId = 0;
+    //嵌套滑动id
     private int mTargetViewId = 0;
+    //头部View
     private View mHeaderView;
+    //嵌套滑动view
     private View mTargetView;
+    //头部默认偏移量
     private int mHeaderInitOffset;
+    //头部当前偏移量
     private int mHeaderCurrentOffset;
+    //头部结束偏移量
     private int mHeaderEndOffset = 0;
+    //嵌套view初始偏移量
     private int mTargetInitOffset;
+    //嵌套view当前偏移量
     private int mTargetCurrentOffset;
+    //嵌套view 结束偏移量
     private int mTargetEndOffset = 0;
+    //滑动Scroller
     private Scroller mScroller;
+    //向上滑动
     private boolean mNeedScrollToInitPos = false;
+    //向下滑动
     private boolean mNeedScrollToEndPos = false;
+    //滚动中
     private boolean mHasFling = false;
 
     public NestingScrollPlanLayout(Context context) {
@@ -152,16 +167,22 @@ public class NestingScrollPlanLayout extends ViewGroup implements NestedScrollin
     public void onNestedPreScroll(View target, int dx, int dy, int[] consumed) {
         Log.i(TAG, "onNestedPreScroll: dx = " + dx + " ; dy = " + dy);
         if (canViewScrollUp(target)) {
+            Log.i(TAG, "onNestedPreScroll: 不能下滑了");
             return;
+        } else {
+            Log.i(TAG, "onNestedPreScroll: 可以下滑了");
         }
         if (dy > 0) {
             // 往上滑
             int parentCanConsume = mTargetCurrentOffset - mTargetEndOffset;
+            Log.i(TAG, "parent CanConsume = " + parentCanConsume);
             if (parentCanConsume > 0) {
                 if (dy > parentCanConsume) {
+                    Log.i(TAG, "parent CanConsume 消耗 Y = " + parentCanConsume);
                     consumed[1] = parentCanConsume;
                     moveTargetViewTo(mTargetEndOffset);
                 } else {
+                    Log.i(TAG, "消耗 Y = " + dy);
                     consumed[1] = dy;
                     moveTargetView(-dy);
                 }
@@ -172,7 +193,7 @@ public class NestingScrollPlanLayout extends ViewGroup implements NestedScrollin
     @Override
     public void onNestedScroll(View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed) {
         Log.i(TAG, "onNestedScroll: dxConsumed = " + dxConsumed + " ; dyConsumed = " + dyConsumed +
-                " ; dxUnconsumed = " + dxUnconsumed + " ; dyUnconsumed = " + dyUnconsumed);
+                " ; dxUnconsumed = " + dxUnconsumed + " ; dyUnconsumed = " + dyUnconsumed + "can view scroll up = " + canViewScrollUp(target));
         if (dyUnconsumed < 0 && !(canViewScrollUp(target))) {
             int dy = -dyUnconsumed;
             moveTargetView(dy);

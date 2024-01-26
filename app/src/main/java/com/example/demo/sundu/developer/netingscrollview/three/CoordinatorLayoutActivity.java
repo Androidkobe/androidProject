@@ -79,12 +79,12 @@ public class CoordinatorLayoutActivity extends AppCompatActivity {
         mHeaderView = findViewById(R.id.book_header);
         CoordinatorLayout.LayoutParams headerLp = (CoordinatorLayout.LayoutParams) mHeaderView
                 .getLayoutParams();
-        headerLp.setBehavior(new CoverBehavior(NestingScrollUtil.dp2px(this, 30), 0));
+        headerLp.setBehavior(new CoverBehavior(NestingScrollUtil.dp2px(this, 0), 0));
 
         mTargetLayout = (LinearLayout) findViewById(R.id.scroll_view);
         CoordinatorLayout.LayoutParams targetLp = (CoordinatorLayout.LayoutParams) mTargetLayout
                 .getLayoutParams();
-        targetLp.setBehavior(new TargetBehavior(this, NestingScrollUtil.dp2px(this, 70), 0));
+        targetLp.setBehavior(new TargetBehavior(this, NestingScrollUtil.dp2px(this, 150), 0));
 
         mTabLayout = (TabLayout) findViewById(R.id.tab_layout);
         mViewPager = (ViewPager) findViewById(R.id.viewpager);

@@ -1,5 +1,6 @@
 package com.example.demo.sundu.developer.netingscrollview;
 
+import android.util.Log;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -30,6 +31,7 @@ public class NestingScrollRecyclerAdapter extends RecyclerView.Adapter<NestScrol
     @Override
     public void onBindViewHolder(NestScrollViewHolder holder, int position) {
         holder.setText("item " + position);
+        Log.e("sundu", "NestingScrollRecyclerAdapter bind " + position);
     }
 
 

@@ -36,7 +36,8 @@ class Rxjava_Activity : AppCompatActivity() {
                 emitter.onComplete()
                 emitter.onNext(3)
             }
-        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+        }).subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : Observer<Int> {
                 override fun onSubscribe(d: Disposable) {
                     Log.e(

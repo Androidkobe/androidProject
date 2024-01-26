@@ -16,6 +16,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <!--        <meta-data-->
+        <!--            android:name="com.example.demo.GlideConfigModule"-->
+        <!--            android:value="AppGlideModule"/>-->
+
         <activity
             android:name=".sundu.custview.animationview.lottie.ProcessLottieActivity"
             android:exported="false">
