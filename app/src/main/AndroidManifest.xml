@@ -83,6 +83,7 @@
         <activity android:name=".sundu.custview.beziercurve.dragpop.BezierCurverDragPopActivity" />
         <activity android:name=".sundu.custview.CustomViewActivity" />
         <activity android:name=".sundu.developer.immersive.ImmerSiveActivity" />
+        <activity android:name=".sundu.developer.andserver.FileaCutUploadActivity"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">

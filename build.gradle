@@ -25,6 +25,9 @@ buildscript {
     repositories {
         google()
         jcenter()
+        maven {
+            url "https://maven.aliyun.com/repository/public"
+        }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:$gradleVersion"
@@ -39,6 +42,9 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven {
+            url "https://maven.aliyun.com/repository/public"
+        }
     }
 }
 

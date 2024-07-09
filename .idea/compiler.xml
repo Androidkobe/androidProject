@@ -3,9 +3,9 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.7">
       <module name="androidProject.androidsource" target="1.8" />
-      <module name="androidProject.app" target="1.8" />
-      <module name="androidProject.javalearn" target="1.8" />
-      <module name="androidProject.RecyclerViewExtend" target="1.8" />
+      <module name="androidProject.app" target="11" />
+      <module name="androidProject.javalearn" target="11" />
+      <module name="androidProject.RecyclerViewExtend" target="11" />
       <module name="kotlinlearn" target="1.7" />
     </bytecodeTargetLevel>
   </component>
