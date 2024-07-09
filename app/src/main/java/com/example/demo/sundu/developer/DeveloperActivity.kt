@@ -6,6 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.demo.R
+import com.example.demo.sundu.developer.andserver.FileaCutUploadActivity
 import com.example.demo.sundu.developer.compass.CompassActivity
 import com.example.demo.sundu.developer.coordinator.CoordinatorActivity
 import com.example.demo.sundu.developer.fullscreen.FullScreenActivity
@@ -141,6 +142,12 @@ class DeveloperActivity : AppCompatActivity() {
                         NestedScrollActivity::class.java
                     )
                 )
+                17-> startActivity(
+                    Intent(
+                        this@DeveloperActivity,
+                        FileaCutUploadActivity::class.java
+                    )
+                )
             }
         }
     }
@@ -164,6 +171,7 @@ class DeveloperActivity : AppCompatActivity() {
         stringArray.add("指南针")
         stringArray.add("协调布局")
         stringArray.add("NestedScrollView+recyclerView")
+        stringArray.add("cut file")
         return stringArray
     }
 }
